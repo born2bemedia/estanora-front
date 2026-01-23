@@ -125,7 +125,7 @@ export const Header = () => {
             >
               {t("free-guides", { fallback: "Free Guides" })}
             </Link>
-            <Button variant="white" url="/contact-us" type="link">
+            <Button variant="white" url="/contact" type="link">
               {t("contact-us", { fallback: "Contact Us" })}
             </Button>
           </nav>
@@ -167,7 +167,7 @@ export const Header = () => {
           >
             {t("free-guides", { fallback: "Free Guides" })}
           </Link>
-          <Button variant="white" url="/contact-us" type="link">
+          <Button variant="white" url="/contact" type="link">
             {t("contact-us", { fallback: "Contact Us" })}
           </Button>
         </nav>

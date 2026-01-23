@@ -11,6 +11,7 @@ export const Button = ({
   type,
   service,
   onClick,
+  disabled,
 }: {
   children: React.ReactNode;
   variant: "white" | "black" | "bordered-black";
@@ -18,6 +19,7 @@ export const Button = ({
   type: "button" | "submit" | "link";
   service?: string;
   onClick?: () => void;
+  disabled?: boolean;
 }) => {
   const buttonUrl = service ? `/service-request-form?service=${service}` : url;
 
@@ -33,6 +35,7 @@ export const Button = ({
       type={type}
       className={cn(styles.button, styles[variant])}
       onClick={onClick ? onClick : undefined}
+      disabled={disabled}
     >
       {children}
     </button>

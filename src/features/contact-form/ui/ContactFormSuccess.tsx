@@ -11,34 +11,7 @@ export const ContactFormSuccess = ({ onClose }: { onClose: () => void }) => {
   return (
     <div className={styles.contactFormSuccess}>
       <div className={styles.contactFormSuccess__content}>
-        <Image
-          src="/images/topLeftBlack.svg"
-          alt="top left black corner"
-          width={20}
-          height={20}
-          className={styles.top_left}
-        />
-        <Image
-          src="/images/topRightBlack.svg"
-          alt="top right black corner"
-          width={20}
-          height={20}
-          className={styles.top_right}
-        />
-        <Image
-          src="/images/bottomLeftBlack.svg"
-          alt="bottom left black corner"
-          width={20}
-          height={20}
-          className={styles.bottom_left}
-        />
-        <Image
-          src="/images/bottomRightBlack.svg"
-          alt="bottom right black corner"
-          width={20}
-          height={20}
-          className={styles.bottom_right}
-        />
+        
         <h2>
           {t('success', { fallback: 'Your request has been ' })}
           <span>{t('submitted', { fallback: 'submitted successfully' })}</span>

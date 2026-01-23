@@ -1,15 +1,21 @@
 import { z } from 'zod';
 
+// Set to false to disable reCAPTCHA validation (useful for development/testing)
+const ENABLE_RECAPTCHA = false;
+
 export const createContactFormSchema = () =>
   z.object({
-    firstName: z.string().nonempty('This field is required'),
-    lastName: z.string().nonempty('This field is required'),
-    phone: z.string().nonempty('This field is required'),
-    businessEmail: z.string().email('Invalid email address'),
-    company: z.string().nonempty('This field is required'),
-    website: z.string().nonempty('This field is required'),
-    question: z.string(),
-    recaptcha: z.string().nonempty('Please complete the reCAPTCHA verification'),
+    fullName: z.string().min(1, 'This field is required'),
+    email: z.string().email('Invalid email address').min(1, 'This field is required'),
+    phone: z.string().optional(),
+    propertyLocation: z.string().min(1, 'This field is required'),
+    primaryObjective: z.string().min(1, 'This field is required'),
+    inheritance: z.string().min(1, 'This field is required'),
+    description: z.string().min(1, 'This field is required'),
+    documents: z.array(z.instanceof(File)).optional(),
+    recaptcha: ENABLE_RECAPTCHA
+      ? z.string().min(1, 'Please complete the reCAPTCHA verification')
+      : z.string().optional(),
   });
 
 export type ContactFormSchema = z.infer<ReturnType<typeof createContactFormSchema>>;

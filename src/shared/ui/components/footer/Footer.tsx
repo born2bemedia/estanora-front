@@ -35,7 +35,7 @@ export const Footer = () => {
                 fallback: 'You don’t need to be an expert. You just need us.',
               })}
             </p>
-            <Button variant="white" url="/contact-us" type="link">
+            <Button variant="white" url="/contact" type="link">
               {t('button', { fallback: 'Contact Us' })}
             </Button>
           </div>
@@ -46,7 +46,7 @@ export const Footer = () => {
                 <nav className={styles.contacts}>
                   <Link href={`mailto:${WEBSITE_EMAIL}`}>{WEBSITE_EMAIL}</Link>
                   <Link href={`tel:${WEBSITE_PHONE}`}>{WEBSITE_PHONE}</Link>
-                  <Link href="/contact-us">
+                  <Link href="/contact">
                     {t('more-contacts', { fallback: 'More contacts' })}
                   </Link>
                 </nav>
@@ -93,7 +93,7 @@ export const Footer = () => {
                 <nav>
                   <Link href="/free-guides">{t('free-guides', { fallback: 'Free Guides' })}</Link>
                   <Link href="/about-us">{t('about-us', { fallback: 'About Us' })}</Link>
-                  <Link href="/contact-us">{t('contact-us', { fallback: 'Contact Us' })}</Link>
+                  <Link href="/contact">{t('contact-us', { fallback: 'Contact Us' })}</Link>
                 </nav>
               </div>
             </div>

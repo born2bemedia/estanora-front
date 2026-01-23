@@ -1,5 +1,4 @@
 "use client";
-import Image from "next/image";
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
@@ -85,12 +84,7 @@ export const HomeWhy = () => {
             variants={fadeInUp}
             className={styles.home_why__image}
           >
-            <Image
-              src="/images/home/why.png"
-              alt="Why Estanora"
-              width={531}
-              height={531}
-            />
+            <video src="/videos/brings4.mp4" autoPlay muted loop playsInline />
           </motion.div>
         </div>
       </div>

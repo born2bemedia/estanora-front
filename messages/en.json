@@ -110,6 +110,36 @@
     "item3": "Institutional-Grade Due Diligence We apply the same rigorous auditing standards used by institutional investors to protect your private property interests.",
     "button": "More about us"
   },
+  "contactCta": {
+    "title": "Complex property decisions ",
+    "title2": "require clarity, not assumptions.",
+    "description": "If you need independent validation before committing capital, this is the correct starting point."
+  },
+  "contactMain": {
+    "title1": "Request Independent Property Analysis",
+    "description1": "Objective, Evidence-Based Guidance for Private Property Decisions. Real estate decisions involve capital allocation, legal exposure, and long-term financial consequences. They require more than opinions, listings, or general market commentary.",
+    "title2": "Direct Contact",
+    "description2": "If you prefer direct communication, you may reach us via:",
+    "title3": "When contacting us, please include:",
+    "item1": "Property location (city and country)",
+    "item2": "Your objective (buy, sell, hold, rent, portfolio, inheritance)",
+    "item3": "Any relevant timing constraints or deadlines",
+    "note": "Providing this information allows us to respond efficiently and with appropriate context.",
+    "title4": "Submit a Consultation Request",
+    "description4": "Please provide sufficient detail to allow for a meaningful initial assessment."
+  },
+  "contactSecond": {
+    "title1": "When It Makes ",
+    "title2": "Sense to Contact Estanora",
+    "description1": "Precision Market Analysis We use industry-leading tools for real-time monitoring and data-driven accuracy in every report.",
+    "item1": "Assessing whether an asking price reflects real market value",
+    "item2": "Identifying hidden technical, legal or regulatory risks",
+    "item3": "Deciding whether to buy, sell, hold, or wait",
+    "item4": "Understanding why a property is not selling despite market exposure",
+    "item5": "Structuring an inherited or jointly owned property",
+    "item6": "Evaluating rental strategies under current legal frameworks",
+    "item7": "Reviewing the performance and risk profile of a property portfolio"
+  },
   "guidesCta": {
     "title": "Not sure what’s blocking ",
     "title2": "your decision? Let’s diagnose it.",
@@ -120,11 +150,6 @@
     "title1": "Make the Right Property Decision With Evidence, Not Assumptions",
     "description": "We analyse price reality, structural risks, legal exposure, and market timing so you know exactly when to buy, sell, hold, or restructure. Clarity replaces uncertainty. Strategy replaces guesswork.",
     "button": "Get research"
-  },
-  "guidesLoop": {
-    "title": "Our Free Guides",
-    "button": "Read",
-    "empty": "No guides found"
   },
   "guidesServices": {
     "service1": "Due Diligence",
@@ -142,19 +167,31 @@
     "last-updated": "Last updated:"
   },
   "contactForm": {
-    "firstName": "First Name",
-    "lastName": "Last Name",
-    "phone": "Phone",
-    "businessEmail": "Business Email",
-    "company": "Company",
-    "website": "Website",
-    "question": "Your Question",
+    "fullName": "Full name",
+    "email": "Email address",
+    "phone": "Phone numbe",
+    "optional": "(Optional)",
+    "propertyLocation": "Property location (city, country)",
+    "primaryObjective": "Primary objective",
+    "selectObjective": "Select objective",
+    "inheritance": "Inheritance",
+    "description": "Brief description of the situation",
+    "descriptionPlaceholder": "Please describe the property, your objective, and any known concerns (pricing, risk, timing, legal, financing, etc.).",
+    "uploadDocuments": "Upload relevant documents",
+    "chooseFiles": "Choose files to upload",
+    "acceptedFormats": "Accepted formats: PDF, JPG, PNG • Max file size: 10 MB per file",
     "loading": "Loading...",
-    "submit": "Submit",
+    "submit": "REQUEST ANALYSIS",
+    "formNote": "All enquiries are confidential. We respond within one business day.",
     "success": "Your request has been ",
     "submitted": "submitted successfully",
     "thankYou": "Our team will reach out within the next business day.",
     "close": "Continue"
+  },
+  "guidesLoop": {
+    "title": "Our Free Guides",
+    "button": "Read",
+    "empty": "No guides found"
   },
   "cookiePopup": {
     "title": "Cookie settings",

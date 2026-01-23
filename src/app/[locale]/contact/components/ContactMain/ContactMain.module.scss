@@ -1,0 +1,138 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.contactMain {
+  padding: 64px 0;
+  margin-top: 120px;
+  @include tablet {
+    padding: 32px 0;
+  }
+  &__content {
+    display: flex;
+    gap: 48px;
+    @include tablet {
+      flex-direction: column;
+    }
+  }
+  &__left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 48px;
+    flex: 1 0 0;
+
+    &__contacts {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 12px 0;
+      &__item {
+        display: flex;
+        width: 208px;
+        padding: 12px;
+        align-items: center;
+        gap: 12px;
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+      }
+    }
+
+    &__block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      align-self: stretch;
+      h1 {
+        color: #fff;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+      p {
+        color: #ccc;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+      }
+      h2 {
+        color: #fff;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+      ul {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        align-self: stretch;
+        li {
+          display: flex;
+          align-items: flex-start;
+          gap: 10px;
+          span {
+            display: flex;
+            width: 16px;
+            height: 16px;
+            padding: 3px;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            background: #fff;
+          }
+          p {
+            width: calc(100% - 26px);
+            color: #ccc;
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 300;
+            line-height: normal;
+          }
+        }
+      }
+    }
+  }
+  &__right {
+    display: flex;
+    padding: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    flex: 1 0 0;
+    border: 1px solid #222;
+    background: #000;
+    &__block {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      align-self: stretch;
+
+      p {
+        color: #ccc;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+      }
+      h2 {
+        color: #fff;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 600;
+        line-height: normal;
+      }
+    }
+    &__form {
+      width: 100%;
+    }
+  }
+}
