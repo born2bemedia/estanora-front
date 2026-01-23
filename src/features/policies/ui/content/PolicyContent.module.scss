@@ -1,0 +1,87 @@
+.heading {
+  color: #fff;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 64px 0 12px 0;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.heading2 {
+  color: #fff;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 32px 0 12px 0;
+  &:first-child {
+    margin-top: 0;
+  }
+}
+
+.text {
+  color: #ccc;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.4;
+  margin: 12px 0;
+}
+
+.link {
+  color: #ccc;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.4;
+  margin: 12px 0;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+}
+
+.bold {
+  font-weight: 700 !important;
+}
+
+.list {
+  margin-top: 12px;
+  margin-left: 18px;
+  color: #717173;
+}
+
+.listDisc {
+  list-style-type: disc;
+}
+
+.listDecimal {
+  list-style-type: decimal;
+}
+
+.listItem {
+  color: #ccc;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: 1.4;
+}
+
+.listUrl {
+  color: #2583ff;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration-line: underline;
+  text-decoration-style: solid;
+  text-decoration-skip-ink: auto;
+  text-decoration-thickness: auto;
+  text-underline-offset: auto;
+  text-underline-position: from-font;
+}

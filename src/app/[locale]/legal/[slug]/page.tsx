@@ -1,26 +1,12 @@
-import React from 'react';
+import React from "react";
 
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
+import { getTranslations } from "next-intl/server";
 
-import { getPost, getPostSlugs } from '@/features/policy/policy';
+import { getPolicy } from "@/features/policies/api/get-policy";
+import { PolicyRenderer } from "@/features/policies/ui/renderer/PolicyRenderer";
 
-import st from './page.module.scss';
-
-type PageParams = { locale: string; slug: string };
-
-export async function generateStaticParams(): Promise<PageParams[]> {
-  const locales = ['en', 'de'];
-  const params: PageParams[] = [];
-
-  for (const locale of locales) {
-    const slugs = await getPostSlugs(locale);
-    for (const slug of slugs) {
-      params.push({ locale, slug });
-    }
-  }
-
-  return params;
-}
+import st from "./page.module.scss";
 
 export async function generateMetadata({
   params,
@@ -29,10 +15,16 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const awaitedParams = await params;
   const { locale, slug } = awaitedParams;
-  const post = await getPost(slug, locale);
-  const pageTitle = `${post.title}`;
+  const policy = await getPolicy({ slug: slug, locale });
+  const pageTitle = `${policy.title}`;
   return {
     title: pageTitle,
+    description: policy.seo_description,
+    openGraph: {
+      title: pageTitle,
+      description: policy.seo_description,
+      images: "",
+    },
   };
 }
 
@@ -41,20 +33,52 @@ export default async function PostPage({
 }: {
   params: Promise<{ slug: string; locale: string }>;
 }) {
+  const t = await getTranslations("common");
   const awaitedParams = await params;
   const { locale, slug } = awaitedParams;
-  const post = await getPost(slug, locale);
+  const policy = await getPolicy({ slug: slug, locale });
+  console.log(policy.content.root.children);
+  let lastUpdatedDate: string | null = null;
+
+  if (policy.last_updated) {
+    try {
+      const lastUpdated = new Date(policy.last_updated);
+      if (!isNaN(lastUpdated.getTime())) {
+        lastUpdatedDate = lastUpdated.toLocaleDateString(locale, {
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        });
+      }
+    } catch (error) {
+      console.error("Error formatting date:", error);
+    }
+  }
 
   return (
     <>
       <section className={st.postTitle}>
-        <div className="_container">
+        <div className="container">
           <div className={st.postTitle__content}>
-            <h1>{post.title}</h1>
+            <h1>{policy.title}</h1>
+            {lastUpdatedDate && (
+              <p>
+                {t("last-updated", { fallback: "Last updated:" })}:{" "}
+                {lastUpdatedDate}
+              </p>
+            )}
           </div>
         </div>
       </section>
-      <div dangerouslySetInnerHTML={{ __html: post.body as string }} />
+      {policy.content && (
+        <section className={st.postContent}>
+          <div className="container">
+            <div className={st.postContent__content}>
+              <PolicyRenderer content={policy.content.root.children} />
+            </div>
+          </div>
+        </section>
+      )}
     </>
   );
 }

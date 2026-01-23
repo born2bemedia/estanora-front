@@ -109,10 +109,10 @@ export const Footer = () => {
             })}
           </p>
           <nav>
-            <Link href="/terms-of-use">{t('terms-of-use', { fallback: 'Terms of Use' })}</Link>
-            <Link href="/privacy-policy">{t('privacy-policy', { fallback: 'Privacy' })}</Link>
-            <Link href="/cookie-policy">{t('cookie-policy', { fallback: 'Cookie' })}</Link>
-            <Link href="/refund-policy">{t('refund-policy', { fallback: 'Refund' })}</Link>
+            <Link href="/legal/terms-and-conditions">{t('terms-and-conditions', { fallback: 'Terms & Conditions' })}</Link>
+            <Link href="/legal/privacy-policy">{t('privacy-policy', { fallback: 'Privacy' })}</Link>
+            <Link href="/legal/cookie-policy">{t('cookie-policy', { fallback: 'Cookie' })}</Link>
+            <Link href="/legal/refund-policy">{t('refund-policy', { fallback: 'Refund' })}</Link>
           </nav>
         </div>
       </div>

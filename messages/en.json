@@ -110,28 +110,26 @@
     "item3": "Institutional-Grade Due Diligence We apply the same rigorous auditing standards used by institutional investors to protect your private property interests.",
     "button": "More about us"
   },
-  "insights": {
-    "button1": "Explore Solutions",
-    "button2": "Get Assistance"
+  "common": {
+    "last-updated": "Last updated:"
   },
-  "insightsExperts": {
-    "title": "Our Experts Are Ready to Consult You Right Away",
-    "subtitle": "Schedule a session or emergency advisory call within 24 hours for pressing security needs: SOC assessment, incident response, or architecture review.",
-    "button": "Request Expert Assistance"
-  },
-  "insightsHero": {
-    "featuredTitle": "Cybersecurity Outlook 2026 Preparing for the Age of Autonomous Threats",
-    "featuredText": "Discover what 2026 holds for cybersecurity — from AI-driven attacks to autonomous defenses — and how businesses can stay ahead in the age of intelligent threats.",
-    "otherArticle1Title": "Cybersecurity Report Q2 2025 Defending Against Autonomy and Deception",
-    "otherArticle2Title": "Cybersecurity Report Q1 2025: Resilience in the Age of Intelligent Threats",
-    "otherArticle3Title": "Global Cybersecurity Report 2024 Navigating a New Era of Digital Threats",
-    "subtitle": "[Expert-Driven]",
-    "title": "Insights & Market News",
-    "button": "Open",
-    "featuredUrl": "/insights/cybersecurity-outlook-2026",
-    "otherArticle1Url": "/insights/cybersecurity-report-q2-2025",
-    "otherArticle2Url": "/insights/cybersecurity-report-q1-2025",
-    "otherArticle3Url": "/insights/global-cybersecurity-report-2024"
+  "trendsCta": {
+    "theRiseOf3dPrintingWhatsNext": {
+      "title": "Ready to bring your 3D projects to life?",
+      "btn": "Explore Our 3D Models in the Shop"
+    },
+    "uiuxDesignTrendsMakingDigitalSpacesMoreHuman": {
+      "title": "Are you ready to create a design experience that's as unique as your users?",
+      "btn": "Explore Our UI/UX Design Solutions"
+    },
+    "animationsIn2025WhatsHotAndWhatsNot": {
+      "title": "Ready to bring your animation ideas to life?",
+      "btn": "Ready to bring your animation ideas to life?"
+    },
+    "videoContentIn2025InteractiveImmersiveAndEverywhere": {
+      "title": "Ready to create video content that stands out in 2025?",
+      "btn": "Explore Our Video Production Packages"
+    }
   },
   "contactForm": {
     "firstName": "First Name",
@@ -147,6 +145,11 @@
     "submitted": "submitted successfully",
     "thankYou": "Our team will reach out within the next business day.",
     "close": "Continue"
+  },
+  "contactInfoPolicy": {
+    "email": "Email",
+    "phone": "Phone",
+    "website": "Website"
   },
   "cookiePopup": {
     "title": "Cookie settings",
@@ -171,7 +174,7 @@
     "about-us": "About Us",
     "contact-us": "Contact Us",
     "copyright": "Strategic Property Intelligence. All rights reserved.",
-    "terms-of-use": "Terms of Use",
+    "terms-and-conditions": "Terms & Conditions",
     "privacy-policy": "Privacy",
     "cookie-policy": "Cookie",
     "refund-policy": "Refund"
