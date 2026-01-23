@@ -1,17 +1,16 @@
-import React from 'react';
-import Image from 'next/image';
+import React from "react";
+import Image from "next/image";
 
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 
-import { getPost, getPostSlugs } from '@/features/insights/insights';
+import { getPost, getPostSlugs } from "@/features/insights/insights";
 
-import { InsightContent } from '../components';
-import st from './page.module.scss';
+import st from "./page.module.scss";
 
 type PageParams = { locale: string; slug: string };
 
 export async function generateStaticParams(): Promise<PageParams[]> {
-  const locales = ['en', 'de', 'it', 'ro'];
+  const locales = ["en", "de", "it", "ro"];
   const params: PageParams[] = [];
 
   for (const locale of locales) {
@@ -40,7 +39,7 @@ export async function generateMetadata({
     openGraph: {
       title: pageTitle,
       description: pageDescription,
-      images: '',
+      images: "",
     },
   };
 }
@@ -64,7 +63,12 @@ export default async function PostPage({
               <br />
               {post.subtitle}
             </h1>
-            <Image src={post.image} alt={post.title} width={1320} height={400} />
+            <Image
+              src={post.image}
+              alt={post.title}
+              width={1320}
+              height={400}
+            />
             <div className={st.postTitle__excerpt}>
               <p dangerouslySetInnerHTML={{ __html: post.excerpt_1 }} />
               <p dangerouslySetInnerHTML={{ __html: post.excerpt_2 }} />
@@ -72,7 +76,7 @@ export default async function PostPage({
           </div>
         </div>
       </section>
-      <InsightContent content={post.body as string} />
+      <div dangerouslySetInnerHTML={{ __html: post.body as string }} />
     </>
   );
 }
