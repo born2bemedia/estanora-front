@@ -1,7 +1,6 @@
 "use client";
 
-import { useState } from "react";
-import { useEffect } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { motion } from "framer-motion";
 import { useLocale, useTranslations } from "next-intl";
@@ -19,17 +18,37 @@ export const GuidesLoop = () => {
   const [loading, setLoading] = useState(true);
   const t = useTranslations("guidesLoop");
   const locale = useLocale();
+  const isMountedRef = useRef(true);
+
+  const fetchGuides = useCallback(async () => {
+    if (!isMountedRef.current) return;
+    
+    setLoading(true);
+    try {
+      const fetchedGuides = await getGuides({ locale: locale });
+      if (isMountedRef.current) {
+        console.log(fetchedGuides[0].image.url);
+        setGuides(fetchedGuides);
+        setLoading(false);
+      }
+    } catch (error) {
+      if (isMountedRef.current) {
+        setLoading(false);
+      }
+      console.error("Error fetching guides:", error);
+    }
+  }, [locale]);
 
   useEffect(() => {
-    const fetchGuides = async () => {
-      setLoading(true);
-      const guides = await getGuides({ locale: locale });
-      console.log(guides[0].image.url);
-      setGuides(guides);
-      setLoading(false);
+    isMountedRef.current = true;
+    queueMicrotask(() => {
+      void fetchGuides();
+    });
+
+    return () => {
+      isMountedRef.current = false;
     };
-    fetchGuides();
-  }, [locale]);
+  }, [fetchGuides]);
 
   const SERVER_URL = process.env.NEXT_PUBLIC_SERVER_URL;
 
