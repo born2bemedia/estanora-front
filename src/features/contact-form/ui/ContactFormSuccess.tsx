@@ -47,7 +47,7 @@ export const ContactFormSuccess = ({ onClose }: { onClose: () => void }) => {
           {t('thankYou', { fallback: 'Our team will reach out within the next business day.' })}
         </p>
         <span onClick={onClose}>
-          <Button type="button" variant="primary">
+          <Button type="button" variant="white">
             {t('close', { fallback: 'Continue' })}
           </Button>
         </span>
