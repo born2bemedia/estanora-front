@@ -1,0 +1,105 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.post {
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    margin-top: 48px;
+    a {
+      border: 1px solid $accent !important;
+      &:last-child {
+        background: #fff;
+        color: $accent;
+        &:hover {
+          color: #fff;
+        }
+      }
+    }
+  }
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    padding: 64px;
+    border-right: 1px solid rgba(4, 2, 19, 0.08);
+    border-bottom: 1px solid rgba(4, 2, 19, 0.08);
+    border-left: 1px solid rgba(4, 2, 19, 0.08);
+    width: 890px;
+    max-width: 100%;
+    margin: 0 auto;
+    @include tablet {
+      padding: 32px 12px;
+    }
+
+    article {
+      h2 {
+        color: $primary;
+        font-size: 32px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 110%;
+        margin: 64px 0 16px 0;
+        padding-bottom: 16px;
+        border-bottom: 1px solid rgba(4, 2, 19, 0.08);
+        @include tablet {
+          font-size: 24px;
+        }
+        &:first-child {
+          margin-top: 0;
+        }
+      }
+      p {
+        color: $light;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        margin-bottom: 16px;
+      }
+      h3 {
+        color: #040213;
+        font-size: 24px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: 110%; /* 26.4px */
+        margin: 32px 0 16px 0;
+        @include tablet {
+          font-size: 18px;
+        }
+      }
+      ul {
+        list-style: disc;
+        padding-left: 14px;
+        margin-bottom: 16px;
+        li {
+          color: $light;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          p {
+            margin: 0;
+          }
+        }
+      }
+      ol {
+        list-style: decimal;
+        padding-left: 14px;
+        margin-bottom: 16px;
+        li {
+          color: $light;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          p {
+            margin: 0;
+          }
+        }
+      }
+      th {
+        text-align: left;
+      }
+    }
+  }
+}

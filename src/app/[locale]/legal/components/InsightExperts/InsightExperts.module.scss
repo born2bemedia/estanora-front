@@ -1,0 +1,175 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.insights_experts {
+  &__content {
+    display: flex;
+    align-items: stretch;
+    border-right: 1px solid rgba(4, 2, 19, 0.08);
+    border-bottom: 1px solid rgba(4, 2, 19, 0.08);
+    border-left: 1px solid rgba(4, 2, 19, 0.08);
+    @include tablet {
+      flex-direction: column-reverse;
+    }
+  }
+  &__col_1 {
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 32px;
+    padding: 64px;
+    background-image: url('/images/team/experts/photosBack.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    @include tablet {
+      width: 100%;
+      border-right: none;
+      border-bottom: 1px solid rgba(4, 2, 19, 0.08);
+      padding: 32px 12px;
+    }
+    .expert_wrapper {
+      display: flex;
+      width: 100%;
+      padding: 48px;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 16px;
+      position: relative;
+      border: 1px solid rgba(4, 2, 19, 0.08);
+      background: #fff;
+      .top_left {
+        position: absolute;
+        top: 0;
+        left: 0;
+        object-fit: contain;
+        object-position: top left;
+        width: 20px;
+        height: 20px;
+      }
+      .top_right {
+        position: absolute;
+        top: 0;
+        right: 0;
+        object-fit: contain;
+        object-position: top right;
+        width: 20px;
+        height: 20px;
+      }
+      .bottom_left {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        object-fit: contain;
+        object-position: bottom left;
+        width: 20px;
+        height: 20px;
+      }
+      .bottom_right {
+        position: absolute;
+        bottom: 0;
+        right: 0;
+        object-fit: contain;
+        object-position: bottom right;
+        width: 20px;
+        height: 20px;
+      }
+      .expert_details {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        align-self: stretch;
+        img {
+          width: 64px;
+          height: 64px;
+          border-radius: 50%;
+        }
+        > div {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 5px;
+          width: calc(100% - 80px);
+          h3 {
+            color: $primary;
+            font-size: 24px;
+            font-weight: 500;
+            line-height: 110%;
+          }
+          p {
+            color: $light;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: normal;
+          }
+        }
+      }
+      .expert_divider {
+        height: 1px;
+        align-self: stretch;
+        width: 100%;
+        background: rgba(4, 2, 19, 0.06);
+      }
+      .expert_buttons {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        align-self: stretch;
+        a {
+          flex-grow: 1;
+          display: flex;
+          padding: 10px;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          flex: 1 0 0;
+          border-radius: 8px;
+          border: 1px solid rgba(255, 255, 255, 0.1);
+          background: #f4f4f4;
+          &.close_button {
+            background: $accent;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+          }
+        }
+      }
+    }
+  }
+  &__col_2 {
+    border-left: 1px solid rgba(4, 2, 19, 0.08);
+
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 64px;
+    gap: 16px;
+    @include tablet {
+      width: 100%;
+      border-left: none;
+      padding: 24px;
+    }
+    .title {
+      color: $primary;
+      font-size: 42px;
+      font-weight: 500;
+      line-height: 110%;
+      text-align: left;
+      @include tablet {
+        font-size: 32px;
+      }
+      span {
+        color: $accent;
+      }
+    }
+    .subtitle {
+      color: $light;
+      font-size: 14px;
+      font-weight: 400;
+      line-height: normal;
+      text-align: left;
+      margin-bottom: 16px;
+    }
+  }
+}

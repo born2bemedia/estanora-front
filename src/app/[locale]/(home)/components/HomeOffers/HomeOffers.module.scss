@@ -1,0 +1,130 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.home_offers {
+  padding: 64px 0;
+  background: #f7f7f7;
+  @include tablet {
+    padding: 32px 0;
+  }
+
+  h2 {
+    color: #000;
+    text-align: center;
+    margin-bottom: 64px;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    @include tablet {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: 24px;
+    @include tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__button {
+    margin-top: 64px;
+    display: flex;
+    justify-content: center;
+    @include tablet {
+      margin-top: 32px;
+    }
+  }
+
+  &__item {
+    width: 25%;
+    display: flex;
+    padding: 24px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 48px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    background: #fff;
+    &:nth-child(2) {
+      background-position: 20% center;
+    }
+    @include tablet {
+      width: 100%;
+      height: 300px;
+    }
+    > div {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      align-self: stretch;
+      justify-content: space-between;
+      h3 {
+        color: #000;
+        font-size: 20px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      p {
+        color: #000;
+        font-size: 40px;
+        font-style: normal;
+        font-weight: 500;
+        line-height: normal;
+        span {
+          color: #b9b9b9;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+        }
+      }
+    }
+    ul {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      align-self: stretch;
+      li {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        span {
+          display: flex;
+          width: 16px;
+          height: 16px;
+          padding: 3px;
+          justify-content: center;
+          align-items: center;
+          gap: 10px;
+          background: #000;
+          svg {
+            path {
+              fill: #fff;
+            }
+          }
+        }
+        p {
+          width: calc(100% - 26px);
+          color: #000;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 300;
+          line-height: normal;
+        }
+      }
+    }
+    a,
+    button {
+      width: 100%;
+      box-sizing: border-box;
+    }
+  }
+}

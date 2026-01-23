@@ -1,0 +1,142 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.footer {
+  padding: 64px 0;
+  border-top: 1px solid #222;
+  background: #000;
+
+  &__main {
+    display: flex;
+    gap: 64px;
+    align-items: flex-start;
+    @include tablet {
+      flex-direction: column;
+      gap: 64px;
+    }
+    &__col1 {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 8px;
+      width: 50%;
+      @include tablet {
+        width: 100%;
+      }
+      p {
+        color: #ccc;
+        margin-bottom: 16px;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+      }
+    }
+    &__col2 {
+      display: flex;
+      gap: 32px;
+      justify-content: flex-end;
+      @include tablet {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+      }
+      .col {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 32px;
+        @include tablet {
+          width: calc(50% - 16px);
+        }
+        .nav {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          gap: 24px;
+          h3 {
+            color: rgba(204, 204, 204, 0.8);
+            font-size: 14px;
+            font-style: normal;
+            font-weight: 400;
+            line-height: normal;
+            text-transform: uppercase;
+          }
+          nav {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+            align-self: stretch;
+            &.contacts {
+              a {
+                text-decoration: underline;
+              }
+            }
+            &.socials {
+              display: flex;
+              align-items: flex-start;
+              gap: 12px;
+              align-self: stretch;
+              flex-direction: row;
+            }
+            a {
+              color: #fff;
+              font-size: 14px;
+              font-style: normal;
+              font-weight: 400;
+              line-height: normal;
+              text-transform: uppercase;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__divider {
+    background: #222;
+    height: 1px;
+    width: 100%;
+    margin: 64px 0;
+    @include tablet {
+      margin: 32px 0;
+    }
+  }
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+    @include tablet {
+      flex-direction: column;
+      align-items: center;
+    }
+    p {
+      color: rgba(204, 204, 204, 0.8);
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      @include tablet {
+        text-align: center;
+        width: 100%;
+      }
+    }
+    nav {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      @include tablet {
+        width: 100%;
+        justify-content: center;
+      }
+      a {
+        color: rgba(204, 204, 204, 0.8);
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
