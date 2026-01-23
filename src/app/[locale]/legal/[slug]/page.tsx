@@ -4,7 +4,6 @@ import type { Metadata } from 'next';
 
 import { getPost, getPostSlugs } from '@/features/policy/policy';
 
-import { InsightContent } from '../components';
 import st from './page.module.scss';
 
 type PageParams = { locale: string; slug: string };
@@ -55,7 +54,7 @@ export default async function PostPage({
           </div>
         </div>
       </section>
-      <InsightContent content={post.body as string} />
+      <div dangerouslySetInnerHTML={{ __html: post.body as string }} />
     </>
   );
 }
