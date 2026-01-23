@@ -13,7 +13,7 @@ export const Button = ({
   onClick,
 }: {
   children: React.ReactNode;
-  variant: "white" | "black";
+  variant: "white" | "black" | "bordered-black";
   url?: string;
   type: "button" | "submit" | "link";
   service?: string;

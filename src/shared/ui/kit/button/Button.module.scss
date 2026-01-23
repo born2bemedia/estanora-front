@@ -23,4 +23,14 @@
       background: #0e0e0e;
     }
   }
+  &.bordered-black {
+    border: 1px solid #FFF;
+    color: #fff;
+    background: #000;
+    &:hover {
+      background: #0e0e0e;
+      color: #d9d9d9;
+      border-color: #d9d9d9;
+    }
+  }
 }

@@ -1,0 +1,99 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.guides_loop {
+  padding: 64px 0;
+  @include tablet {
+    padding: 32px 0;
+  }
+
+  h2 {
+    color: #fff;
+    text-align: center;
+    margin-bottom: 64px;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    @include tablet {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__skeleton_item {
+    width: calc(25% - 18px);
+    height: 340px;
+    background-color: #222;
+    border-radius: 0;
+    animation: skeleton-loading 1s linear infinite alternate;
+    @keyframes skeleton-loading {
+      0% {
+        background-color: #222;
+      }
+      100% {
+        background-color: #333;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    gap: 24px;
+    flex-wrap: wrap;
+  }
+  &__item {
+    width: calc(25% - 18px);
+    display: flex;
+    padding: 160px 32px 32px 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    border: 1px solid #222;
+    justify-content: space-between;
+    &:nth-child(2) {
+      background-position: 20% center;
+    }
+    @include tablet {
+      width: 100%;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, #000 100%);
+    }
+    > div {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+      align-self: stretch;
+      justify-content: space-between;
+      h3 {
+        color: #fff;
+        font-size: 16px;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+      }
+      p {
+        color: #ccc;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 300;
+        line-height: normal;
+      }
+    }
+    a {
+      position: relative;
+      z-index: 1;
+    }
+  }
+}

@@ -81,9 +81,7 @@ export const PolicyContent = memo(
     }
 
     if (type === "quote") {
-      return (
-        <ContactInfo />
-      );
+      return <ContactInfo />;
     }
 
     return null;
