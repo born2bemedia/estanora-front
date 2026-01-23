@@ -9,7 +9,7 @@ import st from './page.module.scss';
 type PageParams = { locale: string; slug: string };
 
 export async function generateStaticParams(): Promise<PageParams[]> {
-  const locales = ['en', 'de', 'it', 'ro'];
+  const locales = ['en', 'de'];
   const params: PageParams[] = [];
 
   for (const locale of locales) {
