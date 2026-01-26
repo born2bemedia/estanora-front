@@ -20,16 +20,9 @@ export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
-  const [totalItems, setTotalItems] = useState(0);
-
-  useEffect(() => {
-    const totalItems = useCartStore.getState().getTotalItems();
-    if (totalItems > 0) {
-      setTimeout(() => {
-        setTotalItems(totalItems);
-      }, 100);
-    }
-  }, []);
+  const totalItems = useCartStore((state) => {
+    return state.items.reduce((total, item) => total + item.quantity, 0);
+  });
 
   const t = useTranslations("header");
 

@@ -6,16 +6,16 @@ import { useTranslations } from "next-intl";
 import {
   useOrderableServicesBlock1,
   usePurchasableServicesBlock1,
-} from "@/features/due-diligence-services/model/first-block";
+} from "@/features/services/lib/due-diligence/first-block";
 import {
   useOrderableServicesBlock2,
   usePurchasableServicesBlock2,
-} from "@/features/due-diligence-services/model/second-block";
+} from "@/features/services/lib/due-diligence/second-block";
 import {
   useOrderableServicesBlock3,
   usePurchasableServicesBlock3,
-} from "@/features/due-diligence-services/model/third-block";
-import { ServicesWrapper } from "@/features/due-diligence-services/ui/ServicesWrapper/ServicesWrapper";
+} from "@/features/services/lib/due-diligence/third-block";
+import { ServicesWrapper } from "@/features/services/ui/ServicesWrapper/ServicesWrapper";
 
 import { fadeInUp } from "@/shared/lib/helpers/animations";
 
