@@ -6,6 +6,8 @@ import { usePathname } from "next/navigation";
 
 import { useTranslations } from "next-intl";
 
+import { useCartStore } from "@/features/cart";
+
 import { WEBSITE_EMAIL, WEBSITE_PHONE } from "@/shared/lib/constants/constants";
 import { AccountIcon, CartIcon } from "@/shared/ui/icons";
 import { Button } from "@/shared/ui/kit/button/Button";
@@ -18,6 +20,16 @@ export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const [totalItems, setTotalItems] = useState(0);
+
+  useEffect(() => {
+    const totalItems = useCartStore.getState().getTotalItems();
+    if (totalItems > 0) {
+      setTimeout(() => {
+        setTotalItems(totalItems);
+      }, 100);
+    }
+  }, []);
 
   const t = useTranslations("header");
 
@@ -56,8 +68,13 @@ export const Header = () => {
             <Link href={`tel:${WEBSITE_PHONE}`}>{WEBSITE_PHONE}</Link>
           </div>
           <div className={styles.header__top__actions}>
-            <Link href="/cart">
+            <Link className={styles.header__cart} href="/cart">
               <CartIcon />
+              {totalItems > 0 && (
+                <span className={styles.header__mobile_actions__total_items}>
+                  {totalItems}
+                </span>
+              )}
             </Link>
             <Link href="/account">
               <AccountIcon />
@@ -75,8 +92,13 @@ export const Header = () => {
           </Link>
 
           <div className={styles.header__mobile_actions}>
-            <Link href="/cart">
+            <Link className={styles.header__cart} href="/cart">
               <CartIcon />
+              {totalItems > 0 && (
+                <span className={styles.header__mobile_actions__total_items}>
+                  {totalItems}
+                </span>
+              )}
             </Link>
             <Link href="/account">
               <AccountIcon />

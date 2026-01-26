@@ -1,12 +1,14 @@
 import { Onest } from 'next/font/google';
 
-//import { GoogleAnalytics } from '@next/third-parties/google';
+import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
+import { ToastContainer } from 'react-toastify';
 
 import { cn } from '@/shared/lib/helpers/styles';
 import { Footer, Header } from '@/shared/ui/components';
 
+import 'react-toastify/dist/ReactToastify.css';
 import '@/shared/lib/styles/null.scss';
 import '@/shared/lib/styles/base.scss';
 
@@ -37,12 +39,13 @@ export default async function RootLayout({
 
   return (
     <html lang={locale}>
-      {/* <GoogleAnalytics gaId="G-7YSW5B6JKV" /> */}
+      <GoogleAnalytics gaId="G-3YYDLYWTE4" />
       <body className={cn(onest.variable)}>
         <NextIntlClientProvider>
           <Header />
           {children}
           <Footer />
+          <ToastContainer />
         </NextIntlClientProvider>
       </body>
     </html>

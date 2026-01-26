@@ -1,0 +1,38 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.services_wrapper {
+  display: flex;
+  align-items: flex-start;
+  @include tablet {
+    flex-direction: column;
+  }
+  &__purchasable_services {
+    width: 35%;
+    position: sticky;
+    top: 120px;
+    @include tablet {
+      width: 100%;
+      position: static;
+      top: unset;
+    }
+  }
+
+  &__orderable_services {
+    width: 65%;
+    border: 1px solid #222;
+    display: flex;
+    flex-wrap: wrap;
+    @include tablet {
+      width: 100%;
+    }
+    > div {
+      width: 50%;
+      &:last-child {
+        width: 100%;
+      }
+      @include tablet {
+        width: 100%;
+      }
+    }
+  }
+}
