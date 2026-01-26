@@ -140,6 +140,33 @@
     "item6": "Evaluating rental strategies under current legal frameworks",
     "item7": "Reviewing the performance and risk profile of a property portfolio"
   },
+  "diligenceAudit": {
+    "title": "Unsure which audit you need?",
+    "description": "Get a professional case revision at no cost. Schedule a free introductory call to discuss your property goals. We will help you identify the immediate risks and recommend the exact expert or audit required for your situation.",
+    "button": "Book free call"
+  },
+  "diligenceDifference": {
+    "title": "What’s the difference?",
+    "subtitle1": "15-Minute Intro Call (Free)",
+    "description1": "A brief session to discuss your case details. We help you identify the right specialist and service for your needs.",
+    "goal": "Goal",
+    "goalDescription1": "Choosing the right service.",
+    "note": "Note",
+    "noteDescription1": "No professional advice or solutions provided.",
+    "subtitle2": "Expert Consultation (450 EUR)",
+    "description2": "A deep-dive session focused entirely on solving your problem. We analyze your documents and provide actionable data.",
+    "goalDescription2": "Resolving your case.",
+    "noteDescription2": "Up to 30% of our clients find their solution during this session and require no further services."
+  },
+  "diligenceHero": {
+    "title1": "Verify the Property Before You Pay",
+    "description": "Stop guessing. We run the technical and legal checks so you don’t buy an expensive mistake",
+    "button": "Order audit"
+  },
+  "diligenceWhy": {
+    "title": "Why Due Diligence?",
+    "description": "Whether you are buying, splitting an inheritance, or converting a rental, assumptions are your biggest financial risk. Our service replaces guesswork with technical and legal facts, ensuring your next move builds wealth instead of debt."
+  },
   "guidesCta": {
     "title": "Not sure what’s blocking ",
     "title2": "your decision? Let’s diagnose it.",

@@ -103,7 +103,7 @@ export const Footer = () => {
         <div className={styles.footer__divider}></div>
         <div className={styles.footer__bottom}>
           <p>
-            © {year} Estara |{' '}
+            © {year} Estara Ltd |{' '}
             {t('copyright', {
               fallback: 'Strategic Property Intelligence. All rights reserved.',
             })}
