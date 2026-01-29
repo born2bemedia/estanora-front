@@ -193,6 +193,79 @@
     "title": "What You’ll Find in the Library",
     "button": "Check"
   },
+  "leaseAdvisoryDifference": {
+    "title": "What’s the difference?",
+    "subtitle1": "15-Minute Intro Call (Free)",
+    "description1": "A brief session to discuss your case details. We help you identify the right specialist and service for your needs.",
+    "goal": "Goal",
+    "goalDescription1": "Choosing the right service.",
+    "note": "Note",
+    "noteDescription1": "No professional advice or solutions provided.",
+    "subtitle2": "Expert Consultation (450 EUR)",
+    "description2": "A deep-dive session focused entirely on solving your problem. We analyze your documents and provide actionable data.",
+    "goalDescription2": "Resolving your case.",
+    "noteDescription2": "Up to 30% of our clients find their solution during this session and require no further services."
+  },
+  "leaseAdvisoryHero": {
+    "title1": "Lease Advisory:",
+    "title2": "Optimize Your Rental Strategy",
+    "description": "Maximize your income and minimize legal risks.",
+    "button": "Order rental audit"
+  },
+  "leaseAdvisoryNeed": {
+    "title": "Unsure which service you need?",
+    "description": "Get a professional case revision at no cost. Schedule a free introductory call to discuss your property goals. We will help you identify the immediate risks and recommend the exact expert or audit required for your situation.",
+    "button": "Book free call"
+  },
+  "leaseAdvisoryServices": {
+    "title": "Our Lease Advisory Services",
+    "service1_1": "Lease Strategy & Revenue Optimization",
+    "service1_1_description": "We move beyond simple \"market rates\" to find the highest-performing tenant profile for your specific property. By analyzing current demand and local regulations, we determine which rental model, be it student housing, digital nomads, or traditional families—will generate the most stable profit.",
+    "service1_1_subtitle": "For owners maximizing their rental yield.",
+    "service1_1_note": "Strategic session to determine the optimal rental model for your property.",
+    "orderable_service1_1": "Yield Performance Modeling",
+    "orderable_service1_1_description": "A side-by-side ROI comparison between short-term (AirBnB), mid-term (corporate/nomad), and long-term (family) leasing.",
+    "orderable_service1_2": "Target Tenant Profile Audit",
+    "orderable_service1_2_description": "Analysis of local amenities and interior layout to identify which high-paying niche (students vs. expats) matches your asset.",
+    "orderable_service1_3": "Dynamic Pricing Roadmap",
+    "orderable_service1_3_description": "Researching and vetting smaller, \"barrier-free\" properties that fit your new health and mobility needs.",
+    "orderable_service1_4": "Operational Cost Audit",
+    "orderable_service1_4_description": "A deep dive into management fees, cleaning, and maintenance costs to protect your net profit margins.",
+    "orderable_service1_5": "Rental Revenue Package",
+    "orderable_service1_5_description": "Includes: Yield Modeling, Tenant Profiling, Pricing Roadmap, and Operational Audit.",
+    "service2_1": "Rental Legal Compliance Check",
+    "service2_1_description": "Rental laws are changing rapidly. We review your contracts and local zoning to ensure you are fully compliant with rent caps, eviction protections, and safety standards, shielding you from heavy fines and legal disputes.",
+    "service2_1_subtitle": "For the \"Protected\" Landlord.",
+    "service2_1_note": "Legal/regulatory overview for landlords operating in high-restriction zones.",
+    "orderable_service2_1": "Contract Vulnerability Review",
+    "orderable_service2_1_description": "An audit of your current lease agreements to identify loopholes and ensure compliance with the latest housing laws.",
+    "orderable_service2_2": "Rent Cap & Indexation Scan",
+    "orderable_service2_2_description": "Verification of the maximum legal rent you can charge and the allowed annual inflation adjustments.",
+    "orderable_service2_3": "Safety & Licensing Audit",
+    "orderable_service2_3_description": "Ensuring the property meets all legal fire, health, and energy standards required for a rental license.",
+    "orderable_service2_4": "Tenant Dispute Protection",
+    "orderable_service2_4_description": "Implementation of legally sound entry/exit protocols and deposit management strategies to minimize friction.",
+    "orderable_service2_5": "Landlord Protection Package",
+    "orderable_service2_5_description": "Includes: Contract Review, Rent Cap Scan, Licensing Audit, and Dispute Protection.",
+    "service3_1": "Space Monetization Consulting",
+    "service3_1_description": "We identify underused areas within your property, such as basements, garages, or attics, and provide a roadmap to convert them into legal, income-generating rental units or workspaces.",
+    "service3_1_subtitle": "For owners unlocking hidden value.",
+    "service3_1_note": "Initial walkthrough to identify \"dead space\" that can be converted to cash.",
+    "orderable_service3_1": "Conversion Feasibility Study",
+    "orderable_service3_1_description": "Technical assessment of structural, plumbing, and electrical requirements for creating a separate rental unit.",
+    "orderable_service3_2": "Zoning & Permit Verification",
+    "orderable_service3_2_description": "Direct confirmation with local authorities on whether a garage or basement conversion is legally allowed.",
+    "orderable_service3_3": "Unit Layout Optimization",
+    "orderable_service3_3_description": "Architectural suggestions to maximize the utility and appeal of small-footprint rental spaces.",
+    "orderable_service3_4": "Cost-to-Income Forecast",
+    "orderable_service3_4_description": "A financial projection showing how many months of rent it will take to pay off the conversion construction costs.",
+    "orderable_service3_5": "Space Monetization Package",
+    "orderable_service3_5_description": "Includes: Feasibility Study, Permit Verification, Layout Optimization, and Income Forecast."
+  },
+  "leaseAdvisoryWhy": {
+    "title": "Why Lease Advisory?",
+    "description": "A poorly structured lease is a long-term financial liability. These services are crucial to ensure you don’t get locked into below-market rates, face unexpected legal fines, or miss out on high-yield opportunities hidden within your property’s square footage."
+  },
   "common": {
     "last-updated": "Last updated:"
   },
@@ -269,6 +342,37 @@
     "title": "Why Research?",
     "description": "Market data transforms speculation into strategy across every stage of your property journey. Whether you are buying, selling, or developing, our research identifies hidden risks and growth trends to maximize your financial outcome."
   },
+  "portfolioServicesDifference": {
+    "title": "What’s the difference?",
+    "subtitle1": "15-Minute Intro Call (Free)",
+    "description1": "A brief session to discuss your case details. We help you identify the right specialist and service for your needs.",
+    "goal": "Goal",
+    "goalDescription1": "Choosing the right service.",
+    "note": "Note",
+    "noteDescription1": "No professional advice or solutions provided.",
+    "subtitle2": "Expert Consultation (450 EUR)",
+    "description2": "A deep-dive session focused entirely on solving your problem. We analyze your documents and provide actionable data.",
+    "goalDescription2": "Resolving your case.",
+    "noteDescription2": "Up to 30% of our clients find their solution during this session and require no further services."
+  },
+  "portfolioServicesHero": {
+    "title1": "Portfolio Strategy:",
+    "title2": "Maximize the Value of Your Legacy",
+    "description": "Manage your real estate as a high-performing asset. ",
+    "button": "Order portfolio audit"
+  },
+  "portfolioServicesNeed": {
+    "title": "Unsure which service your portfolio needs?",
+    "description": "Get a professional case revision at no cost. Schedule a free introductory call to discuss your property goals. We will help you identify the immediate risks and recommend the exact expert or audit required for your situation.",
+    "button": "Book free call"
+  },
+  "portfolioServicesServices": {
+    "title": "Our Portfolio Services"
+  },
+  "portfolioServicesWhy": {
+    "title": "Why Manage Portfolio?",
+    "description": "Passive ownership often leads to tax leakage and missed growth opportunities. Professional portfolio management ensures your assets are physically sound, tax-optimized, and strategically aligned with your family’s long-term financial goals."
+  },
   "contactForm": {
     "fullName": "Full name",
     "email": "Email address",
@@ -290,6 +394,11 @@
     "submitted": "submitted successfully",
     "thankYou": "Our team will reach out within the next business day.",
     "close": "Continue"
+  },
+  "guidesLoop": {
+    "title": "Our Free Guides",
+    "button": "Read",
+    "empty": "No guides found"
   },
   "dueDiligenceServices": {
     "service1_1": "Fixer-Upper Feasibility Study",
@@ -341,10 +450,49 @@
     "includes": "Includes:",
     "order": "Order"
   },
-  "guidesLoop": {
-    "title": "Our Free Guides",
-    "button": "Read",
-    "empty": "No guides found"
+  "portfolioServices": {
+    "service1_1": "Inheritance Strategy & Management",
+    "service1_1_description": "Professional guidance on how to handle inherited assets. We provide the financial and legal data needed to decide whether to sell for a clean exit, renovate for rental income, or keep the property as a family legacy.",
+    "service1_1_subtitle": "For families managing generational wealth.",
+    "service1_1_note": "Immediate strategic advice on tax implications and estate options.",
+    "orderable_service1_1": "Succession Tax Optimization",
+    "orderable_service1_1_description": "A detailed plan to minimize the tax impact of transferring property titles between generations.",
+    "orderable_service1_2": "\"Keep vs. Sell\" Financial Modeling",
+    "orderable_service1_2_description": "A side-by-side comparison of immediate sale proceeds versus long-term rental ROI and appreciation.",
+    "orderable_service1_3": "Market Entry Preparation",
+    "orderable_service1_3_description": "A roadmap for clearing legal encumbrances and preparing the home for the modern buyer.",
+    "orderable_service1_4": "Beneficiary Dispute Mediation",
+    "orderable_service1_4_description": "Objective third-party valuations and split-scenario modeling to help heirs reach a fair agreement.",
+    "orderable_service1_5": "Family Legacy Package",
+    "orderable_service1_5_description": "Includes: Tax Optimization, Financial Modeling, Market Prep, and Mediation Data.",
+    "service2_1": "Multi-Property Performance Review",
+    "service2_1_description": "A consolidated \"Health Check\" for your entire real estate portfolio. We audit every asset to ensure your holdings are tax-efficient, physically sound, and performing at their peak market potential.",
+    "service2_1_subtitle": "For private collectors and family offices.",
+    "service2_1_note": "Review your portfolio's high-level risks and performance gaps with a senior strategist.",
+    "orderable_service2_1": "Consolidated Valuation Audit",
+    "orderable_service2_1_description": "A synchronized update of the current market value for all properties in your portfolio.",
+    "orderable_service2_2": "Portfolio Tax Efficiency Scan",
+    "orderable_service2_2_description": "Identifying opportunities to restructure ownership or leverage local tax laws to reduce annual overhead.",
+    "orderable_service2_3": "Operational Expense Review",
+    "orderable_service2_3_description": "Analyzing maintenance, insurance, and management fees across all assets to identify cost-saving leaks.",
+    "orderable_service2_4": "Risk Diversification Analysis",
+    "orderable_service2_4_description": "Assessment of your geographic and sector exposure (e.g., too much concentration in one city or asset type).",
+    "orderable_service2_5": "Portfolio Performance Package",
+    "orderable_service2_5_description": "Includes: Valuation Audit, Tax Scan, Expense Review, and Risk Analysis.",
+    "service3_1": "Downsizing & Equity Release Plan",
+    "service3_1_description": "Strategy for older owners or retirees looking to move into smaller, more efficient homes while safely liquidating the value stored in their current primary residence.",
+    "service3_1_subtitle": "For owners transitioning to a new lifestyle.",
+    "service3_1_note": "Strategic planning on how to unlock equity without losing financial security.",
+    "orderable_service3_1": "Equity Liquidity Forecast",
+    "orderable_service3_1_description": "Calculating the exact cash-in-hand after taxes, fees, and the purchase of a smaller property.",
+    "orderable_service3_2": "Reverse Mortgage & Annuity Scan",
+    "orderable_service3_2_description": "Exploring financial products that allow you to receive income from your home while remaining in it.",
+    "orderable_service3_3": "Modern Lifestyle Match",
+    "orderable_service3_3_description": "Researching and vetting smaller, \"barrier-free\" properties that fit your new health and mobility needs.",
+    "orderable_service3_4": "Relocation Impact Audit",
+    "orderable_service3_4_description": "Evaluating the change in local taxes and cost of living in the new neighborhood or retirement community.",
+    "orderable_service3_5": "Strategic Transition Package",
+    "orderable_service3_5_description": "Includes: Equity Forecast, Annuity Scan, Lifestyle Match, and Impact Audit."
   },
   "cookiePopup": {
     "title": "Cookie settings",
