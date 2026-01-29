@@ -2,10 +2,11 @@
 
 import { useState } from "react";
 
-import { AnimatePresence,motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 import { fadeInUp } from "@/shared/lib/helpers/animations";
+import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "./HomeFaq.module.scss";
 
@@ -24,7 +25,8 @@ export const HomeFaq = () => {
         fallback: "Why do I need this if I already have a real estate agent?",
       }),
       answer: t("faq1answer", {
-        fallback: "Agents want the deal to close. We don’t sell property, so we have no reason to hide the truth. We provide the unbiased data on prices, risks, and repairs that agents might downplay.",
+        fallback:
+          "Agents want the deal to close. We don’t sell property, so we have no reason to hide the truth. We provide the unbiased data on prices, risks, and repairs that agents might downplay.",
       }),
     },
     {
@@ -32,7 +34,8 @@ export const HomeFaq = () => {
         fallback: "How do you spot a bad purchase?",
       }),
       answer: t("faq2answer", {
-        fallback: "We look beyond the surface. We analyze 10 years of historical data and 5-year price forecasts, hidden legal disputes, and the real cost of renovations. We apply top market AI forecasting tools that are worth the best minds of real estate analytics. If the numbers show the house is a mistake, we tell you.",
+        fallback:
+          "We look beyond the surface. We analyze 10 years of historical data and 5-year price forecasts, hidden legal disputes, and the real cost of renovations. We apply top market AI forecasting tools that are worth the best minds of real estate analytics. If the numbers show the house is a mistake, we tell you.",
       }),
     },
     {
@@ -40,7 +43,8 @@ export const HomeFaq = () => {
         fallback: "Why is my property not selling?",
       }),
       answer: t("faq3answer", {
-        fallback: 'We don’t just "try harder." We run a diagnosis to find the specific "blocker," whether it’s the price, the presentation, or a neighborhood issue, so you can fix it and move on.',
+        fallback:
+          'We don’t just "try harder." We run a diagnosis to find the specific "blocker," whether it’s the price, the presentation, or a neighborhood issue, so you can fix it and move on.',
       }),
     },
     {
@@ -48,7 +52,8 @@ export const HomeFaq = () => {
         fallback: "How do I know if my rental contracts are protecting me?",
       }),
       answer: t("faq4answer", {
-        fallback: 'We perform a legal audit. Laws change constantly, and we make sure your leases follow the latest rules so you don’t face fines or get stuck with a "professional tenant" you can’t evict.',
+        fallback:
+          'We perform a legal audit. Laws change constantly, and we make sure your leases follow the latest rules so you don’t face fines or get stuck with a "professional tenant" you can’t evict.',
       }),
     },
     {
@@ -56,7 +61,8 @@ export const HomeFaq = () => {
         fallback: "Can you actually help me get more rent from my property?",
       }),
       answer: t("faq5answer", {
-        fallback: "Yes. We analyze your local market to see if you should switch to short-term, student, or long-term rentals. We also check if you can legally convert unused space, like a garage, into a new income stream.",
+        fallback:
+          "Yes. We analyze your local market to see if you should switch to short-term, student, or long-term rentals. We also check if you can legally convert unused space, like a garage, into a new income stream.",
       }),
     },
   ];
@@ -131,6 +137,17 @@ export const HomeFaq = () => {
             );
           })}
         </div>
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+          variants={fadeInUp}
+          className={styles.home_faq__buttin}
+        >
+          <Button variant="white" url="/contact" type="link">
+            {t("button", { fallback: "Ask question" })}
+          </Button>
+        </motion.div>
       </div>
     </section>
   );

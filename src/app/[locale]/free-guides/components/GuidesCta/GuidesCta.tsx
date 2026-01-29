@@ -33,7 +33,7 @@ export const GuidesCta = () => {
                 "We’ll identify the real driver — pricing, hidden risks, legal exposure, financing constraints, or timing — and show you the cleanest decision path.",
             })}
           </p>
-          <Button variant="white" url="#" type="link">
+          <Button variant="white" url="/contact" type="link">
             {t("button", { fallback: "Contact us" })}
           </Button>
         </motion.div>
