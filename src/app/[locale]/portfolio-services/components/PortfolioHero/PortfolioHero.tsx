@@ -13,7 +13,15 @@ export const PortfolioHero = () => {
 
   return (
     <section className={styles.portfolio_hero}>
-      <video src="/videos/portfolio-services.mp4" autoPlay muted loop playsInline />
+      <video
+        src="/videos/portfolio-services.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/images/portfolio-services/hero.webp"
+      />
       <div className={styles.portfolio_hero__overlay}></div>
       <div className={"container"}>
         <div className={styles.portfolio_hero__content}>

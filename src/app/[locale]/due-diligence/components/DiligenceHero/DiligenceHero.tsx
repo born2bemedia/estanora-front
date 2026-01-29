@@ -13,7 +13,15 @@ export const DiligenceHero = () => {
 
   return (
     <section className={styles.diligence_hero}>
-      <video src="/videos/diligence.mp4" autoPlay muted loop playsInline />
+      <video
+        src="/videos/diligence.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/images/diligence/hero.webp"
+      />
       <div className={styles.diligence_hero__overlay}></div>
       <div className={"container"}>
         <div className={styles.diligence_hero__content}>

@@ -13,7 +13,15 @@ export const LeaseHero = () => {
 
   return (
     <section className={styles.lease_hero}>
-      <video src="/videos/lease-advisory.mp4" autoPlay muted loop playsInline />
+      <video
+        src="/videos/lease-advisory.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/images/lease-advisory/hero.webp"
+      />
       <div className={styles.lease_hero__overlay}></div>
       <div className={"container"}>
         <div className={styles.lease_hero__content}>
@@ -35,8 +43,7 @@ export const LeaseHero = () => {
             </h1>
             <p>
               {t("description", {
-                fallback:
-                  "Maximize your income and minimize legal risks.",
+                fallback: "Maximize your income and minimize legal risks.",
               })}
             </p>
           </motion.div>

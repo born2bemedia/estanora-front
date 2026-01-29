@@ -13,7 +13,15 @@ export const GuidesHero = () => {
 
   return (
     <section className={styles.guides_hero}>
-      <video src="/videos/guides.mp4" autoPlay muted loop playsInline />
+      <video
+        src="/videos/guides.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/images/free-guides/hero.webp"
+      />
       <div className={styles.guides_hero__overlay}></div>
       <div className={"container"}>
         <div className={styles.guides_hero__content}>

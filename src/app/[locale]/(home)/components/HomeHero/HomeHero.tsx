@@ -13,7 +13,15 @@ export const HomeHero = () => {
 
   return (
     <section className={styles.home_hero}>
-      <video src="/videos/home-hero.mp4" autoPlay muted loop playsInline />
+      <video
+        src="/videos/home-hero.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/images/home/hero.webp"
+      />
       <div className={styles.home_hero__overlay}></div>
       <div className={"container"}>
         <div className={styles.home_hero__content}>

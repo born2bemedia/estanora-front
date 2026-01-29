@@ -13,7 +13,15 @@ export const MarketHero = () => {
 
   return (
     <section className={styles.market_hero}>
-      <video src="/videos/market-research.mp4" autoPlay muted loop playsInline />
+      <video
+        src="/videos/market-research.mp4"
+        autoPlay
+        muted
+        loop
+        playsInline
+        preload="auto"
+        poster="/images/market-research/hero.webp"
+      />
       <div className={styles.market_hero__overlay}></div>
       <div className={"container"}>
         <div className={styles.market_hero__content}>
