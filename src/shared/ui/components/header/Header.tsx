@@ -61,7 +61,7 @@ export const Header = () => {
             <Link href={`tel:${WEBSITE_PHONE}`}>{WEBSITE_PHONE}</Link>
           </div>
           <div className={styles.header__top__actions}>
-            <Link className={styles.header__cart} href="/cart">
+            <Link className={styles.header__cart} href="/checkout">
               <CartIcon />
               {totalItems > 0 && (
                 <span className={styles.header__mobile_actions__total_items}>
@@ -85,7 +85,7 @@ export const Header = () => {
           </Link>
 
           <div className={styles.header__mobile_actions}>
-            <Link className={styles.header__cart} href="/cart">
+            <Link className={styles.header__cart} href="/checkout">
               <CartIcon />
               {totalItems > 0 && (
                 <span className={styles.header__mobile_actions__total_items}>
