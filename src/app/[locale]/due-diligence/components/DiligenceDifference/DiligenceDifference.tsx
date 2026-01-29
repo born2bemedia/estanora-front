@@ -50,9 +50,9 @@ export const DiligenceDifference = () => {
                 </p>
               </div>
               <div>
-                <h4>{t("note", { fallback: "Note" })}</h4>
+                <h4>{t("result", { fallback: "Result" })}</h4>
                 <p>
-                  {t("noteDescription1", {
+                  {t("resultDescription1", {
                     fallback: "No professional advice or solutions provided.",
                   })}
                 </p>

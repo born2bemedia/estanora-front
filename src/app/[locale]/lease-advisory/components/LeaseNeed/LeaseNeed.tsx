@@ -59,8 +59,8 @@ export const LeaseNeed = () => {
             className={styles.lease_need__image}
           >
             <Image
-              src="/images/market-research/need.png"
-              alt="Market Research Need"
+              src="/images/lease-advisory/need.png"
+              alt="Lease Advisory Need"
               width={531}
               height={531}
             />

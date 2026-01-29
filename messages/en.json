@@ -151,11 +151,12 @@
     "description1": "A brief session to discuss your case details. We help you identify the right specialist and service for your needs.",
     "goal": "Goal",
     "goalDescription1": "Choosing the right service.",
-    "note": "Note",
-    "noteDescription1": "No professional advice or solutions provided.",
+    "result": "Result",
+    "resultDescription1": "No professional advice or solutions provided.",
     "subtitle2": "Expert Consultation (450 EUR)",
     "description2": "A deep-dive session focused entirely on solving your problem. We analyze your documents and provide actionable data.",
     "goalDescription2": "Resolving your case.",
+    "note": "Note",
     "noteDescription2": "Up to 30% of our clients find their solution during this session and require no further services."
   },
   "diligenceHero": {
@@ -204,7 +205,8 @@
     "subtitle2": "Expert Consultation (450 EUR)",
     "description2": "A deep-dive session focused entirely on solving your problem. We analyze your documents and provide actionable data.",
     "goalDescription2": "Resolving your case.",
-    "noteDescription2": "Up to 30% of our clients find their solution during this session and require no further services."
+    "result": "Result",
+    "resultDescription2": "Up to 30% of our clients find their solution during this session and require no further services."
   },
   "leaseAdvisoryHero": {
     "title1": "Lease Advisory:",
@@ -280,7 +282,8 @@
     "subtitle2": "Expert Consultation (450 EUR)",
     "description2": "A deep-dive session focused entirely on solving your problem. We analyze your documents and provide actionable data.",
     "goalDescription2": "Resolving your case.",
-    "noteDescription2": "Up to 30% of our clients find their solution during this session and require no further services."
+    "result": "Result",
+    "resultDescription2": "Up to 30% of our clients find their solution during this session and require no further services."
   },
   "marketResearchHero": {
     "title1": "Market Research:",
@@ -353,7 +356,8 @@
     "subtitle2": "Expert Consultation (450 EUR)",
     "description2": "A deep-dive session focused entirely on solving your problem. We analyze your documents and provide actionable data.",
     "goalDescription2": "Resolving your case.",
-    "noteDescription2": "Up to 30% of our clients find their solution during this session and require no further services."
+    "result": "Result",
+    "resultDescription2": "Up to 30% of our clients find their solution during this session and require no further services."
   },
   "portfolioServicesHero": {
     "title1": "Portfolio Strategy:",

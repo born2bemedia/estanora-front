@@ -45,8 +45,8 @@ export const LeaseWhy = () => {
             className={styles.lease_why__image}
           >
             <Image
-              src="/images/market-research/why.png"
-              alt="Market Research Why"
+              src="/images/lease-advisory/why.png"
+              alt="Lease Advisory Why"
               width={531}
               height={531}
             />

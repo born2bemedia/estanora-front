@@ -13,7 +13,7 @@ export const LeaseHero = () => {
 
   return (
     <section className={styles.lease_hero}>
-      <video src="/videos/market-research.mp4" autoPlay muted loop playsInline />
+      <video src="/videos/lease-advisory.mp4" autoPlay muted loop playsInline />
       <div className={styles.lease_hero__overlay}></div>
       <div className={"container"}>
         <div className={styles.lease_hero__content}>

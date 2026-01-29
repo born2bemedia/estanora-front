@@ -87,9 +87,9 @@ export const PortfolioDifference = () => {
                 </p>
               </div>
               <div>
-                <h4>{t("note", { fallback: "Note" })}</h4>
+                <h4>{t("result", { fallback: "Result" })}</h4>
                 <p>
-                  {t("noteDescription2", {
+                  {t("resultDescription2", {
                     fallback:
                       "Up to 30% of our clients find their solution during this session and require no further services.",
                   })}
