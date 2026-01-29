@@ -17,12 +17,11 @@ export async function generateMetadata({
   const awaitedParams = await params;
   const { locale, slug } = awaitedParams;
   const guide = await getGuide({ slug: slug, locale });
-  const pageTitle = `${guide.title}`;
   return {
-    title: pageTitle,
+    title: guide.seo_title,
     description: guide.seo_description,
     openGraph: {
-      title: pageTitle,
+      title: guide.seo_title,
       description: guide.seo_description,
       images: "",
     },
