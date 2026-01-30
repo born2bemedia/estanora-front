@@ -51,7 +51,7 @@ export const HomeServices = () => {
   ];
 
   return (
-    <section className={styles.home_services}>
+    <section className={styles.home_services} id="services">
       <div className={'container'}>
         <div className={styles.home_services__content}>
           {services.map((service) => (

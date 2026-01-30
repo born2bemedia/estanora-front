@@ -52,11 +52,11 @@ export const GuidesHero = () => {
             variants={fadeInUp}
             className={styles.guides_hero__buttons}
           >
-            <Button variant="white" url="#" type="link">
-              {t("button", { fallback: "Get research" })}
+            <Button variant="white" url="/contact" type="link">
+              {t("button1", { fallback: "Get instant assistance" })}
             </Button>
-            <Button variant="bordered-black" url="#" type="link">
-              {t("button", { fallback: "Get research" })}
+            <Button variant="bordered-black" url="/#services" type="link">
+              {t("button2", { fallback: "See our services" })}
             </Button>
           </motion.div>
         </div>
