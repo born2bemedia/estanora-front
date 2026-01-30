@@ -1,8 +1,11 @@
 "use client";
 
+import { useEffect } from "react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 
+import { useAuthStore } from "@/features/account";
 import { createOrder } from "@/features/cart/api/createOrder";
 import {
   type CheckoutFormSchema,
@@ -13,8 +16,27 @@ import { useCartStore } from "@/features/cart/store/cart";
 import styles from "./CheckoutForm.module.scss";
 
 import { useRouter } from "@/i18n/navigation";
+
+const defaultValues: CheckoutFormSchema = {
+  firstName: "",
+  lastName: "",
+  address1: "",
+  address2: "",
+  city: "",
+  country: "",
+  zip: "",
+  email: "",
+  phone: "",
+  orderNotes: "",
+  termsAccepted: false,
+  refundPolicyAccepted: false,
+};
+
 export const CheckoutForm = () => {
   const router = useRouter();
+  const user = useAuthStore((s) => s.user);
+  const isInitialized = useAuthStore((s) => s.isInitialized);
+  const fetchUser = useAuthStore((s) => s.fetchUser);
   const items = useCartStore((state) => state.items);
   const getTotalPrice = useCartStore((state) => state.getTotalPrice);
   const clearCart = useCartStore((state) => state.clearCart);
@@ -24,24 +46,29 @@ export const CheckoutForm = () => {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors, isSubmitting },
   } = useForm<CheckoutFormSchema>({
     resolver: zodResolver(checkoutFormSchema),
-    defaultValues: {
-      firstName: "",
-      lastName: "",
-      address1: "",
-      address2: "",
-      city: "",
-      country: "",
-      zip: "",
-      email: "",
-      phone: "",
-      orderNotes: "",
-      termsAccepted: false,
-      refundPolicyAccepted: false,
-    },
+    defaultValues,
   });
+
+  useEffect(() => {
+    if (!isInitialized) {
+      fetchUser();
+    }
+  }, [isInitialized, fetchUser]);
+
+  useEffect(() => {
+    if (!user || !isInitialized) return;
+    reset({
+      ...defaultValues,
+      firstName: user.firstName ?? "",
+      lastName: user.lastName ?? "",
+      email: user.email ?? "",
+      phone: (user.phone as string) ?? "",
+    });
+  }, [user, isInitialized, reset]);
 
   const onSubmit = async (data: CheckoutFormSchema) => {
     try {

@@ -6,6 +6,7 @@ import { usePathname } from "next/navigation";
 
 import { useTranslations } from "next-intl";
 
+import { useAuthStore } from "@/features/account";
 import { useCartStore } from "@/features/cart";
 
 import { WEBSITE_EMAIL, WEBSITE_PHONE } from "@/shared/lib/constants/constants";
@@ -20,6 +21,9 @@ export const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
   const pathname = usePathname();
+  const user = useAuthStore((s) => s.user);
+  const isInitialized = useAuthStore((s) => s.isInitialized);
+  const fetchUser = useAuthStore((s) => s.fetchUser);
   const totalItems = useCartStore((state) => {
     return state.items.reduce((total, item) => total + item.quantity, 0);
   });
@@ -27,12 +31,15 @@ export const Header = () => {
   const t = useTranslations("header");
 
   useEffect(() => {
-    // Use setTimeout to make setState call asynchronous
+    if (!isInitialized) {
+      fetchUser();
+    }
+  }, [isInitialized, fetchUser]);
+
+  useEffect(() => {
     const timer = setTimeout(() => {
       setIsMobileMenuOpen(false);
     }, 0);
-    console.log(pathname);
-
     return () => clearTimeout(timer);
   }, [pathname]);
 
@@ -69,7 +76,7 @@ export const Header = () => {
                 </span>
               )}
             </Link>
-            <Link href="/account">
+            <Link href={user ? "/account" : "/log-in"}>
               <AccountIcon />
             </Link>
           </div>
@@ -93,7 +100,7 @@ export const Header = () => {
                 </span>
               )}
             </Link>
-            <Link href="/account">
+            <Link href={user ? "/account" : "/log-in"}>
               <AccountIcon />
             </Link>
 
