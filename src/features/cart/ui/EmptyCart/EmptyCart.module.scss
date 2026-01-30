@@ -1,1 +1,53 @@
-@use '@/shared/lib/styles/mixin.scss' as *;
+.wrap {
+  padding: 2rem 0;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.title {
+  color: #fff;
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 0.75rem;
+}
+
+.text {
+  color: rgba(204, 204, 204, 0.9);
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.links {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  justify-content: center;
+}
+
+.link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  height: 38px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 300;
+  text-decoration: none;
+  cursor: pointer;
+  transition: border-color 0.3s ease, background 0.3s ease;
+  box-sizing: border-box;
+
+  &:hover {
+    border-color: rgba(255, 255, 255, 0.3);
+    background: rgba(255, 255, 255, 0.08);
+    color: #fff;
+  }
+}
