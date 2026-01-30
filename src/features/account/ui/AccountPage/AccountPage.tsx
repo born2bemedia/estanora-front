@@ -4,11 +4,9 @@ import { useEffect } from "react";
 
 import { useAuthStore } from "@/features/account/store/auth";
 
-import { Button } from "@/shared/ui/kit/button/Button";
-
 import styles from "./AccountPage.module.scss";
 
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 
 export const AccountPage = () => {
   const router = useRouter();
@@ -38,27 +36,32 @@ export const AccountPage = () => {
     return (
       <section className={styles.section}>
         <div className="container">
-          <p>Loading...</p>
+          <p className={styles.loading}>Loading...</p>
         </div>
       </section>
     );
   }
 
+  const displayName = [user.firstName, user.lastName].filter(Boolean).join(" ") || "there";
+
   return (
     <section className={styles.section}>
       <div className="container">
-        <h1>My account</h1>
-        <div className={styles.card}>
-          <p><strong>Email:</strong> {user.email ?? "—"}</p>
-          <p><strong>First name:</strong> {user.firstName ?? "—"}</p>
-          <p><strong>Last name:</strong> {user.lastName ?? "—"}</p>
-          {user.phone != null && user.phone !== "" && (
-            <p><strong>Phone:</strong> {user.phone}</p>
-          )}
-        </div>
-        <Button type="button" onClick={handleLogout} variant="white">
-          Log out
-        </Button>
+        <h1 className={styles.greeting}>Hi, {displayName}!</h1>
+        <nav className={styles.nav}>
+          <Link href="/account/my-orders" className={styles.linkButton}>
+            My Orders
+          </Link>
+          <Link href="/account/my-services" className={styles.linkButton}>
+            My Services
+          </Link>
+          <Link href="/account/account-settings" className={styles.linkButton}>
+            Account Setting
+          </Link>
+          <button type="button" onClick={handleLogout} className={styles.logout}>
+            Log Out
+          </button>
+        </nav>
       </div>
     </section>
   );

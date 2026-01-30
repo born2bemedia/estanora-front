@@ -6,8 +6,6 @@ import { z } from "zod";
 
 import { useAuthStore } from "@/features/account/store/auth";
 
-import { Button } from "@/shared/ui/kit/button/Button";
-
 import styles from "./LoginForm.module.scss";
 
 import { useRouter } from "@/i18n/navigation";
@@ -46,21 +44,32 @@ export const LoginForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
       <h1>Log in</h1>
-      <div>
+      <div className={styles.formGroup}>
         <label htmlFor="email">Email</label>
-        <input id="email" type="email" {...register("email")} autoComplete="email" />
+        <input
+          id="email"
+          type="email"
+          {...register("email")}
+          autoComplete="email"
+          className={errors.email ? styles.errorInput : ""}
+        />
         {errors.email && <span className={styles.error}>{errors.email.message}</span>}
       </div>
-      <div>
+      <div className={styles.formGroup}>
         <label htmlFor="password">Password</label>
-        <input id="password" type="password" {...register("password")} autoComplete="current-password" />
+        <input
+          id="password"
+          type="password"
+          {...register("password")}
+          autoComplete="current-password"
+          className={errors.password ? styles.errorInput : ""}
+        />
         {errors.password && <span className={styles.error}>{errors.password.message}</span>}
       </div>
-      {errors.root && <span className={styles.error}>{errors.root.message}</span>}
-      
-      <Button type="submit" disabled={isLoading} variant="white">
+      {errors.root && <span className={styles.rootError}>{errors.root.message}</span>}
+      <button type="submit" disabled={isLoading}>
         {isLoading ? "Logging in..." : "Log in"}
-      </Button>
+      </button>
     </form>
   );
 };
