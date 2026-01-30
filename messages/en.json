@@ -271,16 +271,15 @@
     "button": "Get research"
   },
   "guidesServices": {
-    "service1": "Due Diligence",
-    "service1Description": "Avoid hidden costs. We check the building's condition and legal paperwork so you don't buy a property with expensive problems.",
-    "service2": "Market Research",
-    "service2Description": "Back up your decision. We analyze price trends and neighborhood data so you know exactly when to buy, sell, or wait.",
-    "service3": "Portfolio Services",
-    "service3Description": "Manage family property. We handle the difficult details of inherited homes, downsizing, or managing multiple properties at once.",
-    "service4": "Lease Advisory",
-    "service4Description": "Increase your rent income. We review your contracts and local laws to make sure you are renting safely and for the best price.",
-    "title": "What You’ll Find in the Library",
-    "button": "Check"
+    "service1": "Due Diligence Guide",
+    "service1Description": "How to identify structural, legal, and financial risks before committing",
+    "service2": "Market & Pricing Guides",
+    "service2Description": "How to verify value, assess liquidity, and choose the right timing",
+    "service3": "Rental Strategy Guides",
+    "service3Description": "Comparing income models, legal exposure, and net returns",
+    "service4": "Portfolio & Family Property Guides",
+    "service4Description": "Decision frameworks for inherited and multi-asset situations",
+    "title": "What You’ll Find in the Library"
   },
   "leaseAdvisoryDifference": {
     "title": "What’s the difference?",

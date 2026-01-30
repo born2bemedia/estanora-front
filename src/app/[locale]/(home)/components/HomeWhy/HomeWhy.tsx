@@ -72,7 +72,7 @@ export const HomeWhy = () => {
               variants={fadeInUp}
               className={styles.home_why__button}
             >
-              <Button variant="white" url="#" type="link">
+              <Button variant="white" url="/about-us" type="link">
                 {t("button", { fallback: "More about us" })}
               </Button>
             </motion.div>
