@@ -12,11 +12,11 @@ export const checkoutFormSchema = z
     email: z.string().email("Invalid email").min(1, "Email is required"),
     phone: z.string().min(1, "Phone is required"),
     orderNotes: z.string().optional(),
-    termsAccepted: z.literal(true, {
-      errorMap: () => ({ message: "You must accept the Terms of Use" }),
+    termsAccepted: z.boolean().refine((val) => val, {
+      message: "You must accept the Terms of Use",
     }),
-    refundPolicyAccepted: z.literal(true, {
-      errorMap: () => ({ message: "You must accept the Refund Policy" }),
+    refundPolicyAccepted: z.boolean().refine((val) => val, {
+      message: "You must accept the Refund Policy",
     }),
   })
   .strict();
