@@ -111,6 +111,93 @@
     "item3": "Institutional-Grade Due Diligence We apply the same rigorous auditing standards used by institutional investors to protect your private property interests.",
     "button": "More about us"
   },
+  "aboutAgent": {
+    "title1": "Licensed Agent in Europe or the UK?",
+    "title2": "Welcome to Estanora.",
+    "description1": "We partner with regulated real estate professionals who want independent analysis behind their client recommendations.",
+    "item1Title": "What we provide",
+    "item1": "Independent due diligence support, pricing validation, risk mapping, and decision structure — delivered as clear, client-ready conclusions.",
+    "item2Title": "How it works",
+    "item2": "You stay client-facing. We stay analytical. No commission alignment, no transaction role — only advisory input.",
+    "item3Title": "When it helps most",
+    "item3": "Complex purchases, stalled sales, cross-border decisions, inherited or shared ownership cases, and rental/compliance questions.",
+    "button": "Contact us"
+  },
+  "aboutAnalytics": {
+    "title": "Responsible Use of Advanced Analytics and AI",
+    "description": "We use AI and advanced data tools to test market scenarios and ensure accuracy. This technology provides deeper analysis and faster results under professional oversight.",
+    "title2": "What this enables ",
+    "item1": "Scenario modelling under different market conditions",
+    "item2": "Sensitivity analysis for price, rent, and cost assumptions",
+    "item3": "Identification of anomalies and risk concentrations",
+    "item4": "Data-supported forecasts where sufficient evidence exists"
+  },
+  "aboutApproach": {
+    "title": "How We Approach Every Request",
+    "description1": "We treat all incoming requests as analytical cases, not sales enquiries.",
+    "description2": "Our process is structured as follows:",
+    "approach1": "Initial Case Review",
+    "text1": "We review your situation, objective, and any available documentation to identify the core decision at stake.",
+    "approach2": "Risk and Variable Identification",
+    "text2": "We determine which factors materially affect the outcome: pricing, liquidity, regulation, technical condition, financing, or timing.",
+    "approach3": "Scope Recommendation",
+    "text3": "You receive a clear recommendation on the appropriate next step — due diligence, market research, portfolio review, or no action.",
+    "text4": "We will explicitly state when:",
+    "text5": "The risk profile is unfavourable",
+    "text6": "Assumptions are not supported by data",
+    "text7": "Delaying action is strategically preferable",
+    "text8": "Our role is to reduce uncertainty — not to facilitate transactions."
+  },
+  "aboutCore": {
+    "service1": "Independence",
+    "service1Description": "We provide advisory services only. We do not participate in transactions or receive third-party incentives.",
+    "service2": "Structure",
+    "service2Description": "Each case follows a defined analytical process, ensuring consistency, traceability, and clarity of conclusions.",
+    "service3": "Transparency",
+    "service3Description": "Assumptions, limitations, and areas of uncertainty are stated explicitly and documented.",
+    "service4": "Discretion",
+    "service4Description": "All enquiries, data, and findings are handled confidentially and with professional care.",
+    "title": "What You’ll Find in the Library",
+    "description": "Key principles"
+  },
+  "aboutCta": {
+    "title": "Property decisions deserve responsibility, ",
+    "title2": "not assumptions.",
+    "button": "Contact Estanora"
+  },
+  "aboutHero": {
+    "title1": "Responsible Property Decisions",
+    "description": "Independent real estate consulting for private property owners across Europe and the UK.",
+    "button1": "Request analysis",
+    "button2": "View services"
+  },
+  "aboutVisibility": {
+    "item1": "Market Reality",
+    "item1Description": "Pricing, liquidity, and timing signals",
+    "item2": "Technical Condition",
+    "item2Description": "Structural, energy, and maintenance exposure",
+    "item3": "Legal Context",
+    "item3Description": "Ownership, compliance, and contractual risks",
+    "item4": "Financial Impact",
+    "item4Description": "Cash flow, costs, and capital implications",
+    "title": "How We Approach Every Request",
+    "description1": "We treat all incoming requests as analytical cases, not sales enquiries.",
+    "description2": "Our process is structured as follows:"
+  },
+  "aboutWork": {
+    "work1": "Due Diligence",
+    "text1": "Buying or Modifying a Property",
+    "work2": "Market Research",
+    "text2": "Pricing, Selling, or Waiting",
+    "work3": "Portfolio Services",
+    "text3": "Multiple Assets or Family Property",
+    "work4": "Lease Advisory",
+    "text4": "Rental Income and Compliance",
+    "title": "What We Actually Work On",
+    "description1": "Our advisory work is organised around four recurring property situations. ",
+    "description2": "Each addresses a specific type of decision and produces a concrete analytical outcome.",
+    "button": "Explore services"
+  },
   "contactCta": {
     "title": "Complex property decisions ",
     "title2": "require clarity, not assumptions.",
