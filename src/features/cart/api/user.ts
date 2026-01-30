@@ -154,24 +154,29 @@ export async function createUser(userData: UserData): Promise<{ user: User; pass
   }
 }
 
+export type EnsureUserResult = {
+  userId: string;
+  isNewUser: boolean;
+  /** Тільки якщо isNewUser — тимчасовий пароль для автоматичного логіну після покупки */
+  password?: string;
+};
+
 /**
- * Перевіряє чи існує користувач, якщо ні - створює нового
- * Повертає ID користувача
+ * Перевіряє чи існує користувач, якщо ні - створює нового.
+ * Повертає userId, чи був створений новий користувач, та пароль (якщо новий) для логіну після покупки.
  */
-export async function ensureUser(userData: UserData): Promise<string> {
+export async function ensureUser(userData: UserData): Promise<EnsureUserResult> {
   try {
-    // Спочатку перевіряємо чи існує користувач
     const existingUser = await findUserByEmail(userData.email);
 
     if (existingUser) {
       console.log(`User already exists: ${userData.email}`);
-      return existingUser.id;
+      return { userId: existingUser.id, isNewUser: false };
     }
 
-    // Якщо користувача немає - створюємо нового
     console.log(`Creating new user: ${userData.email}`);
-    const { user } = await createUser(userData);
-    return user.id;
+    const { user, password } = await createUser(userData);
+    return { userId: user.id, isNewUser: true, password };
   } catch (error) {
     console.error("Error ensuring user:", error);
     throw error;

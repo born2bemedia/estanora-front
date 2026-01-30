@@ -1,9 +1,10 @@
+import { cookies } from "next/headers";
 import { NextResponse } from "next/server";
 
 const SERVER_URL = process.env.SERVER_URL;
-const COOKIE_NAME = "payload-token";
+const COOKIE_NAME = process.env.COOKIE_NAME;
 
-export async function GET(request: Request): Promise<NextResponse> {
+export async function GET(): Promise<NextResponse> {
   try {
     if (!SERVER_URL) {
       return NextResponse.json(
@@ -12,7 +13,7 @@ export async function GET(request: Request): Promise<NextResponse> {
       );
     }
 
-    const token = request.cookies.get(COOKIE_NAME)?.value;
+    const token = (await cookies()).get(COOKIE_NAME as string)?.value;
     if (!token) {
       return NextResponse.json({ user: null }, { status: 200 });
     }

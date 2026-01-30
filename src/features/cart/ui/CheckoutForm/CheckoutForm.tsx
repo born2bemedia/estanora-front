@@ -91,6 +91,8 @@ export const CheckoutForm = () => {
         total,
       });
       clearCart();
+      // Оновлюємо стан авторизації (після покупки юзер міг бути залогінений автоматично)
+      await fetchUser();
       router.push("/thank-you");
     } catch (err) {
       console.error(err);

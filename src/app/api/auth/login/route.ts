@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 
 const SERVER_URL = process.env.SERVER_URL;
-const COOKIE_NAME = "payload-token";
+const COOKIE_NAME = process.env.COOKIE_NAME;
 
 export async function POST(request: Request): Promise<NextResponse> {
   try {
@@ -12,7 +12,10 @@ export async function POST(request: Request): Promise<NextResponse> {
       );
     }
 
-    const body = (await request.json()) as { email?: string; password?: string };
+    const body = (await request.json()) as {
+      email?: string;
+      password?: string;
+    };
     const { email, password } = body;
 
     if (!email || !password) {
@@ -32,7 +35,13 @@ export async function POST(request: Request): Promise<NextResponse> {
     });
 
     const data = (await res.json()) as {
-      user?: { id: string; email?: string; firstName?: string; lastName?: string; phone?: string };
+      user?: {
+        id: string;
+        email?: string;
+        firstName?: string;
+        lastName?: string;
+        phone?: string;
+      };
       token?: string;
       exp?: number;
       errors?: Array<{ message?: string }>;
@@ -52,7 +61,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     }
 
     const response = NextResponse.json({ user: data.user });
-    response.cookies.set(COOKIE_NAME, token, {
+    response.cookies.set(COOKIE_NAME as string, token ?? "", {
       httpOnly: true,
       secure: process.env.NODE_ENV === "production",
       sameSite: "lax",

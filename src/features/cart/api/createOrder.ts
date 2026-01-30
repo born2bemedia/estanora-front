@@ -1,5 +1,7 @@
 "use server";
 
+import { cookies } from "next/headers";
+
 import sgMail from "@sendgrid/mail";
 
 import type { CheckoutFormSchema } from "../model/checkout.schema";
@@ -7,6 +9,7 @@ import type { CartItem } from "../store/cart";
 import { ensureUser } from "./user";
 
 const SERVER_URL = process.env.SERVER_URL;
+const COOKIE_NAME = process.env.COOKIE_NAME;
 const SENDGRID_API_KEY = process.env.SENDGRID_API_KEY;
 const FROM_EMAIL = process.env.FROM_EMAIL;
 const ADMIN_EMAIL = process.env.ADMIN_EMAIL;
@@ -44,7 +47,7 @@ const postOrder = async (
   }
 
   // Перевіряємо/створюємо користувача перед створенням ордера
-  const userId = await ensureUser({
+  const { userId, isNewUser, password } = await ensureUser({
     email: data.email,
     firstName: data.firstName,
     lastName: data.lastName,
@@ -62,7 +65,7 @@ const postOrder = async (
     .join("\n");
 
   const orderData = {
-    user: userId, // Прив'язуємо ордер до користувача
+    user: userId,
     items: cart.map((item) => ({
       product: item.title,
       quantity: item.quantity,
@@ -112,6 +115,35 @@ const postOrder = async (
   }
 
   const orderResult = (await response.json()) as Record<string, unknown>;
+
+  // Після успішної покупки логінимо юзера, якщо він щойно створений
+  if (isNewUser && password && data.email) {
+    try {
+      const loginRes = await fetch(`${SERVER_URL}/api/users/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({ email: data.email, password }),
+      });
+      if (loginRes.ok) {
+        const loginData = (await loginRes.json()) as { token?: string };
+        if (loginData.token) {
+          const cookieStore = await cookies();
+          cookieStore.set(COOKIE_NAME as string, loginData.token ?? "", {
+            httpOnly: true,
+            secure: process.env.NODE_ENV === "production",
+            sameSite: "lax",
+            path: "/",
+            maxAge: 60 * 60 * 24 * 7,
+          });
+        }
+      }
+    } catch (loginErr) {
+      console.error("Auto-login after purchase failed:", loginErr);
+    }
+  }
 
   // Send emails if SendGrid is configured
   if (SENDGRID_API_KEY && FROM_EMAIL && ADMIN_EMAIL) {
