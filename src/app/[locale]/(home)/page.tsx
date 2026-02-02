@@ -1,3 +1,4 @@
+
 import { GuidesLoop } from "../../../features/guides/ui/GuidesLoop/GuidesLoop";
 import {
   HomeBrings,
@@ -11,6 +12,7 @@ import {
 export default async function Home() {
   return (
     <>
+      
       <HomeHero />
       <HomeServices />
       <HomeBrings />

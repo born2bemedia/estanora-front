@@ -5,6 +5,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { useFormsPopup } from "@/features/forms";
+
 import { fadeInUp } from "@/shared/lib/helpers/animations";
 import { Button } from "@/shared/ui/kit/button/Button";
 
@@ -13,6 +15,7 @@ import styles from "./EmptyCta.module.scss";
 export const EmptyCta = () => {
   const t = useTranslations("emptyCta");
 
+  const { openPropertyConsultation } = useFormsPopup();
   return (
     <section className={styles.empty_cta}>
       <div className={"container"}>
@@ -51,7 +54,7 @@ export const EmptyCta = () => {
               variants={fadeInUp}
               className={styles.empty_cta__button}
             >
-              <Button variant="white" url="#" type="link">
+              <Button variant="white" type="button" onClick={openPropertyConsultation}>
                 {t("button", { fallback: "Book free call" })}
               </Button>
             </motion.div>

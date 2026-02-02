@@ -5,6 +5,8 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { useFormsPopup } from "@/features/forms";
+
 import { fadeInUp } from "@/shared/lib/helpers/animations";
 import { Button } from "@/shared/ui/kit/button/Button";
 
@@ -12,7 +14,7 @@ import styles from "./PortfolioNeed.module.scss";
 
 export const PortfolioNeed = () => {
   const t = useTranslations("portfolioServicesNeed");
-
+  const { openPropertyConsultation } = useFormsPopup();
   return (
     <section className={styles.portfolio_need}>
       <div className={"container"}>
@@ -46,7 +48,7 @@ export const PortfolioNeed = () => {
               variants={fadeInUp}
               className={styles.home_why__button}
             >
-              <Button variant="white" url="#" type="link">
+              <Button variant="white" type="button" onClick={openPropertyConsultation}>
                 {t("button", { fallback: "Book free call" })}
               </Button>
             </motion.div>

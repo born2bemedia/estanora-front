@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { useFormsPopup } from "@/features/forms";
+
 import { fadeInUp } from "@/shared/lib/helpers/animations";
 import { CheckIcon } from "@/shared/ui/icons/check";
 import { Button } from "@/shared/ui/kit/button/Button";
@@ -11,6 +13,7 @@ import styles from "./HomeBrings.module.scss";
 
 export const HomeBrings = () => {
   const t = useTranslations("homeBrings");
+  const { openPropertyConsultation } = useFormsPopup();
 
   const brings = [
     {
@@ -87,48 +90,50 @@ export const HomeBrings = () => {
   ];
 
   return (
-    <section className={styles.home_brings}>
-      <div className={"container"}>
-        <h2>{t("title", { fallback: "What brings you here today?" })}</h2>
-        <div className={styles.home_brings__content}>
-          {brings.map((bring) => (
-            <motion.div
-              key={bring.title}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              variants={fadeInUp}
-              className={styles.home_brings__item}
-            >
-              <video src={bring.video} autoPlay muted loop playsInline />
-              <div>
-                <h3>{bring.title}</h3>
-                <ul>
-                  {bring.details.map((detail) => (
-                    <li key={detail}>
-                      <span>
-                        <CheckIcon />
-                      </span>
-                      <p>{detail}</p>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </motion.div>
-          ))}
+    <>
+      <section className={styles.home_brings}>
+        <div className={"container"}>
+          <h2>{t("title", { fallback: "What brings you here today?" })}</h2>
+          <div className={styles.home_brings__content}>
+            {brings.map((bring) => (
+              <motion.div
+                key={bring.title}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+                variants={fadeInUp}
+                className={styles.home_brings__item}
+              >
+                <video src={bring.video} autoPlay muted loop playsInline />
+                <div>
+                  <h3>{bring.title}</h3>
+                  <ul>
+                    {bring.details.map((detail) => (
+                      <li key={detail}>
+                        <span>
+                          <CheckIcon />
+                        </span>
+                        <p>{detail}</p>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            variants={fadeInUp}
+            className={styles.home_brings__button}
+          >
+            <Button variant="white" type="button" onClick={openPropertyConsultation}>
+              {t("button", { fallback: "Book free consultation" })}
+            </Button>
+          </motion.div>
         </div>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          variants={fadeInUp}
-          className={styles.home_brings__button}
-        >
-          <Button variant="white" url="#" type="link">
-            {t("button", { fallback: "Book free consultation" })}
-          </Button>
-        </motion.div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 };

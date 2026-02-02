@@ -137,7 +137,7 @@ export const ContactDataForm = ({ user }: ContactDataFormProps) => {
                 containerClass={styles.phoneInputContainer}
                 inputClass={form.formState.errors.phone ? `${styles.phoneInput} ${styles.errorInput}` : styles.phoneInput}
                 enableSearch
-                preferredCountries={["ua", "de", "gb", "us"]}
+                preferredCountries={[ "de", "gb", "us"]}
               />
             )}
           />

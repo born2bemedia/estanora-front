@@ -3,6 +3,7 @@
 import { useTranslations } from "next-intl";
 
 import { useCartStore } from "@/features/cart";
+import { useFormsPopup } from "@/features/forms";
 
 import { Button } from "@/shared/ui/kit/button/Button";
 
@@ -53,7 +54,7 @@ export const OrderableServiceCard = ({
   service: OrderableService;
 }) => {
   const t = useTranslations("dueDiligenceServices");
-
+  const { openRequest } = useFormsPopup();
   return (
     <div className={styles.service_card + " " + styles.orderable_service_card}>
       <div className={styles.service_card__header}>
@@ -74,7 +75,7 @@ export const OrderableServiceCard = ({
         variant="white"
         type="button"
         onClick={() => {
-          console.log(service.id);
+          openRequest(service.title);
         }}
       >
         {t("order", { fallback: "Order" })}

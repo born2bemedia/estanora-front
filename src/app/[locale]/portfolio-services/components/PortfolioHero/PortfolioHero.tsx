@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { useFormsPopup } from "@/features/forms";
+
 import { fadeInUp } from "@/shared/lib/helpers/animations";
 import { Button } from "@/shared/ui/kit/button/Button";
 
@@ -10,6 +12,7 @@ import styles from "./PortfolioHero.module.scss";
 
 export const PortfolioHero = () => {
   const t = useTranslations("portfolioServicesHero");
+  const { openMarketResearch   } = useFormsPopup();
 
   return (
     <section className={styles.portfolio_hero}>
@@ -55,7 +58,7 @@ export const PortfolioHero = () => {
             variants={fadeInUp}
             className={styles.portfolio_hero__buttons}
           >
-            <Button variant="white" url="#" type="link">
+            <Button variant="white" type="button" onClick={openMarketResearch}>
               {t("button", { fallback: "Order portfolio audit" })}
             </Button>
           </motion.div>

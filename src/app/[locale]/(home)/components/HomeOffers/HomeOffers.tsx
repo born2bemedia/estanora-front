@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { useFormsPopup } from "@/features/forms";
+
 import { fadeInUp } from "@/shared/lib/helpers/animations";
 import { CheckIcon } from "@/shared/ui/icons/check";
 import { Button } from "@/shared/ui/kit/button/Button";
@@ -11,6 +13,7 @@ import styles from "./HomeOffers.module.scss";
 
 export const HomeOffers = () => {
   const t = useTranslations("homeOffers");
+  const { openRequest } = useFormsPopup();
 
   const offers = [
     {
@@ -180,6 +183,7 @@ export const HomeOffers = () => {
   ];
 
   return (
+    <>
     <section className={styles.home_offers}>
       <div className={"container"}>
         <h2>{t("title", { fallback: "Our top offers" })}</h2>
@@ -203,7 +207,7 @@ export const HomeOffers = () => {
                   {offer.price}
                 </p>
               </div>
-              <Button variant="black" url="#" type="link">
+              <Button variant="black" type="button" onClick={() => openRequest(offer.title)}>
                 {t("button", { fallback: "Order" })}
               </Button>
               <ul>
@@ -225,5 +229,6 @@ export const HomeOffers = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };

@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { useFormsPopup } from "@/features/forms";
+
 import { fadeInUp } from "@/shared/lib/helpers/animations";
 import { Button } from "@/shared/ui/kit/button/Button";
 
@@ -10,6 +12,7 @@ import styles from "./DiligenceHero.module.scss";
 
 export const DiligenceHero = () => {
   const t = useTranslations("diligenceHero");
+  const { openMarketResearch } = useFormsPopup();
 
   return (
     <section className={styles.diligence_hero}>
@@ -51,7 +54,7 @@ export const DiligenceHero = () => {
             variants={fadeInUp}
             className={styles.diligence_hero__buttons}
           >
-            <Button variant="white" url="#" type="link">
+            <Button variant="white" type="button" onClick={openMarketResearch}>
               {t("button", { fallback: "Order audit" })}
             </Button>
           </motion.div>

@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { useFormsPopup } from "@/features/forms";
+
 import { fadeInUp } from "@/shared/lib/helpers/animations";
 import { Button } from "@/shared/ui/kit/button/Button";
 
@@ -10,8 +12,10 @@ import styles from "./HomeHero.module.scss";
 
 export const HomeHero = () => {
   const t = useTranslations("homeHero");
+  const { openMarketResearch } = useFormsPopup();
 
   return (
+    <>
     <section className={styles.home_hero}>
       <video
         src="/videos/home-hero.mp4"
@@ -57,12 +61,13 @@ export const HomeHero = () => {
             className={styles.home_hero__right}
           >
             <h2>{t("subtitle", { fallback: "How hot is the market?" })}</h2>
-            <Button variant="white" url="#" type="link">
+            <Button variant="white" type="button" onClick={openMarketResearch}>
               {t("button", { fallback: "Get research" })}
             </Button>
           </motion.div>
         </div>
       </div>
     </section>
+    </>
   );
 };
