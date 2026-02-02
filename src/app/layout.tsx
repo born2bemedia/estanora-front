@@ -3,6 +3,7 @@ import { Onest } from 'next/font/google';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import type { Metadata } from 'next';
 import { NextIntlClientProvider } from 'next-intl';
+import { getLocale } from 'next-intl/server';
 import { ToastContainer } from 'react-toastify';
 
 import { cn } from '@/shared/lib/helpers/styles';
@@ -30,12 +31,10 @@ export const metadata: Metadata = {
 
 export default async function RootLayout({
   children,
-  params,
 }: Readonly<{
   children: React.ReactNode;
-  params: Promise<{ locale: string }>;
 }>) {
-  const { locale } = await params;
+  const locale = await getLocale();
 
   return (
     <html lang={locale}>
