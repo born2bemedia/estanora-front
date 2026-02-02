@@ -13,7 +13,7 @@ import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "./GuidesLoop.module.scss";
 
-export const GuidesLoop = () => {
+export const GuidesLoop = ({title}: {title?: string}) => {
   const [guides, setGuides] = useState<Guide[]>([]);
   const [loading, setLoading] = useState(true);
   const t = useTranslations("guidesLoop");
@@ -55,7 +55,7 @@ export const GuidesLoop = () => {
   return (
     <section className={styles.guides_loop}>
       <div className={"container"}>
-        <h2>{t("title", { fallback: "Our Free Guides" })}</h2>
+        <h2>{title || t("title", { fallback: "Our Free Guides" })}</h2>
         <div className={styles.guides_loop__content}>
           {loading ? (
             Array.from({ length: 4 }).map((_, index) => (

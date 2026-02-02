@@ -1,4 +1,11 @@
 {
+  "thankYou": {
+    "guidesTitle": "While your order is being processed, you can explore our expert resources and free guides on real estate.",
+    "thankYou": "Thank you for your order",
+    "text1": "Your request is in our hands. ",
+    "text2": "An Estanora expert will review it and reach out soon to confirm details and guide the next steps.",
+    "text3": "We appreciate your trust in our expertise."
+  },
   "homeBrings": {
     "bring1": "I want to buy",
     "bring1detail1": "Confirm the purchase price",
@@ -465,6 +472,36 @@
     "title": "Why Manage Portfolio?",
     "description": "Passive ownership often leads to tax leakage and missed growth opportunities. Professional portfolio management ensures your assets are physically sound, tax-optimized, and strategically aligned with your family’s long-term financial goals."
   },
+  "checkoutForm": {
+    "completeYourOrder": "Complete Your Order",
+    "billingDetails": "Billing Details",
+    "firstName": "First Name",
+    "lastName": "Last Name",
+    "address1": "Address Line 1",
+    "address2": "Address Line 2",
+    "city": "City",
+    "country": "Country",
+    "zip": "ZIP Code",
+    "contactDetails": "Contact Details",
+    "email": "Email address",
+    "phone": "Phone number ",
+    "optional": "(Optional)",
+    "paymentMethod": "Payment Method",
+    "bankTransfer": "Bank Transfer ",
+    "noOtherOptions": "(no other options are currently available)",
+    "paymentInstructions1": "Dear user,",
+    "paymentInstructions2": "When your order is placed, an email will be sent to you with payment instructions, banking details, and an overview of your order.",
+    "anythingToAdd": "Anything to add?",
+    "orderSummary": "Order Summary",
+    "service": "Service",
+    "price": "Price, €",
+    "subtotal": "Subtotal, €",
+    "total": "Total",
+    "termsOfUse": "I have read and agree to the website's Terms of Use.",
+    "refundPolicy": "I have read and agree to the Refund Policy.",
+    "submitting": "Submitting...",
+    "submit": "Submit"
+  },
   "emptyCart": {
     "title": "Your cart is empty",
     "text": "You haven't added any services yet. Please check our offers:"
@@ -501,6 +538,10 @@
     "title": "Our Free Guides",
     "button": "Read",
     "empty": "No guides found"
+  },
+  "notFound": {
+    "title": "404 — Page Not Found",
+    "description": "The page you tried to reach isn’t here."
   },
   "dueDiligenceServices": {
     "service1_1": "Fixer-Upper Feasibility Study",

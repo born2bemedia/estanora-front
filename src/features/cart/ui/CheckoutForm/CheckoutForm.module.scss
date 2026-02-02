@@ -1,43 +1,87 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
 .form {
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
   gap: 24px;
-  width: 100%;
-  max-width: 32rem;
-  margin: 0 auto;
+  align-self: stretch;
 
   h1 {
     color: #fff;
-    font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
   }
 
   .fieldset {
     display: flex;
+    padding: 32px;
     flex-direction: column;
-    gap: 16px;
-    border: none;
-    padding: 0;
-    margin: 0;
+    align-items: flex-start;
+    gap: 32px;
+    align-self: stretch;
+    border: 1px solid #222;
+    background: #000;
+    @include mobile {
+      padding: 24px;
+    }
+    h2 {
+      color: #fff;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+    .billingDetailsRow {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 16px;
+      width: 100%;
+    }
 
-    legend {
-      color: #ccc;
-      font-size: 18px;
-      font-weight: 400;
-      margin-bottom: 0.5rem;
+    .contactDetailsRow {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 16px;
+      width: 100%;
+      > div {
+        flex-grow: 1;
+      }
     }
 
     .formGroup {
       display: flex;
       flex-direction: column;
       gap: 8px;
-
+      flex-grow: 1;
+      &:nth-child(1),
+      &:nth-child(2),
+      &:nth-child(3),
+      &:nth-child(4) {
+        width: calc(50% - 8px);
+        @include mobile {
+          width: 100%;
+        }
+      }
+      &.textareaGroup {
+        width: 100%;
+      }
       label {
         color: #ccc;
         font-size: 14px;
         font-weight: 300;
         line-height: normal;
+        .required {
+          color: #ff3e47;
+          margin-left: 4px;
+        }
+        .optional {
+          color: rgba(204, 204, 204, 0.3);
+        }
       }
 
       input,
@@ -52,7 +96,7 @@
         font-size: 14px;
         font-weight: 300;
         transition: border-color 0.3s ease;
-
+        width: 100%;
         &:focus {
           outline: none;
           border-color: rgba(255, 255, 255, 0.3);
@@ -77,8 +121,32 @@
         font-size: 12px;
         font-weight: 400;
         line-height: 20px;
-        margin-top: 4px;
+        margin-top: -6px;
       }
+    }
+  }
+
+  .paymentMethod {
+    display: flex;
+    padding: 12px;
+    align-items: center;
+    gap: 12px;
+    align-self: stretch;
+    background: rgba(255, 255, 255, 0.05);
+    color: #fff;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    span {
+      color: rgba(204, 204, 204, 0.3);
+      text-transform: none;
+    }
+    @include mobile {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
     }
   }
 
@@ -90,17 +158,23 @@
   }
 
   .orderSummary {
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background: rgba(255, 255, 255, 0.03);
-    border-radius: 8px;
-    padding: 1.25rem;
-    margin: 0.5rem 0;
-
+    display: flex;
+    padding: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    align-self: stretch;
+    border: 1px solid #222;
+    background: #000;
+    @include mobile {
+      padding: 24px;
+    }
     h2 {
-      color: #ccc;
-      font-size: 18px;
-      font-weight: 400;
-      margin-bottom: 1rem;
+      color: #fff;
+      font-size: 24px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
     }
 
     table {
@@ -108,54 +182,127 @@
       border-collapse: collapse;
       margin-bottom: 1rem;
 
-      th,
-      td {
-        padding: 0.5rem 0.75rem;
-        text-align: left;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      th {
         color: #fff;
         font-size: 14px;
-        font-weight: 300;
+        font-style: normal;
+        font-weight: 400;
+        line-height: normal;
+        text-transform: uppercase;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 12px;
+        text-align: left;
+        @include mobile {
+          font-size: 12px;
+        }
       }
 
-      th {
-        color: #ccc;
-        font-weight: 500;
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        background: rgba(255, 255, 255, 0.03);
+        color: #fff;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: normal;
+        width: 20%;
+        @include mobile {
+          font-size: 12px;
+        }
+        &:first-child {
+          text-align: left;
+          width: 40%;
+          @include mobile {
+            width: 35%;
+          }
+        }
+        &.total {
+          text-align: right;
+          padding-right: 60px;
+          color: #fff;
+          text-align: right;
+          font-size: 14px;
+          font-style: normal;
+          font-weight: 700;
+          line-height: normal;
+          text-transform: uppercase;
+          @include mobile {
+            font-size: 12px;
+            padding-right: 20px;
+          }
+        }
+        &.totalPrice {
+          font-weight: 700;
+        }
       }
-    }
 
-    .total {
-      color: #fff;
-      font-size: 16px;
-      font-weight: 500;
+      tfoot {
+        td {
+          background: rgba(255, 255, 255, 0.05);
+        }
+      }
     }
   }
 
-  .checkboxes {
+  .actions {
     display: flex;
     flex-direction: column;
-    gap: 12px;
-
-    label {
-      color: rgba(204, 204, 204, 0.9);
-      font-size: 14px;
-      font-weight: 300;
+    gap: 8px;
+    .checkboxes {
       display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
-      cursor: pointer;
+      flex-direction: column;
+      gap: 2px;
+      label {
+        color: rgba(204, 204, 204, 0.9);
+        font-size: 14px;
+        font-weight: 300;
+        display: flex;
+        align-items: flex-start;
+        gap: 0.5rem;
+        cursor: pointer;
 
-      input[type="checkbox"] {
-        margin-top: 2px;
-        accent-color: rgba(255, 255, 255, 0.5);
+        input[type="checkbox"] {
+          appearance: none;
+          width: 16px;
+          height: 16px;
+          border: 1px solid #ccc;
+          background: rgba(255, 255, 255, 0.05);
+          border-radius: 0;
+          position: relative;
+          &:after {
+            content: "";
+            display: block;
+            width: 50%;
+            height: 50%;
+            background: #fff;
+            border-radius: 0;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+          }
+          &:checked {
+            &:after {
+              opacity: 1;
+            }
+          }
+        }
+      }
+
+      .error {
+        color: #ff2d30;
+        font-size: 12px;
+        margin-top: 0;
       }
     }
 
-    .error {
-      color: #ff2d30;
-      font-size: 12px;
-      margin-top: 4px;
+    button{
+      margin-top: 8px;
     }
+
   }
 
   .submitButton {

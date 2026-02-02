@@ -1,5 +1,8 @@
 @use '@/shared/lib/styles/mixin.scss' as *;
 
 .thankYou {
-  padding: 180px 0 120px 0;
+  padding: 180px 0 64px 0;
+  @include tablet {
+    padding: 100px 0 32px 0;
+  }
 }

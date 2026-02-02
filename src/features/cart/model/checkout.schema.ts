@@ -10,7 +10,7 @@ export const checkoutFormSchema = z
     country: z.string().min(1, "Country is required"),
     zip: z.string().min(1, "ZIP Code is required"),
     email: z.string().email("Invalid email").min(1, "Email is required"),
-    phone: z.string().min(1, "Phone is required"),
+    phone: z.string().optional(),
     orderNotes: z.string().optional(),
     termsAccepted: z.boolean().refine((val) => val, {
       message: "You must accept the Terms of Use",
