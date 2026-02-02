@@ -51,13 +51,13 @@ const postOrder = async (
     email: data.email,
     firstName: data.firstName,
     lastName: data.lastName,
-    phone: data.phone,
+    phone: data.phone ?? "",
   });
 
   const orderNumber = `ORD_${Math.floor(Math.random() * 900000) + 100000}`;
 
   const orderNotes = [
-    `Contact: ${data.email}, ${data.phone}`,
+    `Contact: ${data.email}, ${data.phone ?? ""}`,
     `Billing name: ${data.firstName} ${data.lastName}`,
     data.orderNotes ? `Notes: ${data.orderNotes}` : null,
   ]
@@ -156,7 +156,7 @@ const postOrder = async (
           <h2>New Order Received - ${orderNumber}</h2>
           <p><strong>User:</strong> ${data.firstName} ${data.lastName}</p>
           <p><strong>Email:</strong> ${data.email}</p>
-          <p><strong>Phone:</strong> ${data.phone}</p>
+          <p><strong>Phone:</strong> ${data.phone ?? ""}</p>
           <p><strong>Address:</strong> ${data.address1}${data.address2 ? `, ${data.address2}` : ""}, ${data.city}, ${data.zip}, ${data.country}</p>
           ${data.orderNotes ? `<p><strong>Order Notes:</strong> ${data.orderNotes}</p>` : ""}
           <p><strong>Total:</strong> €${total.toFixed(2)}</p>
@@ -210,7 +210,7 @@ export const createOrder = async (payload: CreateOrderPayload) => {
     country: payload.billing.country,
     zip: payload.billing.zip,
     email: payload.contact.email,
-    phone: payload.contact.phone,
+    phone: payload.contact.phone ?? "",
     orderNotes: payload.orderNotes,
     termsAccepted: true,
     refundPolicyAccepted: true,
