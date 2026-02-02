@@ -4,7 +4,8 @@ import { useEffect, useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
+import PhoneInput from "react-phone-input-2";
 
 import {
   type ContactDataSchema,
@@ -13,9 +14,12 @@ import {
 import type { AuthUser } from "@/features/account/model/auth.types";
 import { useAuthStore } from "@/features/account/store/auth";
 
+import { excludedCountries } from "@/shared/lib/helpers/excludedCountries";
 import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "../AccountSettingsPage.module.scss";
+
+import "react-phone-input-2/lib/style.css";
 
 const SUCCESS_MESSAGE = "Your personal information has been updated successfully.";
 
@@ -114,11 +118,26 @@ export const ContactDataForm = ({ user }: ContactDataFormProps) => {
         </div>
         <div className={`${styles.formGroup} ${form.formState.errors.phone ? styles.errorInput : ""}`}>
           <label htmlFor="contact-phone">{t("yourPhone", { fallback: "Your Phone" })}</label>
-          <input
-            id="contact-phone"
-            type="tel"
-            placeholder={t("yourPhonePlaceholder", { fallback: "Your Phone" })}
-            {...form.register("phone")}
+          <Controller
+            name="phone"
+            control={form.control}
+            render={({ field }) => (
+              <PhoneInput
+                country="ua"
+                value={field.value}
+                onChange={(value) => field.onChange(value)}
+                excludeCountries={[...new Set(excludedCountries)]}
+                inputProps={{
+                  id: "contact-phone",
+                  name: "phone",
+                  placeholder: t("yourPhonePlaceholder", { fallback: "Your Phone" }),
+                }}
+                containerClass={styles.phoneInputContainer}
+                inputClass={form.formState.errors.phone ? `${styles.phoneInput} ${styles.errorInput}` : styles.phoneInput}
+                enableSearch
+                preferredCountries={["ua", "de", "gb", "us"]}
+              />
+            )}
           />
           {form.formState.errors.phone && (
             <p className={styles.error}>{form.formState.errors.phone.message}</p>

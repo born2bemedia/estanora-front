@@ -4,7 +4,10 @@ import { useEffect } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
+import PhoneInput from "react-phone-input-2";
+import Select from "react-select";
+import countryList from "react-select-country-list";
 
 import { useAuthStore } from "@/features/account";
 import { createOrder } from "@/features/cart/api/createOrder";
@@ -14,12 +17,23 @@ import {
 } from "@/features/cart/model/checkout.schema";
 import { useCartStore } from "@/features/cart/store/cart";
 
+import { excludedCountries } from "@/shared/lib/helpers/excludedCountries";
 import { DeleteIcon } from "@/shared/ui/icons";
 import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "./CheckoutForm.module.scss";
 
+import "react-phone-input-2/lib/style.css";
+
 import { useRouter } from "@/i18n/navigation";
+
+type CountryOption = { value: string; label: string };
+
+// Get country list and filter out excluded countries
+const allCountries = countryList().getData() as CountryOption[];
+const countries = allCountries
+  .filter((country: CountryOption) => !excludedCountries.includes(country.value.toLowerCase()))
+  .sort((a: CountryOption, b: CountryOption) => a.label.localeCompare(b.label));
 
 const defaultValues: CheckoutFormSchema = {
   firstName: "",
@@ -53,6 +67,7 @@ export const CheckoutForm = () => {
     register,
     handleSubmit,
     reset,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<CheckoutFormSchema>({
     resolver: zodResolver(checkoutFormSchema),
@@ -142,7 +157,89 @@ export const CheckoutForm = () => {
           </div>
           <div className={styles.formGroup}>
             <label htmlFor="country">{t("country", { fallback: "Country" })}<span className={styles.required}>*</span></label>
-            <input id="country" {...register("country")} className={errors.country ? styles.errorInput : ""} />
+            <Controller
+              name="country"
+              control={control}
+              render={({ field }) => (
+                <Select
+                  inputId="country"
+                  options={countries}
+                  placeholder={t("selectCountry", { fallback: "Select country" })}
+                  isSearchable
+                  className={styles.select}
+                  classNamePrefix="select"
+                  styles={{
+                    control: (base, state) => ({
+                      ...base,
+                      backgroundColor: "rgba(255, 255, 255, 0.03)",
+                      borderColor: errors.country
+                        ? "#ff2d30"
+                        : state.isFocused
+                          ? "rgba(255, 255, 255, 0.3)"
+                          : "rgba(255, 255, 255, 0.05)",
+                      boxShadow: "none",
+                      minHeight: "38px",
+                      "&:hover": {
+                        borderColor: errors.country
+                          ? "#ff2d30"
+                          : "rgba(255, 255, 255, 0.2)",
+                      },
+                    }),
+                    placeholder: (base) => ({
+                      ...base,
+                      color: "rgba(255, 255, 255, 0.5)",
+                      fontSize: "14px",
+                      fontWeight: 300,
+                    }),
+                    singleValue: (base) => ({
+                      ...base,
+                      color: "#fff",
+                      fontSize: "14px",
+                      fontWeight: 300,
+                    }),
+                    menu: (base) => ({
+                      ...base,
+                      backgroundColor: "#1a1a1a",
+                      border: "1px solid rgba(255, 255, 255, 0.1)",
+                      borderRadius: "8px",
+                    }),
+                    option: (base, state) => ({
+                      ...base,
+                      backgroundColor: state.isSelected
+                        ? "rgba(255, 255, 255, 0.1)"
+                        : state.isFocused
+                          ? "rgba(255, 255, 255, 0.05)"
+                          : "transparent",
+                      color: "#fff",
+                      fontSize: "14px",
+                      fontWeight: 300,
+                      cursor: "pointer",
+                      "&:active": {
+                        backgroundColor: "rgba(255, 255, 255, 0.1)",
+                      },
+                    }),
+                    indicatorSeparator: () => ({
+                      display: "none",
+                    }),
+                    dropdownIndicator: (base) => ({
+                      ...base,
+                      color: "rgba(255, 255, 255, 0.7)",
+                      "&:hover": {
+                        color: "rgba(255, 255, 255, 0.9)",
+                      },
+                    }),
+                    input: (base) => ({
+                      ...base,
+                      color: "#fff",
+                    }),
+                  }}
+                  value={countries.find((option) => option.value.toLowerCase() === (field.value || "").toLowerCase()) || null}
+                  onChange={(selectedOption) => {
+                    field.onChange(selectedOption ? selectedOption.value : "");
+                  }}
+                />
+              )}
+            />
             {errors.country && <span className={styles.error}>{errors.country.message}</span>}
           </div>
           <div className={styles.formGroup}>
@@ -162,8 +259,27 @@ export const CheckoutForm = () => {
             {errors.email && <span className={styles.error}>{errors.email.message}</span>}
           </div>
           <div className={styles.formGroup}>
-            <label htmlFor="phone">{t("phone", { fallback: "Phone number " })}<span className={styles.optional}>{t("optional", { fallback: "(Optional)" })}</span></label>
-            <input id="phone" {...register("phone")} className={errors.phone ? styles.errorInput : ""} />
+            <label htmlFor="phone">{t("phone", { fallback: "Phone number" })}<span className={styles.optional}>{t("optional", { fallback: "(Optional)" })}</span></label>
+            <Controller
+              name="phone"
+              control={control}
+              render={({ field }) => (
+                <PhoneInput
+                  country="ua"
+                  value={field.value}
+                  onChange={(value) => field.onChange(value)}
+                  excludeCountries={[...new Set(excludedCountries)]}
+                  inputProps={{
+                    id: "phone",
+                    name: "phone",
+                  }}
+                  containerClass={styles.phoneInputContainer}
+                  inputClass={errors.phone ? `${styles.phoneInput} ${styles.errorInput}` : styles.phoneInput}
+                  enableSearch
+                  preferredCountries={["ua", "de", "gb", "us"]}
+                />
+              )}
+            />
             {errors.phone && <span className={styles.error}>{errors.phone.message}</span>}
           </div>
         </div>

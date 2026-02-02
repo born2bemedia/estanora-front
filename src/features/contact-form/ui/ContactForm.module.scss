@@ -274,16 +274,48 @@
   }
 }
 
-.react-tel-input {
+// react-phone-input-2 (dark theme for contact form)
+.phoneInputContainer {
+  width: 100%;
+  font-family: inherit;
+
+  .phoneInput {
+    width: 100% !important;
+  }
+
   .form-control {
-    border: 1px solid #faf9f8;
-    border-radius: 30px;
-    background: #faf9f8;
-    height: 46px;
-    padding: 0 16px 0 30px !important;
-    align-items: center;
-    gap: 8px;
-    align-self: stretch;
+    width: 100% !important;
+    height: 38px !important;
+    min-height: 38px !important;
+    padding: 10px 16px 10px 52px !important;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 0;
+    background: rgba(255, 255, 255, 0.03);
+    color: #fff;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: normal;
+    letter-spacing: normal;
+    transition: border-color 0.3s ease;
+
+    &::placeholder {
+      color: rgba(255, 255, 255, 0.5);
+    }
+
+    &:focus {
+      outline: none;
+      border-color: rgba(255, 255, 255, 0.3);
+      box-shadow: none;
+    }
+  }
+
+
+}
+
+.phoneInput {
+  padding-left: 40px!important;
+  &.errorInput {
+    border-color: rgba(255, 62, 71, 0.5) !important;
   }
 }
 
@@ -356,3 +388,4 @@
     }
   }
 }
+

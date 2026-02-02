@@ -7,8 +7,10 @@ import { useTranslations } from 'next-intl';
 import { useDropzone } from 'react-dropzone';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { Controller, useForm } from 'react-hook-form';
+import PhoneInput from 'react-phone-input-2';
 import Select from 'react-select';
 
+import { excludedCountries } from '@/shared/lib/helpers/excludedCountries';
 import { FileIcon } from '@/shared/ui/icons/file';
 import { Button } from '@/shared/ui/kit/button/Button';
 
@@ -16,6 +18,8 @@ import { submitContactForm } from '../api/submitContactForm';
 import { type ContactFormSchema, createContactFormSchema } from '../model/ContactForm.schema';
 import styles from './ContactForm.module.scss';
 import { ContactFormSuccess } from './ContactFormSuccess';
+
+import 'react-phone-input-2/lib/style.css';
 
 const PRIMARY_OBJECTIVES = [
   { value: "Buy", label: "Buy" },
@@ -148,14 +152,28 @@ export const ContactForm = () => {
           {/* Phone */}
           <div className={styles.formGroup}>
             <label htmlFor="phone">
-              {t('phone', { fallback: 'Phone numbe' })}
+              {t('phone', { fallback: 'Phone number' })}
               <span className={styles.optional}>{t('optional', { fallback: '(Optional)' })}</span>
             </label>
-            <input
-              id="phone"
-              type="tel"
-              {...register('phone')}
-              className={errors.phone ? styles.errorInput : ''}
+            <Controller
+              name="phone"
+              control={control}
+              render={({ field }) => (
+                <PhoneInput
+                  country="ua"
+                  value={field.value}
+                  onChange={(value) => field.onChange(value)}
+                  excludeCountries={[...new Set(excludedCountries)]}
+                  inputProps={{
+                    id: 'phone',
+                    name: 'phone',
+                  }}
+                  containerClass={styles.phoneInputContainer}
+                  inputClass={errors.phone ? `${styles.phoneInput} ${styles.errorInput}` : styles.phoneInput}
+                  enableSearch
+                  preferredCountries={['ua', 'de', 'gb', 'us']}
+                />
+              )}
             />
             {errors.phone && <p className={styles.error}>{errors.phone.message}</p>}
           </div>
