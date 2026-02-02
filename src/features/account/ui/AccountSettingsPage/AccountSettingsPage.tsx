@@ -2,7 +2,11 @@
 
 import { useEffect } from "react";
 
+import { useTranslations } from "next-intl";
+
 import { useAuthStore } from "@/features/account/store/auth";
+
+import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "./AccountSettingsPage.module.scss";
 import { ChangePasswordForm } from "./ChangePasswordForm/ChangePasswordForm";
@@ -15,7 +19,7 @@ export const AccountSettingsPage = () => {
   const user = useAuthStore((s) => s.user);
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const fetchUser = useAuthStore((s) => s.fetchUser);
-
+  const t = useTranslations("accountSettingsPage");
   useEffect(() => {
     fetchUser();
   }, [fetchUser]);
@@ -31,7 +35,9 @@ export const AccountSettingsPage = () => {
     return (
       <section className={styles.section}>
         <div className="container">
-          <p className={styles.loading}>Loading...</p>
+          <p className={styles.loading}>
+            {t("loading", { fallback: "Loading..." })}
+          </p>
         </div>
       </section>
     );
@@ -39,18 +45,18 @@ export const AccountSettingsPage = () => {
 
   return (
     <section className={styles.section}>
-      <div className="container">
-        <h1 className={styles.title}>Account Setting</h1>
-        <div className={styles.forms}>
-          <ContactDataForm user={user} />
-          <ChangePasswordForm />
-        </div>
-        <p className={styles.back}>
-          <Link href="/account" className={styles.backLink}>
-            ← Back to account
-          </Link>
-        </p>
+      <h1 className={styles.title}>
+        {t("title", { fallback: "Account Setting" })}
+      </h1>
+      <div className={styles.forms}>
+        <ContactDataForm user={user} />
+        <ChangePasswordForm />
       </div>
+      <p className={styles.back}>
+        <Button url="/account" variant="bordered-black" type="link">
+          {t("backToAccount", { fallback: "← Back to account" })}
+        </Button>
+      </p>
     </section>
   );
 };

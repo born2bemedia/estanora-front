@@ -472,6 +472,70 @@
     "title": "Why Manage Portfolio?",
     "description": "Passive ownership often leads to tax leakage and missed growth opportunities. Professional portfolio management ensures your assets are physically sound, tax-optimized, and strategically aligned with your family’s long-term financial goals."
   },
+  "accountNavigation": {
+    "my-orders": "My Orders",
+    "my-services": "My Services",
+    "account-settings": "Account Setting",
+    "hi": "Hi"
+  },
+  "accountPage": {
+    "loading": "Loading...",
+    "title": "My orders",
+    "noServices": "You have no orders yet.",
+    "allOrders": "Check all orders"
+  },
+  "accountSettingsPage": {
+    "loading": "Loading...",
+    "title": "Account Setting",
+    "backToAccount": "← Back to account",
+    "currentPassword": "Current Password",
+    "currentPasswordPlaceholder": "Current Password",
+    "newPassword": "New Password",
+    "newPasswordPlaceholder": "New Password",
+    "repeatNewPassword": "Repeat New Password",
+    "repeatNewPasswordPlaceholder": "Repeat New Password",
+    "updateData": "Update Data",
+    "yourName": "Your Name",
+    "yourNamePlaceholder": "Your Name",
+    "yourLastName": "Your Last Name",
+    "yourLastNamePlaceholder": "Your Last Name",
+    "yourPhone": "Your Phone",
+    "yourPhonePlaceholder": "Your Phone",
+    "yourEmail": "Your Email",
+    "yourEmailPlaceholder": "Your Email"
+  },
+  "account": {
+    "login": "Log in",
+    "email": "Email",
+    "password": "Password",
+    "loggingIn": "Logging in..."
+  },
+  "myOrdersPage": {
+    "loading": "Loading orders...",
+    "title": "My Orders",
+    "noOrders": "You have no orders yet.",
+    "date": "Date",
+    "orderId": "Order ID",
+    "service": "Service",
+    "quantity": "Quantity",
+    "total": "Total, €",
+    "status": "Status",
+    "invoice": "Invoice",
+    "download": "Download",
+    "backToAccount": "← Back to account"
+  },
+  "myServicesPage": {
+    "loading": "Loading...",
+    "title": "My Services",
+    "noServices": "You have no services yet.",
+    "service": "Service",
+    "date": "Date",
+    "documents": "Documents",
+    "manage": "Manage",
+    "document": "Document",
+    "orderAgain": "Order Again",
+    "backToAccount": "← Back to account"
+  },
   "checkoutForm": {
     "completeYourOrder": "Complete Your Order",
     "billingDetails": "Billing Details",
@@ -541,7 +605,11 @@
   },
   "notFound": {
     "title": "404 — Page Not Found",
-    "description": "The page you tried to reach isn’t here."
+    "description": "The page you tried to reach isn’t here.",
+    "quickLinks": "Quick Links",
+    "button1": "Main Page",
+    "button2": "Free Guides",
+    "button3": "Contact Us"
   },
   "dueDiligenceServices": {
     "service1_1": "Fixer-Upper Feasibility Study",

@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 
 import {
@@ -11,6 +12,8 @@ import {
 } from "@/features/account/model/account-settings.schema";
 import type { AuthUser } from "@/features/account/model/auth.types";
 import { useAuthStore } from "@/features/account/store/auth";
+
+import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "../AccountSettingsPage.module.scss";
 
@@ -21,6 +24,7 @@ type ContactDataFormProps = {
 };
 
 export const ContactDataForm = ({ user }: ContactDataFormProps) => {
+  const t = useTranslations("accountSettingsPage");
   const setUser = useAuthStore((s) => s.setUser);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
@@ -78,70 +82,65 @@ export const ContactDataForm = ({ user }: ContactDataFormProps) => {
   };
 
   return (
-    <div className={styles.formSection}>
-      <h2>Contact details</h2>
-      <form className={styles.form} onSubmit={form.handleSubmit(onSubmit)}>
-        <div className={styles.formGroup}>
+    <div className={styles.contactDataSection}>
+      <form className={styles.contactDataForm} onSubmit={form.handleSubmit(onSubmit)}>
+        <div className={`${styles.formGroup} ${form.formState.errors.firstName ? styles.errorInput : ""}`}>
           <label htmlFor="contact-firstName">
-            Your Name <span className={styles.required}>*</span>
+            {t("yourName", { fallback: "Your Name" })} <span className={styles.required}>*</span>
           </label>
           <input
             id="contact-firstName"
             type="text"
-            placeholder="Your Name (this is a placeholder text)"
+            placeholder={t("yourNamePlaceholder", { fallback: "Your Name" })}
             {...form.register("firstName")}
-            className={form.formState.errors.firstName ? styles.errorInput : ""}
           />
           {form.formState.errors.firstName && (
             <p className={styles.error}>{form.formState.errors.firstName.message}</p>
           )}
         </div>
-        <div className={styles.formGroup}>
+        <div className={`${styles.formGroup} ${form.formState.errors.lastName ? styles.errorInput : ""}`}>
           <label htmlFor="contact-lastName">
-            Your Last Name <span className={styles.required}>*</span>
+            {t("yourLastName", { fallback: "Your Last Name" })} <span className={styles.required}>*</span>
           </label>
           <input
             id="contact-lastName"
             type="text"
-            placeholder="Your Last Name (this is a placeholder text)"
+            placeholder={t("yourLastNamePlaceholder", { fallback: "Your Last Name" })}
             {...form.register("lastName")}
-            className={form.formState.errors.lastName ? styles.errorInput : ""}
           />
           {form.formState.errors.lastName && (
             <p className={styles.error}>{form.formState.errors.lastName.message}</p>
           )}
         </div>
-        <div className={styles.formGroup}>
-          <label htmlFor="contact-phone">Your Phone</label>
+        <div className={`${styles.formGroup} ${form.formState.errors.phone ? styles.errorInput : ""}`}>
+          <label htmlFor="contact-phone">{t("yourPhone", { fallback: "Your Phone" })}</label>
           <input
             id="contact-phone"
             type="tel"
-            placeholder="Your Phone (this is a placeholder text) +44"
+            placeholder={t("yourPhonePlaceholder", { fallback: "Your Phone" })}
             {...form.register("phone")}
-            className={form.formState.errors.phone ? styles.errorInput : ""}
           />
           {form.formState.errors.phone && (
             <p className={styles.error}>{form.formState.errors.phone.message}</p>
           )}
         </div>
-        <div className={styles.formGroup}>
+        <div className={`${styles.formGroup} ${form.formState.errors.email ? styles.errorInput : ""}`}>
           <label htmlFor="contact-email">
-            Your Email <span className={styles.required}>*</span>
+            {t("yourEmail", { fallback: "Your Email" })} <span className={styles.required}>*</span>
           </label>
           <input
             id="contact-email"
             type="email"
-            placeholder="Your Email (this is a placeholder text)"
+            placeholder={t("yourEmailPlaceholder", { fallback: "Your Email" })}
             {...form.register("email")}
-            className={form.formState.errors.email ? styles.errorInput : ""}
           />
           {form.formState.errors.email && (
             <p className={styles.error}>{form.formState.errors.email.message}</p>
           )}
         </div>
-        <button type="submit" disabled={form.formState.isSubmitting}>
-          Update Data
-        </button>
+        <Button type="submit" variant="white" disabled={form.formState.isSubmitting}>
+          {t("updateData", { fallback: "Update Data" })}
+        </Button>
         {message && (
           <p className={`${styles.message} ${styles[message.type]}`}>{message.text}</p>
         )}

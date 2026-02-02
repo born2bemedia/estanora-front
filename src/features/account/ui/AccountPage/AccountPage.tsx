@@ -1,68 +1,119 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
+import { useTranslations } from "next-intl";
+
+import type { Order, OrderItem } from "@/features/account/model/orders.types";
 import { useAuthStore } from "@/features/account/store/auth";
+import { useAllServices } from "@/features/services/lib/get-all-services";
+
+import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "./AccountPage.module.scss";
 
-import { Link, useRouter } from "@/i18n/navigation";
+import { useRouter } from "@/i18n/navigation";
+
+type ServiceRow = {
+  orderId: string;
+  itemIndex: number;
+  service: string;
+  description: string | undefined;
+};
 
 export const AccountPage = () => {
+  const t = useTranslations("accountPage");
   const router = useRouter();
   const user = useAuthStore((s) => s.user);
   const isInitialized = useAuthStore((s) => s.isInitialized);
-  const isLoading = useAuthStore((s) => s.isLoading);
   const fetchUser = useAuthStore((s) => s.fetchUser);
-  const logout = useAuthStore((s) => s.logout);
+  const { getDescriptionByTitle } = useAllServices();
+  const [orders, setOrders] = useState<Order[]>([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     fetchUser();
   }, [fetchUser]);
 
   useEffect(() => {
-    if (!isInitialized || isLoading) return;
+    if (!isInitialized) return;
     if (!user) {
       router.replace("/log-in");
     }
-  }, [isInitialized, isLoading, user, router]);
+  }, [isInitialized, user, router]);
 
-  const handleLogout = async () => {
-    await logout();
-    router.push("/log-in");
-  };
+  useEffect(() => {
+    let cancelled = false;
+    (async () => {
+      try {
+        const res = await fetch("/api/account/orders", {
+          credentials: "include",
+        });
+        const data = (await res.json()) as { orders?: Order[] };
+        if (!cancelled) setOrders(data.orders ?? []);
+      } catch {
+        if (!cancelled) setOrders([]);
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    })();
+    return () => {
+      cancelled = true;
+    };
+  }, []);
 
-  if (!isInitialized || isLoading || !user) {
+  const rows: ServiceRow[] = [];
+  for (const order of orders) {
+    for (let i = 0; i < (order.items?.length ?? 0); i++) {
+      const item = order.items![i];
+      const serviceTitle = item.product ?? "—";
+      rows.push({
+        orderId: order.id,
+        itemIndex: i,
+        service: serviceTitle,
+        description: getDescriptionByTitle(serviceTitle),
+      });
+    }
+  }
+
+  if (!isInitialized || !user) {
     return (
       <section className={styles.section}>
-        <div className="container">
-          <p className={styles.loading}>Loading...</p>
-        </div>
+        <p className={styles.loadingText}>
+          {t("loading", { fallback: "Loading..." })}
+        </p>
       </section>
     );
   }
 
-  const displayName = [user.firstName, user.lastName].filter(Boolean).join(" ") || "there";
-
   return (
     <section className={styles.section}>
-      <div className="container">
-        <h1 className={styles.greeting}>Hi, {displayName}!</h1>
-        <nav className={styles.nav}>
-          <Link href="/account/my-orders" className={styles.linkButton}>
-            My Orders
-          </Link>
-          <Link href="/account/my-services" className={styles.linkButton}>
-            My Services
-          </Link>
-          <Link href="/account/account-settings" className={styles.linkButton}>
-            Account Setting
-          </Link>
-          <button type="button" onClick={handleLogout} className={styles.logout}>
-            Log Out
-          </button>
-        </nav>
-      </div>
+      <h1 className={styles.title}>{t("title", { fallback: "My orders" })}</h1>
+      {loading ? (
+        <p className={styles.loadingText}>
+          {t("loading", { fallback: "Loading..." })}
+        </p>
+      ) : rows.length === 0 ? (
+        <p className={styles.empty}>
+          {t("noServices", { fallback: "You have no orders yet." })}
+        </p>
+      ) : (
+        <div className={styles.orders}>
+          {rows.slice(0, 2).map((row) => (
+            <div className={styles.order} key={`${row.orderId}-${row.itemIndex}`}>
+              <h3 className={styles.serviceName}>{row.service}</h3>
+              {row.description && (
+                <p className={styles.description}>{row.description}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      )}
+      <p className={styles.back}>
+        <Button url="/account" variant="white" type="link">
+          {t("allOrders", { fallback: "Check all orders" })}
+        </Button>
+      </p>
     </section>
   );
 };

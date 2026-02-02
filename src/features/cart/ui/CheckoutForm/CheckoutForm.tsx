@@ -14,6 +14,7 @@ import {
 } from "@/features/cart/model/checkout.schema";
 import { useCartStore } from "@/features/cart/store/cart";
 
+import { DeleteIcon } from "@/shared/ui/icons";
 import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "./CheckoutForm.module.scss";
@@ -44,6 +45,7 @@ export const CheckoutForm = () => {
   const items = useCartStore((state) => state.items);
   const getTotalPrice = useCartStore((state) => state.getTotalPrice);
   const clearCart = useCartStore((state) => state.clearCart);
+  const removeItem = useCartStore((state) => state.removeItem);
 
   const total = getTotalPrice();
 
@@ -73,6 +75,10 @@ export const CheckoutForm = () => {
       phone: (user.phone as string) ?? "",
     });
   }, [user, isInitialized, reset]);
+
+  const handleDelete = (id: string) => {
+    removeItem(id);
+  };
 
   const onSubmit = async (data: CheckoutFormSchema) => {
     try {
@@ -192,6 +198,7 @@ export const CheckoutForm = () => {
               <th>{t("service", { fallback: "Service" })}</th>
               <th>{t("price", { fallback: "Price, €" })}</th>
               <th>{t("subtotal", { fallback: "Subtotal, €" })}</th>
+              <th></th>
             </tr>
           </thead>
           <tbody>
@@ -200,6 +207,11 @@ export const CheckoutForm = () => {
                 <td>{item.title} x {item.quantity}</td>
                 <td>{item.price.toFixed(2)}</td>
                 <td>{(item.price * item.quantity).toFixed(2)}</td>
+                <td>
+                  <button type="button" className={styles.deleteButton} onClick={() => handleDelete(item.id)}>
+                    <DeleteIcon />
+                  </button>
+                </td>
               </tr>
             ))}
 
@@ -208,6 +220,7 @@ export const CheckoutForm = () => {
             <tr>
               <td colSpan={2} className={styles.total}>{t("total", { fallback: "Total" })}</td>
               <td className={styles.totalPrice}>{total.toFixed(2)}</td>
+              <td></td>
             </tr>
           </tfoot>
         </table>

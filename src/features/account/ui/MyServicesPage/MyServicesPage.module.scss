@@ -1,3 +1,5 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
 .title {
   margin-bottom: 1.5rem;
   color: #fff;
@@ -13,74 +15,114 @@
   font-weight: 300;
 }
 
-.list {
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
+.tableWrap {
+  overflow-x: auto;
   margin-bottom: 1.5rem;
 }
 
-.card {
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
-  padding: 1.25rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.cardRow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-}
-
-.cardCol {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  min-width: 0;
-
-  .label {
-    color: #ccc;
-    font-size: 12px;
-    font-weight: 500;
-    text-transform: uppercase;
-    letter-spacing: 0.02em;
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 600px;
+  @include tablet {
+    min-width: unset;
   }
 
-  .value {
+  tr {
+    @include tablet {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      td {
+        border-right: none;
+      }
+      .serviceCell {
+        width: 100%;
+        order: 2;
+        font-size: 20px;
+      }
+      .date {
+        width: 50%;
+        order: 1;
+        text-align: right;
+      }
+      .documentsCell {
+        width: 100%;
+        order: 3;
+      }
+      .manage {
+        width: 100%;
+        order: 4;
+        button{
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  td {
+    padding: 12px;
     color: #fff;
-    font-size: 14px;
-    font-weight: 300;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
+    border-top: 2px solid #000;
+    &:first-child {
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    &:last-child {
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  th {
+    color: #fff;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    border-top: 2px solid #000;
+    &:first-child {
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    &:last-child {
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    text-align: left;
+    white-space: nowrap;
+    @include tablet {
+      display: none;
+    }
   }
 }
 
-.cardColManage {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  margin-top: 0.25rem;
+.serviceCell {
+  white-space: pre-line;
 }
 
-.label {
-  color: #ccc;
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
+.date {
+  white-space: nowrap;
 }
 
-.documents {
-  display: flex;
-  flex-direction: column;
-  gap: 0.35rem;
+.documentsCell {
+  .documents {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
 }
 
 .docLink {
   color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 300;
   text-decoration: underline;
   transition: color 0.2s ease;
@@ -90,11 +132,8 @@
   }
 }
 
-.docNote {
-  color: rgba(204, 204, 204, 0.6);
-  font-size: 12px;
-  font-weight: 300;
-  margin: 0.25rem 0 0 0;
+.manage {
+  white-space: nowrap;
 }
 
 .orderAgainBtn {
@@ -103,44 +142,12 @@
   justify-content: center;
   padding: 10px 16px;
   height: 38px;
-  max-width: 200px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  background: rgba(255, 255, 255, 0.05);
-  color: #fff;
-  font-size: 14px;
-  font-weight: 300;
-  cursor: pointer;
-  transition: border-color 0.3s ease, background 0.3s ease;
-
-  &:hover {
-    border-color: rgba(255, 255, 255, 0.3);
-    background: rgba(255, 255, 255, 0.08);
-  }
-}
-
-.orderAgainNote {
-  color: rgba(204, 204, 204, 0.5);
   font-size: 12px;
   font-weight: 300;
-  margin: 0.25rem 0 0 0;
-}
-
-.back {
-  margin-top: 1.5rem;
-}
-
-.backLink {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 16px;
-  height: 38px;
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.05);
   color: #fff;
-  font-size: 14px;
-  font-weight: 300;
-  text-decoration: none;
+  border-radius: 0;
   cursor: pointer;
   transition: border-color 0.3s ease, background 0.3s ease;
   box-sizing: border-box;
@@ -150,4 +157,9 @@
     background: rgba(255, 255, 255, 0.08);
     color: #fff;
   }
+}
+
+.back {
+  margin-top: 1.5rem;
+  display: flex;
 }

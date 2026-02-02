@@ -195,6 +195,9 @@
         @include mobile {
           font-size: 12px;
         }
+        &:last-child {
+          width: 1% !important;
+        }
       }
 
       td {
@@ -207,6 +210,9 @@
         font-weight: 400;
         line-height: normal;
         width: 20%;
+        &:last-child {
+          width: 1% !important;
+        }
         @include mobile {
           font-size: 12px;
         }
@@ -242,6 +248,27 @@
           background: rgba(255, 255, 255, 0.05);
         }
       }
+    }
+  }
+
+  .deleteButton {
+    width: 16px;
+    height: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    background: #ff3e47;
+    border-radius: 50%;
+    border: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    font-size: 10px;
+    line-height: 1;
+    svg {
+      width: 10px;
+      height: 10px;
     }
   }
 
@@ -299,10 +326,9 @@
       }
     }
 
-    button{
+    button {
       margin-top: 8px;
     }
-
   }
 
   .submitButton {

@@ -1,3 +1,4 @@
+export * from './delete';
 export * from './email';
 export * from './header/Account';
 export * from './header/Cart';

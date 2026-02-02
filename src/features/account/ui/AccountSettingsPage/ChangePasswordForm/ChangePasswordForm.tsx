@@ -3,6 +3,7 @@
 import { useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
 
 import {
@@ -10,12 +11,15 @@ import {
   changePasswordSchema,
 } from "@/features/account/model/account-settings.schema";
 
+import { Button } from "@/shared/ui/kit/button/Button";
+
 import styles from "../AccountSettingsPage.module.scss";
 
 const SUCCESS_MESSAGE = "Your personal information has been updated successfully.";
 const WRONG_PASSWORD_MESSAGE = "The wrong password. Try again.";
 
 export const ChangePasswordForm = () => {
+  const t = useTranslations("accountSettingsPage");
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
 
   const form = useForm<ChangePasswordSchema>({
@@ -62,16 +66,15 @@ export const ChangePasswordForm = () => {
 
   return (
     <div className={styles.formSection}>
-      <h2>Change password</h2>
       <form className={styles.form} onSubmit={form.handleSubmit(onSubmit)}>
         <div className={styles.formGroup}>
           <label htmlFor="currentPassword">
-            Current Password <span className={styles.required}>*</span>
+            {t("currentPassword", { fallback: "Current Password" })} <span className={styles.required}>*</span>
           </label>
           <input
             id="currentPassword"
             type="password"
-            placeholder="Current Password (this is a placeholder text)"
+            placeholder={t("currentPasswordPlaceholder", { fallback: "Current Password" })}
             {...form.register("currentPassword")}
             className={form.formState.errors.currentPassword ? styles.errorInput : ""}
           />
@@ -81,12 +84,12 @@ export const ChangePasswordForm = () => {
         </div>
         <div className={styles.formGroup}>
           <label htmlFor="newPassword">
-            New Password <span className={styles.required}>*</span>
+            {t("newPassword", { fallback: "New Password" })} <span className={styles.required}>*</span>
           </label>
           <input
             id="newPassword"
             type="password"
-            placeholder="New Password (this is a placeholder text)"
+            placeholder={t("newPasswordPlaceholder", { fallback: "New Password" })}
             {...form.register("newPassword")}
             className={form.formState.errors.newPassword ? styles.errorInput : ""}
           />
@@ -96,12 +99,12 @@ export const ChangePasswordForm = () => {
         </div>
         <div className={styles.formGroup}>
           <label htmlFor="repeatNewPassword">
-            Repeat New Password <span className={styles.required}>*</span>
+            {t("repeatNewPassword", { fallback: "Repeat New Password" })} <span className={styles.required}>*</span>
           </label>
           <input
             id="repeatNewPassword"
             type="password"
-            placeholder="Repeat New Password (this is a placeholder text)"
+            placeholder={t("repeatNewPasswordPlaceholder", { fallback: "Repeat New Password" })}
             {...form.register("repeatNewPassword")}
             className={form.formState.errors.repeatNewPassword ? styles.errorInput : ""}
           />
@@ -109,9 +112,9 @@ export const ChangePasswordForm = () => {
             <p className={styles.error}>{form.formState.errors.repeatNewPassword.message}</p>
           )}
         </div>
-        <button type="submit" disabled={form.formState.isSubmitting}>
-          Update Data
-        </button>
+        <Button type="submit" variant="white" disabled={form.formState.isSubmitting}>
+          {t("updateData", { fallback: "Update Data" })}
+        </Button>
         {message && (
           <p className={`${styles.message} ${styles[message.type]}`}>{message.text}</p>
         )}

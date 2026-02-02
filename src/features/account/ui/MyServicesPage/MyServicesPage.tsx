@@ -2,13 +2,17 @@
 
 import { useEffect, useState } from "react";
 
+import { useTranslations } from "next-intl";
+
 import type { Order, OrderItem } from "@/features/account/model/orders.types";
 import { useAuthStore } from "@/features/account/store/auth";
 import { useCartStore } from "@/features/cart/store/cart";
 
+import { Button } from "@/shared/ui/kit/button/Button";
+
 import styles from "./MyServicesPage.module.scss";
 
-import { Link, useRouter } from "@/i18n/navigation";
+import { useRouter } from "@/i18n/navigation";
 
 type ServiceRow = {
   orderId: string;
@@ -23,17 +27,20 @@ type ServiceRow = {
 function formatDate(createdAt: string): string {
   try {
     const d = new Date(createdAt);
-    return d.toLocaleDateString("en-GB", {
-      day: "2-digit",
-      month: "2-digit",
-      year: "numeric",
-    }).replace(/\//g, ".");
+    return d
+      .toLocaleDateString("en-GB", {
+        day: "2-digit",
+        month: "2-digit",
+        year: "numeric",
+      })
+      .replace(/\//g, ".");
   } catch {
     return createdAt;
   }
 }
 
 export const MyServicesPage = () => {
+  const t = useTranslations("myServicesPage");
   const router = useRouter();
   const user = useAuthStore((s) => s.user);
   const isInitialized = useAuthStore((s) => s.isInitialized);
@@ -57,7 +64,9 @@ export const MyServicesPage = () => {
     let cancelled = false;
     (async () => {
       try {
-        const res = await fetch("/api/account/orders", { credentials: "include" });
+        const res = await fetch("/api/account/orders", {
+          credentials: "include",
+        });
         const data = (await res.json()) as { orders?: Order[] };
         if (!cancelled) setOrders(data.orders ?? []);
       } catch {
@@ -101,40 +110,45 @@ export const MyServicesPage = () => {
   if (!isInitialized || !user) {
     return (
       <section className={styles.section}>
-        <div className="container">
-          <p className={styles.loadingText}>Loading...</p>
-        </div>
+        <p className={styles.loadingText}>
+          {t("loading", { fallback: "Loading..." })}
+        </p>
       </section>
     );
   }
 
   return (
     <section className={styles.section}>
-      <div className="container">
-        <h1 className={styles.title}>My Services</h1>
-        {loading ? (
-          <p className={styles.loadingText}>Loading...</p>
-        ) : rows.length === 0 ? (
-          <p className={styles.empty}>You have no services yet.</p>
-        ) : (
-          <div className={styles.list}>
-            {rows.map((row) => (
-              <article key={`${row.orderId}-${row.itemIndex}`} className={styles.card}>
-                <div className={styles.cardRow}>
-                  <div className={styles.cardCol}>
-                    <span className={styles.label}>Service</span>
-                    <span className={styles.value}>{row.service}</span>
-                  </div>
-                  <div className={styles.cardCol}>
-                    <span className={styles.label}>Date</span>
-                    <span className={styles.value}>{row.date}</span>
-                  </div>
-                </div>
-                <div className={styles.cardCol}>
-                  <span className={styles.label}>Documents</span>
-                  <div className={styles.documents}>
+      <h1 className={styles.title}>
+        {t("title", { fallback: "My Services" })}
+      </h1>
+      {loading ? (
+        <p className={styles.loadingText}>
+          {t("loading", { fallback: "Loading..." })}
+        </p>
+      ) : rows.length === 0 ? (
+        <p className={styles.empty}>
+          {t("noServices", { fallback: "You have no services yet." })}
+        </p>
+      ) : (
+        <div className={styles.tableWrap}>
+          <table className={styles.table}>
+            <thead>
+              <tr>
+                <th>{t("service", { fallback: "Service" })}</th>
+                <th>{t("date", { fallback: "Date" })}</th>
+                <th>{t("documents", { fallback: "Documents" })}</th>
+                <th>{t("manage", { fallback: "Manage" })}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {rows.map((row) => (
+                <tr key={`${row.orderId}-${row.itemIndex}`}>
+                  <td className={styles.serviceCell}>{row.service}</td>
+                  <td className={styles.date}>{row.date}</td>
+                  <td className={styles.documentsCell}>
                     {row.documents.length > 0 ? (
-                      <>
+                      <div className={styles.documents}>
                         {row.documents.map((doc, i) => (
                           <a
                             key={i}
@@ -144,37 +158,34 @@ export const MyServicesPage = () => {
                             className={styles.docLink}
                             download
                           >
-                            {doc.name}
+                            {t("document", { fallback: "Document" })} {i + 1}
                           </a>
                         ))}
-                        <p className={styles.docNote}>The documents are downloadable</p>
-                      </>
+                      </div>
                     ) : (
-                      <span className={styles.value}>—</span>
+                      <span>—</span>
                     )}
-                  </div>
-                </div>
-                <div className={styles.cardColManage}>
-                  <span className={styles.label}>Manage</span>
-                  <button
-                    type="button"
-                    className={styles.orderAgainBtn}
-                    onClick={() => handleOrderAgain(row)}
-                  >
-                    Order Again
-                  </button>
-                  <p className={styles.orderAgainNote}>The button adds the service to the cart</p>
-                </div>
-              </article>
-            ))}
-          </div>
-        )}
-        <p className={styles.back}>
-          <Link href="/account" className={styles.backLink}>
-            ← Back to account
-          </Link>
-        </p>
-      </div>
+                  </td>
+                  <td className={styles.manage}>
+                    <Button
+                      type="button"
+                      variant="white"
+                      onClick={() => handleOrderAgain(row)}
+                    >
+                      {t("orderAgain", { fallback: "Order Again" })}
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+      <p className={styles.back}>
+        <Button url="/account" variant="bordered-black" type="link">
+          {t("backToAccount", { fallback: "← Back to account" })}
+        </Button>
+      </p>
     </section>
   );
 };

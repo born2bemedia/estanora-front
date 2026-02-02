@@ -1,3 +1,4 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
 
 .title {
   margin-bottom: 1.5rem;
@@ -17,34 +18,103 @@
 .tableWrap {
   overflow-x: auto;
   margin-bottom: 1.5rem;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  background: rgba(255, 255, 255, 0.03);
-  border-radius: 8px;
 }
 
 .table {
   width: 100%;
   border-collapse: collapse;
   min-width: 600px;
-
-  th,
-  td {
-    padding: 0.75rem 1rem;
-    text-align: left;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    color: #fff;
-    font-size: 14px;
-    font-weight: 300;
+  @include tablet {
+    min-width: unset;
   }
+
+  tr {
+    @include tablet {
+      display: flex;
+      flex-wrap: wrap;
+      margin-top: 16px;
+      td {
+        border-right: none;
+      }
+      .orderNumber {
+        width: 50%;
+        order: 1;
+      }
+      .date {
+        width: 50%;
+        order: 2;
+        text-align: right;
+      }
+      .serviceCell {
+        width: 100%;
+        order: 3;
+        font-size: 20px;
+      }
+      .status {
+        width: 50%;
+        order: 4;
+        font-size: 20px;
+      }
+      .total {
+        width: 50%;
+        order: 5;
+        text-align: right;
+        font-size: 20px;
+      }
+      .invoice {
+        width: 100%;
+        order: 5;
+      }
+    }
+  }
+
+  td {
+    padding: 12px;
+    color: #fff;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    background: rgba(255, 255, 255, 0.03);
+    border-top: 2px solid #000;
+    &:first-child {
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    &:last-child {
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    a {
+      font-size: 12px;
+    }
+  }
+
+  
 
   th {
-    font-weight: 500;
-    color: #ccc;
+    color: #fff;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: uppercase;
+    padding: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    
+    text-align: left;
+    white-space: nowrap;
+    @include tablet {
+      display: none;
+    }
+    &:first-child {
+      border-left: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    &:last-child {
+      border-right: 1px solid rgba(255, 255, 255, 0.05);
+    }
   }
 
-  tr:last-child td {
-    border-bottom: none;
-  }
 }
 
 .serviceCell {
@@ -89,6 +159,7 @@
 
 .back {
   margin-top: 1.5rem;
+  display: flex;
 }
 
 .backLink {
@@ -105,7 +176,7 @@
   text-decoration: none;
   cursor: pointer;
   transition: border-color 0.3s ease, background 0.3s ease;
-box-sizing: border-box;
+  box-sizing: border-box;
 
   &:hover {
     border-color: rgba(255, 255, 255, 0.3);

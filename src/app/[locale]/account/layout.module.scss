@@ -1,0 +1,28 @@
+@use '@/shared/lib/styles/mixin.scss' as *;
+
+.accountLayout {
+  padding: 180px 0 120px 0;
+  &__body {
+    display: flex;
+    gap: 64px;
+    align-items: flex-start;
+    @include tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__content {
+    width: calc(100% - 264px);
+    border: 1px solid #222;
+    background: #000;
+    padding: 32px;
+    @include tablet {
+      width: 100%;
+    }
+    &.mainPage {
+      padding: 0;
+      border: none;
+      background: transparent;
+    }
+  }
+}

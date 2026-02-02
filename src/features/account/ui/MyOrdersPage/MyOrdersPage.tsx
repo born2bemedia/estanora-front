@@ -2,8 +2,12 @@
 
 import { useEffect, useState } from "react";
 
+import { useTranslations } from "next-intl";
+
 import { isOrderCompleted, type Order } from "@/features/account/model/orders.types";
 import { useAuthStore } from "@/features/account/store/auth";
+
+import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "./MyOrdersPage.module.scss";
 
@@ -38,6 +42,7 @@ function formatNumber(value: number): string {
 }
 
 export const MyOrdersPage = () => {
+  const t = useTranslations("myOrdersPage");
   const router = useRouter();
   const user = useAuthStore((s) => s.user);
   const isInitialized = useAuthStore((s) => s.isInitialized);
@@ -98,7 +103,7 @@ export const MyOrdersPage = () => {
     return (
       <section className={styles.section}>
         <div className="container">
-          <p className={styles.loadingText}>Loading...</p>
+          <p className={styles.loadingText}>{t("loading", { fallback: "Loading..." })}</p>
         </div>
       </section>
     );
@@ -106,48 +111,45 @@ export const MyOrdersPage = () => {
 
   return (
     <section className={styles.section}>
-      <div className="container">
-        <h1 className={styles.title}>My Orders</h1>
+        <h1 className={styles.title}>{t("title", { fallback: "My Orders" })}</h1>
         {loading ? (
-          <p className={styles.loadingText}>Loading orders...</p>
+          <p className={styles.loadingText}>{t("loading", { fallback: "Loading orders..." })}</p>
         ) : rows.length === 0 ? (
-          <p className={styles.empty}>You have no orders yet.</p>
+          <p className={styles.empty}>{t("noOrders", { fallback: "You have no orders yet." })}</p>
         ) : (
           <div className={styles.tableWrap}>
             <table className={styles.table}>
               <thead>
                 <tr>
-                  <th>Date</th>
-                  <th>Order ID</th>
-                  <th>Service</th>
-                  <th>Quantity</th>
-                  <th>Total, €</th>
-                  <th>Status</th>
-                  <th>Invoice</th>
+                  <th>{t("date", { fallback: "Date" })}</th>
+                  <th>{t("orderId", { fallback: "Order ID" })}</th>
+                  <th>{t("service", { fallback: "Service" })}</th>
+                  {/**<th>{t("quantity", { fallback: "Quantity" })}</th> */}
+                  <th>{t("total", { fallback: "Total, €" })}</th>
+                  <th>{t("status", { fallback: "Status" })}</th>
+                  <th>{t("invoice", { fallback: "Invoice" })}</th>
                 </tr>
               </thead>
               <tbody>
                 {rows.map((row) => (
                   <tr key={row.orderId}>
-                    <td>{row.date}</td>
-                    <td>{row.orderNumber}</td>
+                    <td className={styles.date}>{row.date}</td>
+                    <td className={styles.orderNumber}>{row.orderNumber}</td>
                     <td className={styles.serviceCell}>{row.service}</td>
-                    <td>{row.quantity}</td>
-                    <td>{formatNumber(row.total)}</td>
-                    <td>{row.status}</td>
-                    <td>
+                    {/**<td className={styles.quantity}>{row.quantity}</td> */}
+                    <td className={styles.total}>{formatNumber(row.total)}</td>
+                    <td className={styles.status}>{row.status}</td>
+                    <td className={styles.invoice}>
                       {isOrderCompleted(row.status) && row.order.invoiceDownloadUrl ? (
-                        <a
-                          href={row.order.invoiceDownloadUrl}
-                          className={styles.downloadBtn}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          download
+                        <Button
+                          url={row.order.invoiceDownloadUrl}
+                          variant="white"
+                          type="link"
                         >
-                          Download
-                        </a>
+                          {t("download", { fallback: "Download" })}
+                        </Button>
                       ) : (
-                        <span className={styles.downloadBtnDisabled}>Download</span>
+                        <span className={styles.downloadBtnDisabled}>{t("download", { fallback: "Download" })}</span>
                       )}
                     </td>
                   </tr>
@@ -157,9 +159,10 @@ export const MyOrdersPage = () => {
           </div>
         )}
         <p className={styles.back}>
-          <Link href="/account" className={styles.backLink}>← Back to account</Link>
+          <Button url="/account" variant="bordered-black" type="link">
+            {t("backToAccount", { fallback: "← Back to account" })}
+          </Button>
         </p>
-      </div>
     </section>
   );
 };
