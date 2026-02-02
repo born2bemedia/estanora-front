@@ -3,6 +3,7 @@
 import { useCartStore } from "@/features/cart";
 import { CheckoutForm } from "@/features/cart/ui/CheckoutForm/CheckoutForm";
 import { EmptyCart } from "@/features/cart/ui/EmptyCart/EmptyCart";
+import { EmptyCta } from "@/features/cart/ui/EmptyCta/EmptyCta";
 
 import styles from "./page.module.scss";
 
@@ -15,7 +16,14 @@ export default function CheckoutPage() {
     <>
       <section className={styles.checkout}>
         <div className={"container"}>
-          {isEmpty ? <EmptyCart /> : <CheckoutForm />}
+          {isEmpty ? (
+            <>
+              <EmptyCart />
+              <EmptyCta />
+            </>
+          ) : (
+            <CheckoutForm />
+          )}
         </div>
       </section>
     </>

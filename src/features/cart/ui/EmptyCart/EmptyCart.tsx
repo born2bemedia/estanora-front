@@ -1,6 +1,8 @@
-import styles from "./EmptyCart.module.scss";
+import { useTranslations } from "next-intl";
 
-import { Link } from "@/i18n/navigation";
+import { Button } from "@/shared/ui/kit/button/Button";
+
+import styles from "./EmptyCart.module.scss";
 
 const OFFERS = [
   { href: "/due-diligence", label: "Due Diligence" },
@@ -10,18 +12,30 @@ const OFFERS = [
 ] as const;
 
 export const EmptyCart = () => {
+  const t = useTranslations("emptyCart");
   return (
     <div className={styles.wrap}>
-      <h1 className={styles.title}>Your cart is empty</h1>
+      <h1 className={styles.title}>
+        {t("title", { fallback: "Your cart is empty" })}
+      </h1>
       <p className={styles.text}>
-        You haven&apos;t added any services yet. Please check our offers:
+        {t("text", {
+          fallback:
+            "You haven't added any services yet. Please check our offers:",
+        })}
       </p>
       <ul className={styles.links}>
-        {OFFERS.map(({ href, label }) => (
-          <li key={href}>
-            <Link href={href} className={styles.link}>
-              {label}
-            </Link>
+        {OFFERS.map(({ href, label }, index) => (
+          <li key={index}>
+            {index ! == OFFERS.length - 1 ? (
+              <Button type="link" url={href} variant="bordered-black">
+                {label}
+              </Button>
+            ) : (
+              <Button type="link" url={href} variant="white">
+                {label}
+              </Button>
+            )}
           </li>
         ))}
       </ul>

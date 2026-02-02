@@ -465,6 +465,16 @@
     "title": "Why Manage Portfolio?",
     "description": "Passive ownership often leads to tax leakage and missed growth opportunities. Professional portfolio management ensures your assets are physically sound, tax-optimized, and strategically aligned with your family’s long-term financial goals."
   },
+  "emptyCart": {
+    "title": "Your cart is empty",
+    "text": "You haven't added any services yet. Please check our offers:"
+  },
+  "emptyCta": {
+    "title": "Unsure where to start?",
+    "description1": "Get a professional case revision at no cost. ",
+    "description2": "Schedule a free introductory call to discuss your property goals. We will recommend the exact expert or audit required for your situation.",
+    "button": "Book free call"
+  },
   "contactForm": {
     "fullName": "Full name",
     "email": "Email address",
