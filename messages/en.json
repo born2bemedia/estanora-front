@@ -502,7 +502,10 @@
     "yourPhone": "Your Phone",
     "yourPhonePlaceholder": "Your Phone",
     "yourEmail": "Your Email",
-    "yourEmailPlaceholder": "Your Email"
+    "yourEmailPlaceholder": "Your Email",
+    "dataUpdated": "Data updated successfully!",
+    "dataUpdatedDescription": "Your personal information has been updated successfully.",
+    "close": "Close"
   },
   "account": {
     "login": "Log in",

@@ -14,13 +14,14 @@ import {
 import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "../AccountSettingsPage.module.scss";
+import { DataUpdatedPopup } from "../DataUpdatedPopup/DataUpdatedPopup";
 
-const SUCCESS_MESSAGE = "Your personal information has been updated successfully.";
 const WRONG_PASSWORD_MESSAGE = "The wrong password. Try again.";
 
 export const ChangePasswordForm = () => {
   const t = useTranslations("accountSettingsPage");
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const form = useForm<ChangePasswordSchema>({
     resolver: zodResolver(changePasswordSchema),
@@ -45,12 +46,12 @@ export const ChangePasswordForm = () => {
       });
       const json = (await res.json()) as { message?: string; ok?: boolean };
       if (res.ok) {
-        setMessage({ type: "success", text: SUCCESS_MESSAGE });
         form.reset({
           currentPassword: "",
           newPassword: "",
           repeatNewPassword: "",
         });
+        setIsOpen(true);
       } else {
         const msg = json.message ?? "Password update failed.";
         if (res.status === 400 && (msg.toLowerCase().includes("wrong") || msg.toLowerCase().includes("password"))) {
@@ -119,6 +120,7 @@ export const ChangePasswordForm = () => {
           <p className={`${styles.message} ${styles[message.type]}`}>{message.text}</p>
         )}
       </form>
+      <DataUpdatedPopup isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 };

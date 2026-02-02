@@ -18,10 +18,9 @@ import { excludedCountries } from "@/shared/lib/helpers/excludedCountries";
 import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "../AccountSettingsPage.module.scss";
+import { DataUpdatedPopup } from "../DataUpdatedPopup/DataUpdatedPopup";
 
 import "react-phone-input-2/lib/style.css";
-
-const SUCCESS_MESSAGE = "Your personal information has been updated successfully.";
 
 type ContactDataFormProps = {
   user: AuthUser;
@@ -30,7 +29,9 @@ type ContactDataFormProps = {
 export const ContactDataForm = ({ user }: ContactDataFormProps) => {
   const t = useTranslations("accountSettingsPage");
   const setUser = useAuthStore((s) => s.setUser);
+  const fetchUser = useAuthStore((s) => s.fetchUser);
   const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
+  const [isOpen, setIsOpen] = useState(false);
 
   const form = useForm<ContactDataSchema>({
     resolver: zodResolver(contactDataSchema),
@@ -76,12 +77,13 @@ export const ContactDataForm = ({ user }: ContactDataFormProps) => {
           lastName: u.lastName ?? user.lastName,
           phone: u.phone ?? user.phone,
         });
-        setMessage({ type: "success", text: SUCCESS_MESSAGE });
+        fetchUser();
+        setIsOpen(true);
       } else {
-        setMessage({ type: "error", text: json.message ?? "Update failed." });
+        setMessage({ type: "error", text: json?.message ?? "Update failed." });
       }
     } catch {
-      setMessage({ type: "error", text: "Update failed." });
+      setMessage({ type: "error", text: "Update failed 2." });
     }
   };
 
@@ -164,6 +166,7 @@ export const ContactDataForm = ({ user }: ContactDataFormProps) => {
           <p className={`${styles.message} ${styles[message.type]}`}>{message.text}</p>
         )}
       </form>
+      <DataUpdatedPopup isOpen={isOpen} setIsOpen={setIsOpen} />
     </div>
   );
 };
