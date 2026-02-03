@@ -366,6 +366,11 @@
   "common": {
     "last-updated": "Last updated:"
   },
+  "accountLoginPage": {
+    "title": "Need Assistance?",
+    "text1": "Experiencing troubles with logging in?",
+    "text2": "Our support team is here to help."
+  },
   "marketResearchDifference": {
     "title": "What’s the difference?",
     "subtitle1": "15-Minute Intro Call (Free)",
@@ -472,6 +477,11 @@
     "title": "Why Manage Portfolio?",
     "description": "Passive ownership often leads to tax leakage and missed growth opportunities. Professional portfolio management ensures your assets are physically sound, tax-optimized, and strategically aligned with your family’s long-term financial goals."
   },
+  "accountRegistrationPage": {
+    "title": "Need Assistance?",
+    "text1": "Experiencing troubles registering your account?",
+    "text2": "Our support team is here to help."
+  },
   "accountNavigation": {
     "my-orders": "My Orders",
     "my-services": "My Services",
@@ -506,6 +516,9 @@
     "dataUpdated": "Data updated successfully!",
     "dataUpdatedDescription": "Your personal information has been updated successfully.",
     "close": "Close"
+  },
+  "formsCta": {
+    "button": "Contact Estanora support"
   },
   "account": {
     "title": "Welcome Back to Estanora",

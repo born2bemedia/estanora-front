@@ -80,6 +80,7 @@ export const RegistrationForm = () => {
           })}
         </p>
       </div>
+      <div className={styles.formWrapper}>
       <div className={styles.formGroup}>
         <label htmlFor="firstName">
           {t("firstName", { fallback: "First name:" })}{" "}
@@ -166,6 +167,7 @@ export const RegistrationForm = () => {
         {t("loginLink1", { fallback: "Already have an account?" })}{" "}
         <Link href="/log-in">{t("loginLink2", { fallback: "Log in" })}</Link>
       </p>
+      </div>
     </form>
   );
 };

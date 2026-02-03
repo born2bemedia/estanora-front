@@ -62,56 +62,60 @@ export const LoginForm = () => {
           })}
         </p>
       </div>
-      <div className={styles.formGroup}>
-        <label htmlFor="email">{t("email", { fallback: "Email" })} </label>
-        <input
-          id="email"
-          type="email"
-          {...register("email")}
-          autoComplete="email"
-          className={errors.email ? styles.errorInput : ""}
-        />
-        {errors.email && (
-          <span className={styles.error}>{errors.email.message}</span>
-        )}
-      </div>
-      <div className={styles.formGroup}>
-        <label htmlFor="password">
-          {t("password", { fallback: "Password" })}
-        </label>
-        <div className={styles.passwordWrapper}>
+      <div className={styles.formWrapper}>
+        <div className={styles.formGroup}>
+          <label htmlFor="email">{t("email", { fallback: "Email" })} </label>
           <input
-            id="password"
-            type={showPassword ? "text" : "password"}
-            {...register("password")}
-            autoComplete="current-password"
-            className={errors.password ? styles.errorInput : ""}
+            id="email"
+            type="email"
+            {...register("email")}
+            autoComplete="email"
+            className={errors.email ? styles.errorInput : ""}
           />
-          <button
-            type="button"
-            className={styles.togglePassword}
-            onClick={() => setShowPassword(!showPassword)}
-            aria-label={showPassword ? "Hide password" : "Show password"}
-          >
-            {showPassword ? <EyeOffIcon /> : <EyeIcon />}
-          </button>
+          {errors.email && (
+            <span className={styles.error}>{errors.email.message}</span>
+          )}
         </div>
-        {errors.password && (
-          <span className={styles.error}>{errors.password.message}</span>
+        <div className={styles.formGroup}>
+          <label htmlFor="password">
+            {t("password", { fallback: "Password" })}
+          </label>
+          <div className={styles.passwordWrapper}>
+            <input
+              id="password"
+              type={showPassword ? "text" : "password"}
+              {...register("password")}
+              autoComplete="current-password"
+              className={errors.password ? styles.errorInput : ""}
+            />
+            <button
+              type="button"
+              className={styles.togglePassword}
+              onClick={() => setShowPassword(!showPassword)}
+              aria-label={showPassword ? "Hide password" : "Show password"}
+            >
+              {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+            </button>
+          </div>
+          {errors.password && (
+            <span className={styles.error}>{errors.password.message}</span>
+          )}
+        </div>
+        {errors.root && (
+          <span className={styles.rootError}>{errors.root.message}</span>
         )}
+        <Button type="submit" variant="white" disabled={isLoading}>
+          {isLoading
+            ? t("loggingIn", { fallback: "Logging in..." })
+            : t("login", { fallback: "Log in" })}
+        </Button>
+        <p className={styles.signupLink}>
+          {t("signupLink1", { fallback: "Don't have an account?" })}{" "}
+          <Link href="/registration">
+            {t("signupLink2", { fallback: "Sign up" })}
+          </Link>
+        </p>
       </div>
-      {errors.root && (
-        <span className={styles.rootError}>{errors.root.message}</span>
-      )}
-      <Button type="submit" variant="white" disabled={isLoading}>
-        {isLoading
-          ? t("loggingIn", { fallback: "Logging in..." })
-          : t("login", { fallback: "Log in" })}
-      </Button>
-      <p className={styles.signupLink}>
-        {t("signupLink1", { fallback: "Don't have an account?" })}{" "}
-        <Link href="/registration">{t("signupLink2", { fallback: "Sign up" })}</Link>
-      </p>
     </form>
   );
 };

@@ -1,13 +1,10 @@
 .form {
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 48px;
   width: 100%;
-  max-width: 28rem;
-  margin: 0 auto;
 
   .header {
-    margin-bottom: 48px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -30,7 +27,7 @@
       line-height: normal;
     }
   }
-  
+
   .signupLink {
     color: #ccc;
     text-align: center;
@@ -43,6 +40,18 @@
       text-decoration: none;
       font-weight: 500;
     }
+  }
+
+  .formWrapper {
+    border: 1px solid #222;
+    background: #000;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 32px;
   }
 
   .formGroup {
