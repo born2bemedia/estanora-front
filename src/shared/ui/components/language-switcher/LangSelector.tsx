@@ -1,62 +1,99 @@
-'use client';
-import { useState } from 'react';
-import Image from 'next/image';
+"use client";
 
-import { useLocale } from 'next-intl';
+import { useEffect, useRef, useState } from "react";
 
-import styles from './LangSelector.module.scss';
+import { useLocale } from "next-intl";
 
-import { usePathname, useRouter } from '@/i18n/navigation';
+import { LangIcon } from "@/shared/ui/icons/header/LangIcon";
+
+import styles from "./LangSelector.module.scss";
+
+import { useRouter } from "@/i18n/navigation";
+import { routing } from "@/i18n/routing";
+
+const LOCALE_LABELS: Record<string, string> = {
+  en: "English",
+  de: "Deutsch",
+  it: "Italiano",
+};
+
+/** Strip locale segment from pathname so we never get e.g. /it/de */
+function getPathnameWithoutLocale(pathname: string, locales: readonly string[]): string {
+  const segments = pathname.replace(/^\/+|\/+$/g, "").split("/");
+  const first = segments[0];
+  if (first && locales.includes(first)) {
+    const rest = segments.slice(1).join("/");
+    return rest ? `/${rest}` : "/";
+  }
+  return pathname || "/";
+}
 
 export const LangSelector = () => {
   const locale = useLocale();
   const router = useRouter();
-  const pathname = usePathname();
   const [isOpen, setIsOpen] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
-  const handleChange = (locale: string) => {
-    router.push(pathname, { locale });
+  const locales = routing.locales;
+  const currentLabel = LOCALE_LABELS[locale] ?? locale;
+
+  const handleChange = (newLocale: string) => {
+    const pathname =
+      typeof window !== "undefined" ? window.location.pathname : "/";
+    const pathWithoutLocale = getPathnameWithoutLocale(pathname, locales);
+    router.push(pathWithoutLocale, { locale: newLocale });
     setIsOpen(false);
   };
 
-  const localName = {
-    en: 'English',
-    de: 'German',
-    it: 'Italian',
-    ro: 'Romanian',
+  const handleToggle = () => {
+    setIsOpen((prev) => !prev);
   };
 
-  const handleToggle = () => {
-    setIsOpen(!isOpen);
-  };
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleClickOutside = (e: MouseEvent) => {
+      if (containerRef.current && !containerRef.current.contains(e.target as Node)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("click", handleClickOutside);
+    return () => document.removeEventListener("click", handleClickOutside);
+  }, [isOpen]);
 
   return (
-    <div className={styles.langSelector}>
-      <button onClick={handleToggle} className={styles.langSelectorItemLabel}>
-        <Image src={`/images/${locale}.svg`} alt={locale} width={18} height={18} />
-        <span className={styles.langSelectorItemLabelText}>
-          {localName[locale as keyof typeof localName]}
-        </span>
-        <Image src={`/images/arrow-down.svg`} alt={'arrow-down'} width={16} height={16} />
+    <div ref={containerRef} className={styles.langSelector}>
+      <button
+        type="button"
+        onClick={handleToggle}
+        className={styles.langSelectorItemLabel}
+        aria-expanded={isOpen}
+        aria-haspopup="listbox"
+        aria-label={currentLabel}
+      >
+        <LangIcon />
       </button>
       {isOpen && (
-        <div className={styles.langSelectorDropdown}>
-          <button onClick={() => handleChange('en')} className={styles.langSelectorDropdownItem}>
-            <Image src={`/images/en.svg`} alt={'en'} width={18} height={18} />
-            English
-          </button>
-          <button onClick={() => handleChange('de')} className={styles.langSelectorDropdownItem}>
-            <Image src={`/images/de.svg`} alt={'de'} width={18} height={18} />
-            German
-          </button>
-          <button onClick={() => handleChange('it')} className={styles.langSelectorDropdownItem}>
-            <Image src={`/images/it.svg`} alt={'it'} width={18} height={18} />
-            Italian
-          </button>
-          <button onClick={() => handleChange('ro')} className={styles.langSelectorDropdownItem}>
-            <Image src={`/images/ro.svg`} alt={'ro'} width={18} height={18} />
-            Romanian
-          </button>
+        <div
+          className={styles.langSelectorDropdown}
+          role="listbox"
+          aria-label="Select language"
+        >
+          {locales.map((loc) => (
+            <button
+              key={loc}
+              type="button"
+              role="option"
+              aria-selected={locale === loc}
+              onClick={() => handleChange(loc)}
+              className={
+                locale === loc
+                  ? `${styles.langSelectorDropdownItem} ${styles.active}`
+                  : styles.langSelectorDropdownItem
+              }
+            >
+              {LOCALE_LABELS[loc] ?? loc}
+            </button>
+          ))}
         </div>
       )}
     </div>

@@ -13,6 +13,7 @@ import { WEBSITE_EMAIL, WEBSITE_PHONE } from "@/shared/lib/constants/constants";
 import { AccountIcon, CartIcon } from "@/shared/ui/icons";
 import { Button } from "@/shared/ui/kit/button/Button";
 
+import { LangSelector } from "../language-switcher/LangSelector";
 import styles from "./Header.module.scss";
 
 import { Link } from "@/i18n/navigation";
@@ -79,6 +80,7 @@ export const Header = () => {
             <Link href={user ? "/account" : "/log-in"}>
               <AccountIcon />
             </Link>
+            <LangSelector />
           </div>
         </div>
         <div className={styles.header__row}>
@@ -103,7 +105,7 @@ export const Header = () => {
             <Link href={user ? "/account" : "/log-in"}>
               <AccountIcon />
             </Link>
-
+            <LangSelector />
             <button
               className={`${styles.header__mobile_menu_button} ${
                 isMobileMenuOpen ? styles.open : ""
