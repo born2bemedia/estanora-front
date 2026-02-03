@@ -9,7 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import { FormsPopupRenderer } from '@/features/forms';
 
 import { cn } from '@/shared/lib/helpers/styles';
-import { Footer, Header, Preloader } from '@/shared/ui/components';
+import { CookiePopup, Footer, Header, Preloader } from '@/shared/ui/components';
 
 import 'react-toastify/dist/ReactToastify.css';
 import '@/shared/lib/styles/null.scss';
@@ -49,6 +49,7 @@ export default async function RootLayout({
           <ToastContainer />
           <FormsPopupRenderer />  
           <Preloader /> 
+          <CookiePopup />
         </NextIntlClientProvider>
       </body>
     </html>
