@@ -5,6 +5,13 @@
   border-top: 1px solid #222;
   background: #000;
 
+  &__logo {
+    img {
+      width: 125px;
+      height: auto;
+    }
+  }
+
   &__main {
     display: flex;
     gap: 64px;

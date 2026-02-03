@@ -27,7 +27,7 @@ export const Footer = () => {
       <div className={'container'}>
         <div className={styles.footer__main}>
           <div className={styles.footer__main__col1}>
-            <Link href="/" className={styles.header__logo}>
+            <Link href="/" className={styles.footer__logo}>
               <Image src="/images/logo.svg" alt="Estanora" width={87} height={20} />
             </Link>
             <p>

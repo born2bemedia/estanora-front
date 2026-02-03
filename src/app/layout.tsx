@@ -9,7 +9,7 @@ import { ToastContainer } from 'react-toastify';
 import { FormsPopupRenderer } from '@/features/forms';
 
 import { cn } from '@/shared/lib/helpers/styles';
-import { Footer, Header } from '@/shared/ui/components';
+import { Footer, Header, Preloader } from '@/shared/ui/components';
 
 import 'react-toastify/dist/ReactToastify.css';
 import '@/shared/lib/styles/null.scss';
@@ -48,6 +48,7 @@ export default async function RootLayout({
           <Footer />
           <ToastContainer />
           <FormsPopupRenderer />  
+          <Preloader /> 
         </NextIntlClientProvider>
       </body>
     </html>
