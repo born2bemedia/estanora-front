@@ -10,6 +10,12 @@ type AuthStore = {
   isInitialized: boolean;
   fetchUser: () => Promise<void>;
   login: (email: string, password: string) => Promise<{ ok: boolean; message?: string }>;
+  register: (
+    firstName: string,
+    lastName: string,
+    email: string,
+    password: string
+  ) => Promise<{ ok: boolean; message?: string }>;
   logout: () => Promise<void>;
   setUser: (user: AuthUser | null) => void;
 };
@@ -53,6 +59,29 @@ export const useAuthStore = create<AuthStore>((set, get) => ({
     } catch {
       set({ isLoading: false });
       return { ok: false, message: "Login failed." };
+    }
+  },
+
+  register: async (firstName, lastName, email, password) => {
+    set({ isLoading: true });
+    try {
+      const res = await fetch("/api/auth/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ firstName, lastName, email, password }),
+        credentials: "include",
+      });
+      console.log(res);
+      const data = (await res.json()) as { user?: AuthUser; message?: string };
+      if (!res.ok) {
+        set({ isLoading: false });
+        return { ok: false, message: data.message ?? "Registration failed." };
+      }
+      set({ user: data.user ?? null, isLoading: false });
+      return { ok: true };
+    } catch {
+      set({ isLoading: false });
+      return { ok: false, message: "Registration failed." };
     }
   },
 

@@ -6,3 +6,4 @@ export { AccountSettingsPage } from "./ui/AccountSettingsPage/AccountSettingsPag
 export { LoginForm } from "./ui/LoginForm/LoginForm";
 export { MyOrdersPage } from "./ui/MyOrdersPage/MyOrdersPage";
 export { MyServicesPage } from "./ui/MyServicesPage/MyServicesPage";
+export { RegistrationForm } from "./ui/RegistrationForm/RegistrationForm";

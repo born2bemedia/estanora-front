@@ -96,7 +96,7 @@
     }
 
     .errorInput {
-      border-color: rgba(255, 62, 71, 0.30);
+      border-color: rgba(255, 62, 71, 0.3);
     }
 
     .error {
@@ -124,5 +124,33 @@
       opacity: 0.6;
       cursor: not-allowed;
     }
+  }
+}
+
+.successMessage {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+  max-width: 28rem;
+  margin: 0 auto;
+  text-align: center;
+
+  h2 {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  p {
+    color: #ccc;
+    font-size: 14px;
+    font-weight: 300;
+    line-height: 1.5;
+  }
+
+  button {
+    width: 100%;
   }
 }

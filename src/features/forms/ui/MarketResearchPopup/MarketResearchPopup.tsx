@@ -65,20 +65,6 @@ export const MarketResearchPopup = ({
     { value: "3m_plus", label: t("valueRange_3m_plus", { fallback: "€3M+" }) },
     { value: "not_sure", label: t("valueRange_not_sure", { fallback: "Not sure" }) },
   ];
-  
-  const CITY_OPTIONS = [
-    { value: "berlin", label: t("city_berlin", { fallback: "Berlin" }) },
-    { value: "munich", label: t("city_munich", { fallback: "Munich" }) },
-    { value: "frankfurt", label: t("city_frankfurt", { fallback: "Frankfurt" }) },
-    { value: "london", label: t("city_london", { fallback: "London" }) },
-    { value: "paris", label: t("city_paris", { fallback: "Paris" }) },
-    { value: "amsterdam", label: t("city_amsterdam", { fallback: "Amsterdam" }) },
-    { value: "vienna", label: t("city_vienna", { fallback: "Vienna" }) },
-    { value: "zurich", label: t("city_zurich", { fallback: "Zurich" }) },
-    { value: "madrid", label: t("city_madrid", { fallback: "Madrid" }) },
-    { value: "barcelona", label: t("city_barcelona", { fallback: "Barcelona" }) },
-    { value: "other", label: t("city_other", { fallback: "Other" }) },
-  ];
 
   const form = useForm<MarketResearchSchema>({
     resolver: zodResolver(marketResearchSchema),
@@ -93,6 +79,7 @@ export const MarketResearchPopup = ({
       email: "",
     },
   });
+
 
   const onSubmit = async (data: MarketResearchSchema) => {
     setError(null);
@@ -232,28 +219,18 @@ export const MarketResearchPopup = ({
                     </span>
                   )}
                 </div>
-                <div className={styles.formGroup}>
+                <div className={`${styles.formGroup} ${form.formState.errors.city ? styles.hasError : ""}`}>
                   <label htmlFor="market-city">
                     {t("city", { fallback: "City:" })}
                   </label>
-                  <Controller
-                    name="city"
-                    control={form.control}
-                    render={({ field }) => (
-                      <Select<SelectOption>
-                        {...field}
-                        inputId="market-city"
-                        placeholder={t("chooseOption", {
-                          fallback: "Choose your option",
-                        })}
-                        options={CITY_OPTIONS}
-                        value={CITY_OPTIONS.find((o) => o.value === field.value) ?? null}
-                        onChange={(opt) => field.onChange(opt?.value ?? "")}
-                        className={styles.select}
-                        classNamePrefix="select"
-                        styles={getSelectStyles(!!form.formState.errors.city)}
-                      />
-                    )}
+                  <input
+                    id="market-city"
+                    type="text"
+                    placeholder={t("cityPlaceholder", {
+                      fallback: "City name",
+                    })}
+                    {...form.register("city")}
+                    className={form.formState.errors.city ? styles.errorInput : ""}
                   />
                   {form.formState.errors.city && (
                     <span className={styles.error}>

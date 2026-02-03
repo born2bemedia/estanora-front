@@ -1,5 +1,7 @@
 "use client";
 
+import { useState } from "react";
+
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
 import { useForm } from "react-hook-form";
@@ -7,6 +9,7 @@ import { z } from "zod";
 
 import { useAuthStore } from "@/features/account/store/auth";
 
+import { EyeIcon, EyeOffIcon } from "@/shared/ui/icons";
 import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "./LoginForm.module.scss";
@@ -23,7 +26,9 @@ type LoginFormSchema = z.infer<typeof loginSchema>;
 export const LoginForm = () => {
   const router = useRouter();
   const login = useAuthStore((s) => s.login);
-  const isLoading = useAuthStore((s) => s.isLoading);  const t = useTranslations("account");
+  const isLoading = useAuthStore((s) => s.isLoading);
+  const t = useTranslations("account");
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -60,13 +65,27 @@ export const LoginForm = () => {
       </div>
       <div className={styles.formGroup}>
         <label htmlFor="password">{t("password", { fallback: "Password" })}</label>
-        <input
-          id="password"
-          type="password"
-          {...register("password")}
-          autoComplete="current-password"
-          className={errors.password ? styles.errorInput : ""}
-        />
+        <div className={styles.passwordWrapper}>
+          <input
+            id="password"
+            type={showPassword ? "text" : "password"}
+            {...register("password")}
+            autoComplete="current-password"
+            className={errors.password ? styles.errorInput : ""}
+          />
+          <button
+            type="button"
+            className={styles.togglePassword}
+            onClick={() => setShowPassword(!showPassword)}
+            aria-label={showPassword ? "Hide password" : "Show password"}
+          >
+            {showPassword ? (
+              <EyeOffIcon />
+            ) : (
+              <EyeIcon />
+            )}
+          </button>
+        </div>
         {errors.password && <span className={styles.error}>{errors.password.message}</span>}
       </div>
       {errors.root && <span className={styles.rootError}>{errors.root.message}</span>}

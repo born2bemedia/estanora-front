@@ -18,5 +18,16 @@ export const changePasswordSchema = z
     path: ["repeatNewPassword"],
   });
 
+export const registrationSchema = z.object({
+  firstName: z.string().min(1, "Please enter your first name."),
+  lastName: z.string().min(1, "Please enter your last name."),
+  email: z
+    .string()
+    .min(1, "Please enter your email address.")
+    .email("Please enter a valid email address."),
+  password: z.string().min(1, "Please create a password."),
+});
+
 export type ContactDataSchema = z.infer<typeof contactDataSchema>;
 export type ChangePasswordSchema = z.infer<typeof changePasswordSchema>;
+export type RegistrationSchema = z.infer<typeof registrationSchema>;

@@ -1,5 +1,7 @@
 export * from './delete';
 export * from './email';
+export * from './eye';
+export * from './eye-off';
 export * from './header/Account';
 export * from './header/Cart';
 export * from './phone';
