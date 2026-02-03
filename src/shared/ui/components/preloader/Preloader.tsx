@@ -11,7 +11,7 @@ export const Preloader: React.FC = () => {
   const [animationData, setAnimationData] = useState<Record<string, unknown> | null>(null);
 
   useEffect(() => {
-    // Load Lottie animation data
+    // Load Lottie animation data immediately
     fetch('/preloader.json')
       .then((res) => res.json())
       .then((data) => setAnimationData(data))
@@ -19,24 +19,46 @@ export const Preloader: React.FC = () => {
   }, []);
 
   useEffect(() => {
-    // Use setTimeout to make setState calls asynchronous
-    const initTimer = setTimeout(() => {
+    // Reset preloader state on pathname change (async to avoid cascading renders)
+    const resetTimer = setTimeout(() => {
       setIsLoading(true);
       setIsVisible(true);
     }, 0);
 
-    const timer = setTimeout(() => {
+    // Hide preloader when page is loaded
+    const hidePreloader = () => {
       setIsLoading(false);
       setTimeout(() => setIsVisible(false), 200);
-    }, 3500);
+    };
+
+    // Check if page is already loaded
+    if (typeof window !== 'undefined' && document.readyState === 'complete') {
+      // Page already loaded, hide preloader after minimum display time
+      const timer = setTimeout(hidePreloader, 3000);
+      return () => {
+        clearTimeout(resetTimer);
+        clearTimeout(timer);
+      };
+    }
+
+    // Wait for page load event
+    const handleLoad = () => {
+      setTimeout(hidePreloader, 1000);
+    };
+
+    if (typeof window !== 'undefined') {
+      window.addEventListener('load', handleLoad);
+    }
 
     return () => {
-      clearTimeout(initTimer);
-      clearTimeout(timer);
+      clearTimeout(resetTimer);
+      if (typeof window !== 'undefined') {
+        window.removeEventListener('load', handleLoad);
+      }
     };
   }, [pathname]);
 
-  if (!isVisible || !animationData) return null;
+  if (!isVisible) return null;
 
   return (
     <div
@@ -57,12 +79,14 @@ export const Preloader: React.FC = () => {
         visibility: isVisible ? 'visible' : 'hidden',
       }}
     >
-      <Lottie
-        animationData={animationData}
-        style={{ width: 400, height: "auto",maxWidth: '50%' }}
-        loop={true}
-        autoplay={true}
-      />
+      {animationData && (
+        <Lottie
+          animationData={animationData}
+          style={{ width: 400, height: "auto", maxWidth: '50%' }}
+          loop={true}
+          autoplay={true}
+        />
+      )}
     </div>
   );
 };

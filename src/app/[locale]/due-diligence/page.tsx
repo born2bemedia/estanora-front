@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Estanora Due Diligence Professional Services',
     description: 'Verify property condition and legal documents before you buy—request a professional due diligence audit today!',
-    //images: 'https://estanora.com/images/meta.png',
+    images: 'https://estanora.com/images/meta.png',
   },
 };
 

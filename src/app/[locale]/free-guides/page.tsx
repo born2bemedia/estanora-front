@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Estanora Free Real Estate Guides & Articles',
     description: 'Explore expert articles and practical guides to make smarter property decisions – read our free real estate resources today!',
-    //images: 'https://estanora.com/images/meta.png',
+    images: 'https://estanora.com/images/meta.png',
   },
 };
 

@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Estanora Real Estate Market Research Professional Services',
     description: 'Get accurate market data and neighborhood insights to make informed property decisions—request your research today!',
-    //images: 'https://estanora.com/images/meta.png',
+    images: 'https://estanora.com/images/meta.png',
   },
 };
 

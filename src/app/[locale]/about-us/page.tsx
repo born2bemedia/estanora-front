@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     title: "About Estanora – Expert Real Estate Consulting",
     description:
       "Learn about our team and approach to property consulting – discover how we help clients make informed real estate decisions today!",
-    //images: 'https://estanora.com/images/meta.png',
+    images: 'https://estanora.com/images/meta.png',
   },
 };
 

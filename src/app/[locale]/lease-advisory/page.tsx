@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Estanora Rental & Lease Advisory Professional Services',
     description: 'Ensure your rental agreements comply with the law and maximize rental income – request professional lease advisory today!',
-    //images: 'https://estanora.com/images/meta.png',
+    images: 'https://estanora.com/images/meta.png',
   },
 };
 

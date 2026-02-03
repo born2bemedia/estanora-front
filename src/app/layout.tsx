@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Estanora | Real Estate Consulting, Market Research, Due Diligence',
     description: 'Get precise market insights, due diligence, and portfolio guidance—start protecting and growing your property today!',
-    //images: 'https://estanora.com/images/meta.png',
+    images: 'https://estanora.com/images/meta.png',
   },
 };
 

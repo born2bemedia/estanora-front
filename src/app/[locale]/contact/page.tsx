@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Contact Estanora Experts',
     description: 'Have questions or need assistance with your property case? Reach out to our team today and get expert guidance.',
-    //images: 'https://estanora.com/images/meta.png',
+    images: 'https://estanora.com/images/meta.png',
   },
 };
 
