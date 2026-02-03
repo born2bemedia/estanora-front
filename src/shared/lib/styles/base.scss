@@ -173,3 +173,31 @@ img {
   background-color: #000!important;
 
 }
+
+html:not([lang='en']) {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p,
+  li {
+    transform: scale(0.85) !important;
+    transform-origin: top left;
+  }
+  header {
+    a {
+      font-size: 12px !important;
+    }
+  }
+}
+html[lang='de'], html[lang='it'] {
+  header {
+    nav{
+      gap:16px!important;
+    }
+    a {
+      font-size: 12px !important;
+    }
+  }
+}

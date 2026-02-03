@@ -8,7 +8,6 @@ import { LangIcon } from "@/shared/ui/icons/header/LangIcon";
 
 import styles from "./LangSelector.module.scss";
 
-import { useRouter } from "@/i18n/navigation";
 import { routing } from "@/i18n/routing";
 
 const LOCALE_LABELS: Record<string, string> = {
@@ -17,7 +16,7 @@ const LOCALE_LABELS: Record<string, string> = {
   it: "Italiano",
 };
 
-/** Strip locale segment from pathname so we never get e.g. /it/de */
+/** Strip locale segment from pathname. */
 function getPathnameWithoutLocale(pathname: string, locales: readonly string[]): string {
   const segments = pathname.replace(/^\/+|\/+$/g, "").split("/");
   const first = segments[0];
@@ -28,9 +27,17 @@ function getPathnameWithoutLocale(pathname: string, locales: readonly string[]):
   return pathname || "/";
 }
 
+/** Build full URL for locale (respects localePrefix: 'as-needed'). */
+function getLocalePath(pathWithoutLocale: string, newLocale: string): string {
+  const path = pathWithoutLocale === "/" ? "" : pathWithoutLocale;
+  if (newLocale === routing.defaultLocale) {
+    return path || "/";
+  }
+  return `/${newLocale}${path}`;
+}
+
 export const LangSelector = () => {
   const locale = useLocale();
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -38,10 +45,18 @@ export const LangSelector = () => {
   const currentLabel = LOCALE_LABELS[locale] ?? locale;
 
   const handleChange = (newLocale: string) => {
+    if (newLocale === locale) {
+      setIsOpen(false);
+      return;
+    }
     const pathname =
       typeof window !== "undefined" ? window.location.pathname : "/";
     const pathWithoutLocale = getPathnameWithoutLocale(pathname, locales);
-    router.push(pathWithoutLocale, { locale: newLocale });
+    const newPath = getLocalePath(pathWithoutLocale, newLocale);
+    // Full page navigation so server re-renders with new locale (layout, getLocale, RSC, data)
+    if (typeof window !== "undefined") {
+      window.location.assign(newPath);
+    }
     setIsOpen(false);
   };
 
