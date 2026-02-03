@@ -17,7 +17,7 @@ import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "./RegistrationForm.module.scss";
 
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 
 export const RegistrationForm = () => {
   const router = useRouter();
@@ -69,7 +69,17 @@ export const RegistrationForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <h1>{t("title", { fallback: "Register" })}</h1>
+      <div className={styles.header}>
+        <h1 className={styles.title}>
+          {t("title", { fallback: "Join Estanora" })}
+        </h1>
+        <p className={styles.text}>
+          {t("subtitle", {
+            fallback:
+              "Create your account to access property insights and personalized services.",
+          })}
+        </p>
+      </div>
       <div className={styles.formGroup}>
         <label htmlFor="firstName">
           {t("firstName", { fallback: "First name:" })}{" "}
@@ -152,6 +162,10 @@ export const RegistrationForm = () => {
       <Button type="submit" variant="white" disabled={isLoading}>
         {isLoading ? t("registering", { fallback: "Registering..." }) : t("register", { fallback: "Register" })}
       </Button>
+      <p className={styles.loginLink}>
+        {t("loginLink1", { fallback: "Already have an account?" })}{" "}
+        <Link href="/log-in">{t("loginLink2", { fallback: "Log in" })}</Link>
+      </p>
     </form>
   );
 };

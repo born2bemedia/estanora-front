@@ -508,10 +508,14 @@
     "close": "Close"
   },
   "account": {
-    "login": "Log in",
+    "title": "Welcome Back to Estanora",
+    "subtitle": "Access your account and manage your property insights with ease.",
     "email": "Email",
     "password": "Password",
-    "loggingIn": "Logging in..."
+    "loggingIn": "Logging in...",
+    "login": "Log in",
+    "signupLink1": "Don't have an account?",
+    "signupLink2": "Sign up"
   },
   "myOrdersPage": {
     "loading": "Loading orders...",
@@ -543,13 +547,16 @@
     "successTitle": "Your account has been created successfully!",
     "successMessage": "You can now log in with your email and password.",
     "goToLogin": "Go to Login",
-    "title": "Register",
+    "title": "Join Estanora",
+    "subtitle": "Create your account to access property insights and personalized services.",
     "firstName": "First name:",
     "lastName": "Last name:",
     "email": "Email:",
     "password": "Password:",
     "registering": "Registering...",
-    "register": "Register"
+    "register": "Register",
+    "loginLink1": "Already have an account?",
+    "loginLink2": "Log in"
   },
   "checkoutForm": {
     "completeYourOrder": "Complete Your Order",

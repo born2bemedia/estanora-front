@@ -6,13 +6,43 @@
   max-width: 28rem;
   margin: 0 auto;
 
-  h1 {
-    color: #fff;
-    font-size: 24px;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
+  .header{
+    margin-bottom: 48px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    h1 {
+      color: #fff;
+      text-align: center;
+      font-size: 32px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: normal;
+    }
+    .text {
+      color: #ccc;
+      text-align: center;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: normal;
+    }
   }
 
+  .loginLink {
+    color: #ccc;
+    text-align: center;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+    }
+  }
   .formGroup {
     display: flex;
     flex-direction: column;

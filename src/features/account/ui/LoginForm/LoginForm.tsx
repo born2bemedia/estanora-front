@@ -14,7 +14,7 @@ import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "./LoginForm.module.scss";
 
-import { useRouter } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 
 const loginSchema = z.object({
   email: z.string().email("Invalid email").min(1, "Email is required"),
@@ -51,9 +51,19 @@ export const LoginForm = () => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className={styles.form}>
-      <h1>{t("login", { fallback: "Log in" })}</h1>
+      <div className={styles.header}>
+        <h1 className={styles.title}>
+          {t("title", { fallback: "Welcome Back to Estanora" })}
+        </h1>
+        <p className={styles.text}>
+          {t("subtitle", {
+            fallback:
+              "Access your account and manage your property insights with ease.",
+          })}
+        </p>
+      </div>
       <div className={styles.formGroup}>
-        <label htmlFor="email">{t("email", { fallback: "Email" })}  </label>
+        <label htmlFor="email">{t("email", { fallback: "Email" })} </label>
         <input
           id="email"
           type="email"
@@ -61,10 +71,14 @@ export const LoginForm = () => {
           autoComplete="email"
           className={errors.email ? styles.errorInput : ""}
         />
-        {errors.email && <span className={styles.error}>{errors.email.message}</span>}
+        {errors.email && (
+          <span className={styles.error}>{errors.email.message}</span>
+        )}
       </div>
       <div className={styles.formGroup}>
-        <label htmlFor="password">{t("password", { fallback: "Password" })}</label>
+        <label htmlFor="password">
+          {t("password", { fallback: "Password" })}
+        </label>
         <div className={styles.passwordWrapper}>
           <input
             id="password"
@@ -79,19 +93,25 @@ export const LoginForm = () => {
             onClick={() => setShowPassword(!showPassword)}
             aria-label={showPassword ? "Hide password" : "Show password"}
           >
-            {showPassword ? (
-              <EyeOffIcon />
-            ) : (
-              <EyeIcon />
-            )}
+            {showPassword ? <EyeOffIcon /> : <EyeIcon />}
           </button>
         </div>
-        {errors.password && <span className={styles.error}>{errors.password.message}</span>}
+        {errors.password && (
+          <span className={styles.error}>{errors.password.message}</span>
+        )}
       </div>
-      {errors.root && <span className={styles.rootError}>{errors.root.message}</span>}
+      {errors.root && (
+        <span className={styles.rootError}>{errors.root.message}</span>
+      )}
       <Button type="submit" variant="white" disabled={isLoading}>
-        {isLoading ? t("loggingIn", { fallback: "Logging in..." }) : t("login", { fallback: "Log in" })}
+        {isLoading
+          ? t("loggingIn", { fallback: "Logging in..." })
+          : t("login", { fallback: "Log in" })}
       </Button>
+      <p className={styles.signupLink}>
+        {t("signupLink1", { fallback: "Don't have an account?" })}{" "}
+        <Link href="/registration">{t("signupLink2", { fallback: "Sign up" })}</Link>
+      </p>
     </form>
   );
 };
