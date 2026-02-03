@@ -96,10 +96,10 @@
     display: flex;
     justify-content: flex-start;
     @include tablet {
-      img {
-        width: auto;
-        height: 20px;
-      }
+    }
+    img {
+      width: 124px;
+      height: auto;
     }
   }
 
