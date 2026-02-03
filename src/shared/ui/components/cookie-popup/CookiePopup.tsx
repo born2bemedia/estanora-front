@@ -1,5 +1,6 @@
 "use client";
-import { useState } from "react";
+
+import { useEffect, useState } from "react";
 
 import classNames from "classnames";
 import { useTranslations } from "next-intl";
@@ -12,13 +13,16 @@ import { Link } from "@/i18n/navigation";
 
 export const CookiePopup = () => {
   const t = useTranslations("cookiePopup");
-  const [isVisible, setIsVisible] = useState(() => {
-    // Initialize state based on localStorage (only runs on client)
-    if (typeof window === "undefined") return false;
-    const hasAcceptedCookies = localStorage.getItem("cookiesAccepted");
-    const hasDeclinedCookies = localStorage.getItem("cookiesDeclined");
-    return !hasAcceptedCookies && !hasDeclinedCookies;
-  });
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const hasAccepted = localStorage.getItem("cookiesAccepted");
+    const hasDeclined = localStorage.getItem("cookiesDeclined");
+    if (!hasAccepted && !hasDeclined) {
+      const id = setTimeout(() => setIsVisible(true), 0);
+      return () => clearTimeout(id);
+    }
+  }, []);
 
   const handleAccept = () => {
     localStorage.setItem("cookiesAccepted", "true");

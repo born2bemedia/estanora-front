@@ -4,7 +4,7 @@
   position: fixed;
   bottom: 24px;
   right: 24px;
-  display: flex;
+  display: none; /* hidden by default, shown when .visible */
   width: 350px;
   padding: 24px;
   flex-direction: column;
@@ -38,7 +38,7 @@
   }
 
   &.visible {
-    display: block;
+    display: flex;
   }
 
   h2 {
