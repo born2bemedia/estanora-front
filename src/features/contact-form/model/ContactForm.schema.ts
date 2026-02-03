@@ -1,7 +1,7 @@
 import { z } from 'zod';
 
 // Set to false to disable reCAPTCHA validation (useful for development/testing)
-const ENABLE_RECAPTCHA = false;
+const ENABLE_RECAPTCHA = true;
 
 export const createContactFormSchema = () =>
   z.object({

@@ -2,30 +2,7 @@ import { NextResponse } from 'next/server';
 
 import sgMail from '@sendgrid/mail';
 
-async function verifyRecaptcha(token: string): Promise<boolean> {
-  const secretKey = process.env.RECAPTCHA_SECRET_KEY;
-
-  if (!secretKey) {
-    console.error('RECAPTCHA_SECRET_KEY is not set');
-    return false;
-  }
-
-  try {
-    const response = await fetch('https://www.google.com/recaptcha/api/siteverify', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/x-www-form-urlencoded',
-      },
-      body: `secret=${secretKey}&response=${token}`,
-    });
-
-    const data = await response.json();
-    return data.success === true;
-  } catch (error) {
-    console.error('Error verifying reCAPTCHA:', error);
-    return false;
-  }
-}
+import { verifyRecaptcha } from '@/shared/lib/recaptcha';
 
 export async function POST(request: Request): Promise<NextResponse> {
   try {
@@ -41,7 +18,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     const documents = formData.getAll('documents') as File[];
 
     // Set to false to disable reCAPTCHA verification (useful for development/testing)
-    const ENABLE_RECAPTCHA = false;
+    const ENABLE_RECAPTCHA = true;
 
     // Verify reCAPTCHA token (only if enabled)
     if (ENABLE_RECAPTCHA) {

@@ -1,5 +1,8 @@
 import { z } from "zod";
 
+// Set to false to disable reCAPTCHA (e.g. development)
+const ENABLE_RECAPTCHA = true;
+
 export const checkoutFormSchema = z
   .object({
     firstName: z.string().min(1, "First name is required"),
@@ -18,6 +21,9 @@ export const checkoutFormSchema = z
     refundPolicyAccepted: z.boolean().refine((val) => val, {
       message: "You must accept the Refund Policy",
     }),
+    recaptcha: ENABLE_RECAPTCHA
+      ? z.string().min(1, "Please complete the reCAPTCHA verification")
+      : z.string().optional(),
   })
   .strict();
 

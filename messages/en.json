@@ -842,5 +842,9 @@
     "lease-advisory": "Lease Advisory",
     "free-guides": "Free Guides",
     "contact-us": "Contact Us"
+  },
+  "priceList": {
+    "title": "Check our full price list",
+    "button": "Download"
   }
 }

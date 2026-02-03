@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
+import ReCAPTCHA from "react-google-recaptcha";
 import { Controller, useForm } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import Select from "react-select";
@@ -27,6 +28,8 @@ import "react-phone-input-2/lib/style.css";
 
 import { useRouter } from "@/i18n/navigation";
 
+const ENABLE_RECAPTCHA = true;
+
 type CountryOption = { value: string; label: string };
 
 // Get country list and filter out excluded countries
@@ -48,11 +51,13 @@ const defaultValues: CheckoutFormSchema = {
   orderNotes: "",
   termsAccepted: false,
   refundPolicyAccepted: false,
+  recaptcha: "",
 };
 
 export const CheckoutForm = () => {
   const t = useTranslations("checkoutForm");
   const router = useRouter();
+  const [recaptchaKey, setRecaptchaKey] = useState(0);
   const user = useAuthStore((s) => s.user);
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const fetchUser = useAuthStore((s) => s.fetchUser);
@@ -67,6 +72,7 @@ export const CheckoutForm = () => {
     register,
     handleSubmit,
     reset,
+    setValue,
     control,
     formState: { errors, isSubmitting },
   } = useForm<CheckoutFormSchema>({
@@ -95,6 +101,14 @@ export const CheckoutForm = () => {
     removeItem(id);
   };
 
+  const handleRecaptchaChange = (token: string | null) => {
+    if (ENABLE_RECAPTCHA) {
+      setValue("recaptcha", token ?? "", { shouldValidate: true });
+    } else {
+      setValue("recaptcha", "disabled", { shouldValidate: false });
+    }
+  };
+
   const onSubmit = async (data: CheckoutFormSchema) => {
     try {
       await createOrder({
@@ -114,13 +128,16 @@ export const CheckoutForm = () => {
         orderNotes: data.orderNotes,
         items,
         total,
+        recaptcha: data.recaptcha,
       });
       clearCart();
+      setRecaptchaKey((k) => k + 1);
       // Оновлюємо стан авторизації (після покупки юзер міг бути залогінений автоматично)
       await fetchUser();
       router.push("/thank-you");
     } catch (err) {
       console.error(err);
+      setRecaptchaKey((k) => k + 1);
     }
   };
 
@@ -357,6 +374,17 @@ export const CheckoutForm = () => {
           </label>
           {errors.refundPolicyAccepted && <span className={styles.error}>{errors.refundPolicyAccepted.message}</span>}
         </div>
+
+        {ENABLE_RECAPTCHA && (
+          <div className={styles.formGroup}>
+            <ReCAPTCHA
+              key={recaptchaKey}
+              sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ""}
+              onChange={handleRecaptchaChange}
+            />
+            {errors.recaptcha && <span className={styles.error}>{errors.recaptcha.message}</span>}
+          </div>
+        )}
 
         <Button type="submit" variant="white" disabled={isSubmitting}>
           {isSubmitting ? t("submitting", { fallback: "Submitting..." }) : t("submit", { fallback: "Submit" })}

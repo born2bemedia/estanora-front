@@ -2,6 +2,10 @@ import { NextResponse } from "next/server";
 
 import sgMail from "@sendgrid/mail";
 
+import { verifyRecaptcha } from "@/shared/lib/recaptcha";
+
+const ENABLE_RECAPTCHA = true;
+
 const GOAL_LABELS: Record<string, string> = {
   buy: "Buy",
   sell: "Sell",
@@ -74,20 +78,42 @@ export async function POST(request: Request): Promise<NextResponse> {
     const body = (await request.json()) as {
       formType: "market-research" | "property-consultation" | "request";
       data:
-        | MarketResearchPayload
-        | PropertyConsultationPayload
-        | RequestPayload;
+        | (MarketResearchPayload & { recaptcha?: string })
+        | (PropertyConsultationPayload & { recaptcha?: string })
+        | (RequestPayload & { recaptcha?: string });
       name?: string;
     };
 
-    const { formType, data, name } = body;
+    const { formType, name } = body;
+    const rawData = body.data;
 
-    if (!formType || !data) {
+    if (!formType || !rawData) {
       return NextResponse.json(
         { message: "Missing formType or data." },
         { status: 400 }
       );
     }
+
+    const recaptcha = "recaptcha" in rawData ? rawData.recaptcha : undefined;
+
+    if (ENABLE_RECAPTCHA) {
+      if (!recaptcha || recaptcha === "disabled") {
+        return NextResponse.json(
+          { message: "reCAPTCHA verification is required." },
+          { status: 400 }
+        );
+      }
+      const isValid = await verifyRecaptcha(recaptcha);
+      if (!isValid) {
+        return NextResponse.json(
+          { message: "reCAPTCHA verification failed. Please try again." },
+          { status: 400 }
+        );
+      }
+    }
+
+    const { recaptcha: _recaptcha, ...data } = rawData as Record<string, unknown> & { recaptcha?: string };
+    void _recaptcha;
 
     const apiKey = process.env.SENDGRID_API_KEY;
     const adminEmail = process.env.ADMIN_EMAIL;

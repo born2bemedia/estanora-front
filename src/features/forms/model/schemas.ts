@@ -1,5 +1,12 @@
 import { z } from "zod";
 
+// Set to false to disable reCAPTCHA (e.g. development)
+const ENABLE_RECAPTCHA = true;
+
+const recaptchaSchema = ENABLE_RECAPTCHA
+  ? z.string().min(1, "Please complete the reCAPTCHA verification")
+  : z.string().optional();
+
 const phoneSchema = z
   .string()
   .min(1, "This field is required")
@@ -27,6 +34,7 @@ export const marketResearchSchema = z.object({
   fullName: fullNameSchema,
   phone: phoneSchema,
   email: emailSchema,
+  recaptcha: recaptchaSchema,
 });
 
 export type MarketResearchSchema = z.infer<typeof marketResearchSchema>;
@@ -39,6 +47,7 @@ export const propertyConsultationSchema = z.object({
   fullName: fullNameSchema,
   email: emailSchema,
   phone: phoneSchema,
+  recaptcha: recaptchaSchema,
 });
 
 export type PropertyConsultationSchema = z.infer<typeof propertyConsultationSchema>;
@@ -49,6 +58,7 @@ export const requestFormSchema = z.object({
   email: emailSchema,
   phone: phoneSchema,
   country: countrySchema,
+  recaptcha: recaptchaSchema,
 });
 
 export type RequestFormSchema = z.infer<typeof requestFormSchema>;

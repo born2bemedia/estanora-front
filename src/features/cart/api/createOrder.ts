@@ -4,9 +4,13 @@ import { cookies } from "next/headers";
 
 import sgMail from "@sendgrid/mail";
 
+import { verifyRecaptcha } from "@/shared/lib/recaptcha";
+
 import type { CheckoutFormSchema } from "../model/checkout.schema";
 import type { CartItem } from "../store/cart";
 import { ensureUser } from "./user";
+
+const ENABLE_RECAPTCHA = true;
 
 const SERVER_URL = process.env.SERVER_URL;
 const COOKIE_NAME = process.env.COOKIE_NAME;
@@ -35,6 +39,7 @@ export type CreateOrderPayload = {
   orderNotes?: string;
   items: CartItem[];
   total: number;
+  recaptcha?: string;
 };
 
 const postOrder = async (
@@ -218,7 +223,7 @@ const postOrder = async (
                             font-style: normal;
                             font-weight: 400;
                             line-height: normal;">
-                                Dear Customer,
+                                Dear ${safeFirstName},
                             </p>
 
                             <p style="margin: 0 0 24px; 
@@ -312,6 +317,17 @@ const postOrder = async (
 };
 
 export const createOrder = async (payload: CreateOrderPayload) => {
+  if (ENABLE_RECAPTCHA) {
+    const token = payload.recaptcha;
+    if (!token || token === "disabled") {
+      throw new Error("reCAPTCHA verification is required.");
+    }
+    const valid = await verifyRecaptcha(token);
+    if (!valid) {
+      throw new Error("reCAPTCHA verification failed. Please try again.");
+    }
+  }
+
   const formData: CheckoutFormSchema = {
     firstName: payload.billing.firstName,
     lastName: payload.billing.lastName,
@@ -325,6 +341,7 @@ export const createOrder = async (payload: CreateOrderPayload) => {
     orderNotes: payload.orderNotes,
     termsAccepted: true,
     refundPolicyAccepted: true,
+    recaptcha: payload.recaptcha,
   };
 
   return postOrder(formData, payload.total, payload.items);

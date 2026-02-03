@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { PriceList } from "@/shared/ui/components/price-list/PriceList";
+
 import { MarketDifference, MarketHero,  MarketNeed,  MarketServices, MarketWhy } from "./components";
 
 export const metadata: Metadata = {
@@ -20,6 +22,7 @@ export default async function Home() {
       <MarketServices />
       <MarketNeed />
       <MarketDifference />
+      <PriceList />
     </>
   );
 }

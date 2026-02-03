@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { PriceList } from "@/shared/ui/components/price-list/PriceList";
+
 import { DiligenceAudit, DiligenceDifference, DiligenceHero, DiligenceServices, DiligenceWhy } from "./components";
 
 export const metadata: Metadata = {
@@ -20,6 +22,7 @@ export default async function Home() {
       <DiligenceServices />
       <DiligenceAudit />
       <DiligenceDifference />
+      <PriceList />
     </>
   );
 }

@@ -30,7 +30,7 @@ const PRIMARY_OBJECTIVES = [
 ];
 
 // Set to false to disable reCAPTCHA (useful for development/testing)
-const ENABLE_RECAPTCHA = false;
+const ENABLE_RECAPTCHA = true;
 
 export const ContactForm = () => {
   const [isSuccess, setIsSuccess] = useState(false);

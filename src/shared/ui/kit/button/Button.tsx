@@ -12,6 +12,7 @@ export const Button = ({
   service,
   onClick,
   disabled,
+  target,
 }: {
   children: React.ReactNode;
   variant: "white" | "black" | "bordered-black";
@@ -20,6 +21,7 @@ export const Button = ({
   service?: string;
   onClick?: () => void;
   disabled?: boolean;
+  target?: string;
 }) => {
   const buttonUrl = service ? `/service-request-form?service=${service}` : url;
 
@@ -27,6 +29,7 @@ export const Button = ({
     <Link
       href={buttonUrl ?? ""}
       className={cn(styles.button, styles[variant], styles.link)}
+      target={target}
     >
       {children}
     </Link>

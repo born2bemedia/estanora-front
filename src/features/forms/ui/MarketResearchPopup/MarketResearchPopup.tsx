@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslations } from "next-intl";
+import ReCAPTCHA from "react-google-recaptcha";
 import { Controller, useForm } from "react-hook-form";
 import PhoneInput from "react-phone-input-2";
 import Select from "react-select";
@@ -26,6 +27,8 @@ import "react-phone-input-2/lib/style.css";
 
 type SelectOption = { value: string; label: string };
 
+const ENABLE_RECAPTCHA = true;
+
 type MarketResearchPopupProps = {
   isOpen: boolean;
   onClose: () => void;
@@ -38,6 +41,7 @@ export const MarketResearchPopup = ({
   onReturnHome,
 }: MarketResearchPopupProps) => {
   const t = useTranslations("forms");
+  const recaptchaRef = useRef<ReCAPTCHA>(null);
   const [isSuccess, setIsSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -77,9 +81,18 @@ export const MarketResearchPopup = ({
       fullName: "",
       phone: "",
       email: "",
+      recaptcha: "",
     },
   });
 
+
+  const handleRecaptchaChange = (token: string | null) => {
+    if (ENABLE_RECAPTCHA) {
+      form.setValue("recaptcha", token ?? "", { shouldValidate: true });
+    } else {
+      form.setValue("recaptcha", "disabled", { shouldValidate: false });
+    }
+  };
 
   const onSubmit = async (data: MarketResearchSchema) => {
     setError(null);
@@ -88,8 +101,10 @@ export const MarketResearchPopup = ({
       await submitMarketResearch(data);
       setIsSuccess(true);
       form.reset();
+      recaptchaRef.current?.reset();
     } catch (err) {
       setError(err instanceof Error ? err.message : "Submission failed");
+      recaptchaRef.current?.reset();
     } finally {
       setIsLoading(false);
     }
@@ -390,7 +405,20 @@ export const MarketResearchPopup = ({
                 </div>
               </div>
 
-                
+              {ENABLE_RECAPTCHA && (
+                <div className={styles.formGroup}>
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={process.env.NEXT_PUBLIC_RECAPTCHA_SITE_KEY ?? ""}
+                    onChange={handleRecaptchaChange}
+                  />
+                  {form.formState.errors.recaptcha && (
+                    <span className={styles.error}>
+                      {form.formState.errors.recaptcha.message}
+                    </span>
+                  )}
+                </div>
+              )}
 
               {error && <p className={styles.submitError}>{error}</p>}
               <div className={styles.buttons}>

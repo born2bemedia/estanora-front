@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { PriceList } from "@/shared/ui/components/price-list/PriceList";
+
 import { PortfolioDifference, PortfolioHero,  PortfolioNeed,  PortfolioServices, PortfolioWhy } from "./components";
 
 export const metadata: Metadata = {
@@ -20,6 +22,7 @@ export default async function Home() {
       <PortfolioServices />
       <PortfolioNeed />
       <PortfolioDifference />
+      <PriceList />
     </>
   );
 }
