@@ -253,6 +253,90 @@ export async function POST(request: Request): Promise<NextResponse> {
       }
     }
 
+    // Send confirmation email to user for request form
+    if (formType === "request" && userEmail) {
+      try {
+        const userMsg = {
+          to: userEmail,
+          from: fromEmail,
+          subject: "We've received your Estanora order",
+          html: `
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Order Received - Estanora</title>
+</head>
+<body style="margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif; background-color: #0a0a0a; color: #ffffff;">
+  <table role="presentation" style="width: 100%; border-collapse: collapse; background-color: #0a0a0a;">
+    <tr>
+      <td align="center" style="padding: 40px 20px;">
+        <table role="presentation" style="max-width: 600px; width: 100%; border-collapse: collapse; background-color: #1a1a1a; border-radius: 8px; overflow: hidden;">
+          <!-- Header -->
+          <tr>
+            <td style="padding: 40px 40px 30px; text-align: center; background-color: #1a1a1a;">
+              <h1 style="margin: 0; font-size: 28px; font-weight: 600; color: #ffffff; letter-spacing: -0.5px;">
+                We've received your Estanora order
+              </h1>
+            </td>
+          </tr>
+          
+          <!-- Content -->
+          <tr>
+            <td style="padding: 0 40px 40px;">
+              <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.6; color: #e0e0e0;">
+                Dear Customer,
+              </p>
+              
+              <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.6; color: #e0e0e0;">
+                Thank you for choosing Estanora for your real estate consultation.
+              </p>
+              
+              <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.6; color: #e0e0e0;">
+                We're happy to let you know that your order has been successfully received. One of our experts will review your request and contact you shortly to clarify details and ensure we deliver a tailored, high-value consulting experience.
+              </p>
+              
+              <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.6; color: #e0e0e0;">
+                In the meantime, no further action is required from you. If you have any additional information you'd like to share, you can simply reply to this email.
+              </p>
+              
+              <p style="margin: 0 0 24px; font-size: 16px; line-height: 1.6; color: #e0e0e0;">
+                We appreciate your trust in Estanora and look forward to working with you.
+              </p>
+              
+              <p style="margin: 0; font-size: 16px; line-height: 1.6; color: #e0e0e0;">
+                Kind regards,<br>
+                <strong style="color: #ffffff;">The Estanora Team</strong>
+              </p>
+            </td>
+          </tr>
+          
+          <!-- Footer -->
+          <tr>
+            <td style="padding: 30px 40px; text-align: center; background-color: rgba(255, 255, 255, 0.03); border-top: 1px solid rgba(255, 255, 255, 0.1);">
+              <p style="margin: 0; font-size: 12px; color: rgba(255, 255, 255, 0.5);">
+                © ${new Date().getFullYear()} Estanora. All rights reserved.
+              </p>
+            </td>
+          </tr>
+        </table>
+      </td>
+    </tr>
+  </table>
+</body>
+</html>
+          `,
+        };
+
+        await sgMail.send(userMsg);
+        console.log(`Request confirmation email sent to ${userEmail}`);
+      } catch (emailError) {
+        console.error("Error sending request confirmation email:", emailError);
+        // Don't fail the form submission if email fails
+      }
+    }
+
     return NextResponse.json({
       message: "Form submitted successfully.",
     });
