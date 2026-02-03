@@ -59,7 +59,7 @@ export const Preloader: React.FC = () => {
     >
       <Lottie
         animationData={animationData}
-        style={{ width: 414, height: 67,maxWidth: '50%' }}
+        style={{ width: 400, height: "auto",maxWidth: '50%' }}
         loop={true}
         autoplay={true}
       />
