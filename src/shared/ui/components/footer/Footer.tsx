@@ -104,6 +104,7 @@ export const Footer = () => {
                   <Link href="/free-guides">{t('free-guides', { fallback: 'Free Guides' })}</Link>
                   <Link href="/about-us">{t('about-us', { fallback: 'About Us' })}</Link>
                   <Link href="/contact">{t('contact-us', { fallback: 'Contact Us' })}</Link>
+                  <Link href="/free-guides/european-real-estate-2026-stabilisation-stagnation-or-the-start-of-a-new-cycle">{t('article1', { fallback: 'European Real Estate Research' })}</Link>
                 </nav>
               </div>
             </div>
