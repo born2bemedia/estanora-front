@@ -110,7 +110,7 @@ export const AccountPage = () => {
         </div>
       )}
       <p className={styles.back}>
-        <Button url="/account" variant="white" type="link">
+        <Button url="/account/my-orders" variant="white" type="link">
           {t("allOrders", { fallback: "Check all orders" })}
         </Button>
       </p>
