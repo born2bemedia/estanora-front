@@ -9,6 +9,9 @@
   display: flex;
   align-items: flex-end;
   position: relative;
+  @include tablet {
+    margin-top: 112px;
+  }
   &::after {
     content: "";
     position: absolute;

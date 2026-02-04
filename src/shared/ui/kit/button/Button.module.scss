@@ -13,6 +13,11 @@
   align-items: center;
   gap: 10px;
   background: #fff;
+  text-align: center;
+  @include tablet {
+    font-size: 13px;
+    padding: 10px;
+  }
   &:hover {
     background: #d9d9d9;
   }
