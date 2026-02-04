@@ -19,6 +19,7 @@ export const AboutCore = () => {
           "We provide advisory services only. We do not participate in transactions or receive third-party incentives.",
       }),
       video: "/videos/about-independence.mp4",
+      poster: "/images/about/about-independence.webp",
     },
     {
       title: t("service2", { fallback: "Structure" }),
@@ -27,6 +28,7 @@ export const AboutCore = () => {
           "Each case follows a defined analytical process, ensuring consistency, traceability, and clarity of conclusions.",
       }),
       video: "/videos/about-structure.mp4",
+      poster: "/images/about/about-structure.webp",
     },
     {
       title: t("service3", { fallback: "Transparency" }),
@@ -35,6 +37,7 @@ export const AboutCore = () => {
           "Assumptions, limitations, and areas of uncertainty are stated explicitly and documented.",
       }),
       video: "/videos/about-transparency.mp4",
+      poster: "/images/about/about-transparency.webp",
     },
     {
       title: t("service4", { fallback: "Discretion" }),
@@ -43,6 +46,7 @@ export const AboutCore = () => {
           "All enquiries, data, and findings are handled confidentially and with professional care.",
       }),
       video: "/videos/about-discretion.mp4",
+      poster: "/images/about/about-discretion.webp",
     },
   ];
 
@@ -69,7 +73,7 @@ export const AboutCore = () => {
               variants={fadeInUp}
               className={styles.about_core__item}
             >
-              <video src={service.video} autoPlay muted loop playsInline />
+              <video src={service.video} autoPlay muted loop playsInline poster={service.poster} />
               <div>
                 <h3>{service.title}</h3>
                 <p>{service.description}</p>
