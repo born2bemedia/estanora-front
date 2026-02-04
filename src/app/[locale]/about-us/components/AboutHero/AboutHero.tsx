@@ -3,6 +3,8 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+import { useFormsPopup } from "@/features/forms/model/store";
+
 import { fadeInUp } from "@/shared/lib/helpers/animations";
 import { Button } from "@/shared/ui/kit/button/Button";
 
@@ -10,7 +12,7 @@ import styles from "./AboutHero.module.scss";
 
 export const AboutHero = () => {
   const t = useTranslations("aboutHero");
-
+  const { openMarketResearch } = useFormsPopup(); 
   return (
     <section className={styles.about_hero}>
       <video
@@ -52,10 +54,10 @@ export const AboutHero = () => {
             variants={fadeInUp}
             className={styles.about_hero__buttons}
           >
-            <Button variant="white" url="#" type="link">
+            <Button variant="white" url="#" type="button" onClick={openMarketResearch}>
               {t("button1", { fallback: "Request analysis" })}
             </Button>
-            <Button variant="bordered-black" url="#" type="link">
+            <Button variant="bordered-black" url="#services" type="link">
               {t("button2", { fallback: "View services" })}
             </Button>
           </motion.div>

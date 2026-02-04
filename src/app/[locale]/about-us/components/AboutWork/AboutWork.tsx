@@ -49,7 +49,7 @@ export const AboutWork = () => {
   ];
 
   return (
-    <section className={styles.about_work}>
+    <section className={styles.about_work} id="services">
       <div className={"container"}>
         <motion.div
           initial="hidden"
