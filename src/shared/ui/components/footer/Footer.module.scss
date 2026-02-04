@@ -85,13 +85,16 @@
               align-self: stretch;
               flex-direction: row;
             }
-            a {
+            a, span {
               color: #fff;
               font-size: 14px;
               font-style: normal;
               font-weight: 400;
               line-height: normal;
               text-transform: uppercase;
+            }
+            span{
+              max-width: 300px;
             }
           }
         }

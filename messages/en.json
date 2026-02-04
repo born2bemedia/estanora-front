@@ -210,6 +210,11 @@
     "title2": "require clarity, not assumptions.",
     "description": "If you need independent validation before committing capital, this is the correct starting point."
   },
+  "contactLocations": {
+    "title1": "Our locations:",
+    "title2": "Office",
+    "title3": "Registration"
+  },
   "contactMain": {
     "title1": "Request Independent Property Analysis",
     "description1": "Objective, Evidence-Based Guidance for Private Property Decisions. Real estate decisions involve capital allocation, legal exposure, and long-term financial consequences. They require more than opinions, listings, or general market commentary.",
@@ -220,8 +225,7 @@
     "item2": "Your objective (buy, sell, hold, rent, portfolio, inheritance)",
     "item3": "Any relevant timing constraints or deadlines",
     "note": "Providing this information allows us to respond efficiently and with appropriate context.",
-    "title4": "Submit a Consultation Request",
-    "description4": "Please provide sufficient detail to allow for a meaningful initial assessment."
+    "title5": "Submit Assistance Request"
   },
   "contactSecond": {
     "title1": "When It Makes ",
@@ -634,6 +638,17 @@
     "thankYou": "Our team will reach out within the next business day.",
     "close": "Continue"
   },
+  "contactFormNew": {
+    "fullName": "Full name",
+    "email": "Email address",
+    "phone": "Phone number",
+    "optional": "(Optional)",
+    "message": "Your message",
+    "messagePlaceholder": "Please describe the property, your objective, and any known concerns (pricing, risk, timing, legal, financing, etc.).",
+    "loading": "Loading...",
+    "submit": "Submit",
+    "formNote": "All enquiries are confidential. We respond within one business day."
+  },
   "forms": {
     "goal_buy": "Buy",
     "goal_sell": "Sell",
@@ -811,13 +826,15 @@
     "title": "Cookie settings",
     "text": "Cookies help us improve our website. By clicking Accept, you agree to our use of cookies for functionality, analytics, and personalized content. Learn more in our ",
     "link": "Cookie Policy",
-    "decline": "Decline",
-    "accept": "Accept"
+    "accept": "Accept",
+    "decline": "Decline"
   },
   "footer": {
     "description": "You don’t need to be an expert. You just need us.",
     "button": "Contact Us",
     "contact": "Contact",
+    "office": "Office",
+    "registered-address": "Registration",
     "more-contacts": "More contacts",
     "follow-us": "Follow Us",
     "our-services": "Our Services",

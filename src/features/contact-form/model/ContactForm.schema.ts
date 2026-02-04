@@ -19,3 +19,17 @@ export const createContactFormSchema = () =>
   });
 
 export type ContactFormSchema = z.infer<ReturnType<typeof createContactFormSchema>>;
+
+
+export const createContactFormNewSchema = () =>
+  z.object({
+    fullName: z.string().min(1, 'This field is required'),
+    email: z.string().email('Invalid email address').min(1, 'This field is required'),
+    phone: z.string().optional(),
+    message: z.string().optional(),
+    recaptcha: ENABLE_RECAPTCHA
+      ? z.string().min(1, 'Please complete the reCAPTCHA verification')
+      : z.string().optional(),
+  });
+
+export type ContactFormNewSchema = z.infer<ReturnType<typeof createContactFormNewSchema>>;

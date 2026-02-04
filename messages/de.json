@@ -200,6 +200,11 @@
     "thankYou": "Unser Team wird sich innerhalb des nächsten Arbeitstages bei Ihnen melden.",
     "uploadDocuments": "Relevante Dokumente hochladen"
   },
+  "contactLocations": {
+    "title1": "Unsere Standorte:",
+    "title2": "Büro",
+    "title3": "Registrierung"
+  },
   "contactMain": {
     "description1": "Objektive, evidenzbasierte Anleitung für Entscheidungen über Privateigentum. Bei Immobilienentscheidungen geht es um Kapitalallokation, rechtliche Risiken und langfristige finanzielle Folgen. Sie erfordern mehr als Meinungen, Auflistungen oder allgemeine Marktkommentare.",
     "description2": "Wenn Sie eine direkte Kommunikation bevorzugen, können Sie uns über folgende Adresse erreichen:",
@@ -323,6 +328,8 @@
   },
   "footer": {
     "about-us": "Über uns",
+    "office": "Büro",
+    "registered-address": "Registrierung",
     "button": "Kontakt",
     "contact": "Kontakt",
     "contact-us": "Kontakt",
@@ -341,6 +348,17 @@
     "refund-policy": "Erstattung",
     "terms-and-conditions": "Bedingungen und Konditionen",
     "useful-links": "Nützliche Links"
+  },
+  "contactFormNew": {
+    "fullName": "Vollständiger Name",
+    "email": "E-Mail-Adresse",
+    "phone": "Telefonnummer",
+    "optional": "(Optionaler)",
+    "message": "Ihr Nachricht",
+    "messagePlaceholder": "Bitte beschreiben Sie die Immobilie, Ihr Ziel und alle bekannten Bedenken (Preise, Risiken, Timing, Rechtliche, Finanzierung, etc.).",
+    "loading": "Ich schicke...",
+    "submit": "Einreichen",
+    "formNote": "Alle Anfragen sind vertraulich. Wir antworten innerhalb eines Geschäftstages."
   },
   "forms": {
     "cancel": "Abbrechen",

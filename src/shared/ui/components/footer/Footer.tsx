@@ -8,7 +8,9 @@ import {
   FACEBOOK_URL,
   LINKEDIN_URL,
   WEBSITE_EMAIL,
+  WEBSITE_OFFICE_ADDRESS,
   WEBSITE_PHONE,
+  WEBSITE_REGISTERED_ADDRESS,
   X_URL,
 } from '@/shared/lib/constants/constants';
 import { FacebookIcon, LinkedinIcon, XIcon } from '@/shared/ui/icons';
@@ -46,6 +48,14 @@ export const Footer = () => {
                 <nav className={styles.contacts}>
                   <Link href={`mailto:${WEBSITE_EMAIL}`}>{WEBSITE_EMAIL}</Link>
                   <Link href={`tel:${WEBSITE_PHONE}`}>{WEBSITE_PHONE}</Link>
+                  <span>
+                    {t('office', { fallback: 'Office' })}:{" "}
+                    {WEBSITE_OFFICE_ADDRESS}
+                  </span>
+                  <span>
+                    {t('registered-address', { fallback: 'Registration' })}:{" "}<br/>
+                    {WEBSITE_REGISTERED_ADDRESS}
+                  </span>
                   <Link href="/contact">
                     {t('more-contacts', { fallback: 'More contacts' })}
                   </Link>

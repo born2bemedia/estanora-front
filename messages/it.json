@@ -200,6 +200,11 @@
     "thankYou": "Il nostro team vi contatterà entro il giorno lavorativo successivo.",
     "uploadDocuments": "Caricare i documenti pertinenti"
   },
+  "contactLocations": {
+    "title1": "Le nostre sedi:",
+    "title2": "Ufficio",
+    "title3": "Registrazione"
+  },
   "contactMain": {
     "description1": "Guida oggettiva e basata su dati concreti per le decisioni in materia di proprietà privata. Le decisioni immobiliari comportano l'allocazione del capitale, l'esposizione legale e le conseguenze finanziarie a lungo termine. Richiedono più di opinioni, elenchi o commenti generali sul mercato.",
     "description2": "Se preferite una comunicazione diretta, potete contattarci tramite:",
@@ -325,6 +330,8 @@
     "about-us": "Chi siamo",
     "button": "Contatto",
     "contact": "Contatto",
+    "office": "Ufficio",
+    "registered-address": "Registrazione",
     "contact-us": "Contatto",
     "cookie-policy": "Biscotto",
     "copyright": "Strategic Property Intelligence. Tutti i diritti riservati.",
@@ -341,6 +348,17 @@
     "refund-policy": "Rimborso",
     "terms-and-conditions": "Termini e condizioni",
     "useful-links": "Link utili"
+  },
+  "contactFormNew": {
+    "fullName": "Nome completo",
+    "email": "Indirizzo email",
+    "phone": "Numero di telefono",
+    "optional": "(Opzionale)",
+    "message": "Il tuo messaggio",
+    "messagePlaceholder": "Descrivi la proprietà, il tuo obiettivo e qualsiasi preoccupazione nota (prezzi, rischi, timing, legali, finanziamento, ecc.).",
+    "loading": "Caricamento...",
+    "submit": "Invia",
+    "formNote": "Tutte le richieste sono riservate. Risponderemo entro un giorno lavorativo."
   },
   "forms": {
     "cancel": "Annullamento",

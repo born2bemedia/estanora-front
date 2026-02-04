@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
-import { ContactForm } from "@/features/contact-form/ui/ContactForm";
+import { ContactFormNew } from "@/features/contact-form/ui/ContactFormNew";
 
 import { WEBSITE_EMAIL, WEBSITE_PHONE } from "@/shared/lib/constants/constants";
 import { fadeInUp } from "@/shared/lib/helpers/animations";
@@ -130,14 +130,8 @@ export const ContactMain = () => {
               className={styles.contactMain__right__block}
             >
               <h2>
-                {t("title4", { fallback: "Submit a Consultation Request" })}
+                {t("title5", { fallback: "Submit Assistance Request" })}
               </h2>
-              <p>
-                {t("description4", {
-                  fallback:
-                    "Please provide sufficient detail to allow for a meaningful initial assessment.",
-                })}
-              </p>
             </motion.div>
             <motion.div
               initial="hidden"
@@ -146,7 +140,7 @@ export const ContactMain = () => {
               variants={fadeInUp}
               className={styles.contactMain__right__form}
             >
-              <ContactForm />
+              <ContactFormNew />
             </motion.div>
           </div>
         </div>
