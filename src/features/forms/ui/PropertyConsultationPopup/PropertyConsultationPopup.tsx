@@ -311,7 +311,7 @@ export const PropertyConsultationPopup = ({
                   control={form.control}
                   render={({ field }) => (
                     <PhoneInput
-                      country="de"
+                      country="gb"
                       value={field.value}
                       onChange={field.onChange}
                       excludeCountries={[...new Set(excludedCountries)]}
@@ -319,7 +319,7 @@ export const PropertyConsultationPopup = ({
                       inputClass={form.formState.errors.phone ? `${styles.phoneInput} ${styles.errorInput}` : styles.phoneInput}
                       inputProps={{ id: "consult-phone" }}
                       enableSearch
-                      preferredCountries={[ "de", "gb", "us"]}
+                      preferredCountries={['gb']}
                     />
                   )}
                 />

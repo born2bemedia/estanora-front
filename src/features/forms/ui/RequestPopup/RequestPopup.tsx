@@ -190,7 +190,7 @@ export const RequestPopup = ({
                   control={form.control}
                   render={({ field }) => (
                     <PhoneInput
-                      country="de"
+                      country="gb"
                       value={field.value}
                       onChange={field.onChange}
                       excludeCountries={[...new Set(excludedCountries)]}
@@ -198,7 +198,7 @@ export const RequestPopup = ({
                       inputClass={form.formState.errors.phone ? `${styles.phoneInput} ${styles.errorInput}` : styles.phoneInput}
                       inputProps={{ id: "request-phone" }}
                       enableSearch
-                      preferredCountries={[ "de", "gb", "us"]}
+                      preferredCountries={['gb']}
                     />
                   )}
                 />

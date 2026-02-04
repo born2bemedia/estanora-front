@@ -160,7 +160,7 @@ export const ContactForm = () => {
               control={control}
               render={({ field }) => (
                 <PhoneInput
-                  country="ua"
+                  country="gb"
                   value={field.value}
                   onChange={(value) => field.onChange(value)}
                   excludeCountries={[...new Set(excludedCountries)]}
@@ -171,7 +171,7 @@ export const ContactForm = () => {
                   containerClass={styles.phoneInputContainer}
                   inputClass={errors.phone ? `${styles.phoneInput} ${styles.errorInput}` : styles.phoneInput}
                   enableSearch
-                  preferredCountries={['ua', 'de', 'gb', 'us']}
+                  preferredCountries={['gb']}
                 />
               )}
             />
