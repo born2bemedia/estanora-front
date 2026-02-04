@@ -195,11 +195,16 @@ export const CheckoutForm = () => {
                           ? "rgba(255, 255, 255, 0.3)"
                           : "rgba(255, 255, 255, 0.05)",
                       boxShadow: "none",
-                      minHeight: "38px",
+                      height: "38px",
                       "&:hover": {
                         borderColor: errors.country
                           ? "#ff2d30"
                           : "rgba(255, 255, 255, 0.2)",
+                      },
+                      input: {
+                        ...base,
+                        height: 'auto',
+                        minHeight: '0',
                       },
                     }),
                     placeholder: (base) => ({
@@ -240,9 +245,17 @@ export const CheckoutForm = () => {
                     }),
                     dropdownIndicator: (base) => ({
                       ...base,
-                      color: "rgba(255, 255, 255, 0.7)",
-                      "&:hover": {
-                        color: "rgba(255, 255, 255, 0.9)",
+                      width: '16px',
+                      height: '16px',
+                      padding: '0',
+                      marginRight: '12px',
+                      color: 'rgba(204, 204, 204, 0.30)',
+                      '&:hover': {
+                        color: 'rgba(255, 255, 255, 0.9)',
+                      },
+                      svg: {
+                        width: '16px',
+                        height: '16px',
                       },
                     }),
                     input: (base) => ({

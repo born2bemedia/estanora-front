@@ -339,7 +339,6 @@
       border: 1px solid rgba(255, 255, 255, 0.05);
       border-radius: 0;
       box-shadow: none;
-      min-height: 38px;
       transition: border-color 0.3s ease;
 
       &:hover {
@@ -375,7 +374,6 @@
     }
 
     .select__menu {
-      border-radius: 8px;
       border: 1px solid rgba(255, 255, 255, 0.1);
       background: #1a1a1a;
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);

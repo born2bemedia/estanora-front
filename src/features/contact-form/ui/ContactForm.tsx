@@ -267,9 +267,17 @@ export const ContactForm = () => {
                     }),
                     dropdownIndicator: (base) => ({
                       ...base,
-                      color: 'rgba(255, 255, 255, 0.7)',
+                      width: '16px',
+                      height: '16px',
+                      padding: '0',
+                      marginRight: '12px',
+                      color: 'rgba(204, 204, 204, 0.30)',
                       '&:hover': {
                         color: 'rgba(255, 255, 255, 0.9)',
+                      },
+                      svg: {
+                        width: '16px',
+                        height: '16px',
                       },
                     }),
                   }}
