@@ -201,3 +201,14 @@ html[lang='de'], html[lang='it'] {
     }
   }
 }
+
+html[lang='el'] {
+  header {
+    nav{
+      gap:12px!important;
+    }
+    a {
+      font-size: 11px !important;
+    }
+  }
+}

@@ -12,8 +12,9 @@ import { routing } from "@/i18n/routing";
 
 const LOCALE_LABELS: Record<string, string> = {
   en: "English",
-  de: "Deutsch",
-  it: "Italiano",
+  de: "German",
+  it: "Italian",
+  el: "Greek",
 };
 
 /** Strip locale segment from pathname. */
