@@ -99,6 +99,9 @@
               font-weight: 400;
               line-height: normal;
               text-transform: uppercase;
+              @include tablet {
+                font-size: 12px;
+              }
             }
             span{
               max-width: 300px;
@@ -145,6 +148,7 @@
       @include tablet {
         width: 100%;
         justify-content: center;
+        flex-wrap: wrap;
       }
       a {
         color: rgba(204, 204, 204, 0.8);
