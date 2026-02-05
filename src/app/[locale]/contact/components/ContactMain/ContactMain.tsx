@@ -61,10 +61,12 @@ export const ContactMain = () => {
                   <EmailIcon />
                   <p>{WEBSITE_EMAIL}</p>
                 </Link>
-                <Link className={styles.contactMain__left__contacts__item} href={`tel:${WEBSITE_PHONE}`}>
-                  <PhoneIcon />
-                  <p>{WEBSITE_PHONE}</p>
-                </Link>
+                {WEBSITE_PHONE && (
+                  <Link className={styles.contactMain__left__contacts__item} href={`tel:${WEBSITE_PHONE}`}>
+                    <PhoneIcon />
+                    <p>{WEBSITE_PHONE}</p>
+                  </Link>
+                )}
               </div>
             </motion.div>
             <motion.div

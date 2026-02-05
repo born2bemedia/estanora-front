@@ -1,5 +1,5 @@
 export const WEBSITE_EMAIL = 'info@estanora.com';
-export const WEBSITE_PHONE = '+1 000 000 000';
+export const WEBSITE_PHONE = '';
 
 export const LINKEDIN_URL = '#';
 export const FACEBOOK_URL = '#';
