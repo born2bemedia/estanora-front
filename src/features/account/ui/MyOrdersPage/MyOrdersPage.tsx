@@ -6,12 +6,13 @@ import { useTranslations } from "next-intl";
 
 import { isOrderCompleted, type Order } from "@/features/account/model/orders.types";
 import { useAuthStore } from "@/features/account/store/auth";
+import { useAllServices } from "@/features/services/lib/get-all-services";
 
 import { Button } from "@/shared/ui/kit/button/Button";
 
 import styles from "./MyOrdersPage.module.scss";
 
-import { Link, useRouter } from "@/i18n/navigation";
+import { useRouter } from "@/i18n/navigation";
 
 type OrderRow = {
   orderId: string;
@@ -47,6 +48,7 @@ export const MyOrdersPage = () => {
   const user = useAuthStore((s) => s.user);
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const fetchUser = useAuthStore((s) => s.fetchUser);
+  const { getLocalizedTitle } = useAllServices();
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -83,7 +85,10 @@ export const MyOrdersPage = () => {
     const orderNumber = order.orderNumber ?? order.id;
     const date = formatDate(order.createdAt);
     const status = order.status ?? "Pending";
-    const service = (order.items?.map((item) => item.product ?? "—") ?? []).join("\n") || "—";
+    const service = (order.items?.map((item) => {
+      const productTitle = item.product ?? "—";
+      return getLocalizedTitle(productTitle);
+    }) ?? []).join("\n") || "—";
     const quantity = order.items?.reduce((sum, item) => sum + (item.quantity ?? 0), 0) ?? 0;
     const total = order.total ?? 0;
     return {

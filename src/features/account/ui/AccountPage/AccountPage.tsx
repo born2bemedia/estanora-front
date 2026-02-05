@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 
 import { useTranslations } from "next-intl";
 
-import type { Order, OrderItem } from "@/features/account/model/orders.types";
+import type { Order } from "@/features/account/model/orders.types";
 import { useAuthStore } from "@/features/account/store/auth";
 import { useAllServices } from "@/features/services/lib/get-all-services";
 
@@ -27,7 +27,7 @@ export const AccountPage = () => {
   const user = useAuthStore((s) => s.user);
   const isInitialized = useAuthStore((s) => s.isInitialized);
   const fetchUser = useAuthStore((s) => s.fetchUser);
-  const { getDescriptionByTitle } = useAllServices();
+  const { getDescriptionByTitle, getLocalizedTitle } = useAllServices();
   const [orders, setOrders] = useState<Order[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -66,12 +66,14 @@ export const AccountPage = () => {
   for (const order of orders) {
     for (let i = 0; i < (order.items?.length ?? 0); i++) {
       const item = order.items![i];
-      const serviceTitle = item.product ?? "—";
+      const productTitle = item.product ?? "—";
+      // Convert English title to localized title based on current locale
+      const localizedTitle = getLocalizedTitle(productTitle);
       rows.push({
         orderId: order.id,
         itemIndex: i,
-        service: serviceTitle,
-        description: getDescriptionByTitle(serviceTitle),
+        service: localizedTitle,
+        description: getDescriptionByTitle(productTitle),
       });
     }
   }
