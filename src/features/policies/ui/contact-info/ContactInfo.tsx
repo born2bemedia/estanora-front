@@ -20,12 +20,14 @@ export const ContactInfo = () => {
           <Link href={`mailto:${WEBSITE_EMAIL}`}>{WEBSITE_EMAIL}</Link>
         </p>
       </span>
-      <span className={st.item}>
-        <PhoneIcon />
-        <p>
-          <Link href={`tel:${WEBSITE_PHONE}`}>{WEBSITE_PHONE}</Link>
-        </p>
-      </span>
+      {WEBSITE_PHONE && (
+        <span className={st.item}>
+          <PhoneIcon />
+          <p>
+            <Link href={`tel:${WEBSITE_PHONE}`}>{WEBSITE_PHONE}</Link>
+          </p>
+        </span>
+      )}
       <span className={st.item}>
         <WebIcon />
         <p>
