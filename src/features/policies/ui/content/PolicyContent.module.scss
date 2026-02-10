@@ -54,6 +54,20 @@
   margin-top: 12px;
   margin-left: 18px;
   color: #717173;
+  a {
+    color: #ccc;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: 1.4;
+    margin: 12px 0;
+    text-decoration-line: underline;
+    text-decoration-style: solid;
+    text-decoration-skip-ink: auto;
+    text-decoration-thickness: auto;
+    text-underline-offset: auto;
+    text-underline-position: from-font;
+  }
 }
 
 .listDisc {
@@ -73,11 +87,12 @@
 }
 
 .listUrl {
-  color: #2583ff;
-  font-size: 16px;
+  color: #ccc;
+  font-size: 14px;
   font-style: normal;
-  font-weight: 500;
-  line-height: normal;
+  font-weight: 300;
+  line-height: 1.4;
+  margin: 12px 0;
   text-decoration-line: underline;
   text-decoration-style: solid;
   text-decoration-skip-ink: auto;
