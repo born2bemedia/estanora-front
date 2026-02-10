@@ -63,7 +63,7 @@ export default async function PostPage({
             <h1>{policy.title}</h1>
             {lastUpdatedDate && (
               <p>
-                {t("last-updated", { fallback: "Last updated:" })}:{" "}
+                {t("last-updated", { fallback: "Last updated:" })}{" "}
                 {lastUpdatedDate}
               </p>
             )}
