@@ -36,7 +36,7 @@ export const ContactLocations = () => {
             className={styles.contactLocations__col}
           >
             <div>
-              <h3>{t("title2", { fallback: "Office" })}</h3>
+              <h3>{t("title2", { fallback: "Office address" })}</h3>
               <p>{WEBSITE_OFFICE_ADDRESS}</p>
             </div>
             <div dangerouslySetInnerHTML={{ __html: WEBSITE_OFFICE_ADDRESS_MAP }} />
@@ -49,7 +49,7 @@ export const ContactLocations = () => {
             className={styles.contactLocations__col}
           >
             <div>
-              <h3>{t("title3", { fallback: "Registration" })}</h3>
+              <h3>{t("title3", { fallback: "Registration address" })}</h3>
               <p>{WEBSITE_REGISTERED_ADDRESS}</p>
             </div>
             <div dangerouslySetInnerHTML={{ __html: WEBSITE_REGISTERED_ADDRESS_MAP }} />
