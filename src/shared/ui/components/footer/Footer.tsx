@@ -6,6 +6,7 @@ import { useTranslations } from 'next-intl';
 
 import {
   FACEBOOK_URL,
+  INSTAGRAM_URL,
   LINKEDIN_URL,
   WEBSITE_EMAIL,
   WEBSITE_OFFICE_ADDRESS,
@@ -16,6 +17,7 @@ import {
 import { FacebookIcon, LinkedinIcon, XIcon } from '@/shared/ui/icons';
 import { Button } from '@/shared/ui/kit/button/Button';
 
+import { InstagramIcon } from '../../icons/socials/instagram';
 import styles from './Footer.module.scss';
 
 import { Link } from '@/i18n/navigation';
@@ -72,6 +74,9 @@ export const Footer = () => {
                   </Link>
                   <Link href={FACEBOOK_URL}>
                     <FacebookIcon />
+                  </Link>
+                  <Link href={INSTAGRAM_URL}>
+                    <InstagramIcon />
                   </Link>
                 </nav>
               </div>

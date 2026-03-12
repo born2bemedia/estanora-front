@@ -2,8 +2,9 @@ export const WEBSITE_EMAIL = 'info@estanora.com';
 export const WEBSITE_PHONE = '+35724242781';
 
 export const LINKEDIN_URL = 'https://www.linkedin.com/company/estanora';
-export const FACEBOOK_URL = 'https://www.facebook.com/estanora/';
+export const FACEBOOK_URL = 'https://www.facebook.com/estanora';
 export const X_URL = 'https://x.com/estanoracom';
+export const INSTAGRAM_URL = 'https://www.instagram.com/estanoracom';
 
 export const WEBSITE_REGISTERED_ADDRESS = 'Tzon Kennenty 49, Emerald Building, 4th Floor, Flat/Office 4, 3106 Limassol, Cyprus';
 export const WEBSITE_OFFICE_ADDRESS = 'Office 9C, 9th Floor, 72 Lemesou Avenue, 2014 Nicosia, Cyprus';
