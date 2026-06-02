@@ -12,6 +12,7 @@ import {
   WEBSITE_OFFICE_ADDRESS,
   WEBSITE_PHONE,
   WEBSITE_REGISTERED_ADDRESS,
+  WEBSITE_REGISTRATION_NUMBER,
   X_URL,
 } from '@/shared/lib/constants/constants';
 import { FacebookIcon, LinkedinIcon, XIcon } from '@/shared/ui/icons';
@@ -57,6 +58,10 @@ export const Footer = () => {
                   <span>
                     {t('registered-address', { fallback: 'Registration' })}:{" "}<br/>
                     {WEBSITE_REGISTERED_ADDRESS}
+                  </span>
+                  <span>
+                    {t('registration-number', { fallback: 'Registration number' })}:{" "}<br/>
+                    {WEBSITE_REGISTRATION_NUMBER}
                   </span>
                   <Link href="/contact">
                     {t('more-contacts', { fallback: 'More contacts' })}
