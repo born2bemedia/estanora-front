@@ -68,7 +68,7 @@ export const DiligenceDifference = () => {
           >
             <div className={styles.diligence_difference__col_item}>
               <h3>
-                {t("subtitle2", { fallback: "Expert Consultation (450 EUR)" })}
+                {t("subtitle2", { fallback: "Expert Consultation (650 EUR)" })}
               </h3>
               <p>
                 {t("description2", {
